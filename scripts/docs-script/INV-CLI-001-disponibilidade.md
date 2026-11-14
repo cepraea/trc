@@ -4,45 +4,49 @@ tipo: investigacao
 status: fechado
 caminho_canonico: scripts/docs-script/INV-CLI-001-disponibilidade.md
 versao: 1.0.0
-data_abertura: "2026-11-14"
-data_fechamento: "2026-11-14"
+data_abertura: '2026-11-14'
+data_fechamento: '2026-11-14'
 ---
 
 # INV-CLI-001 — Disponibilidade de CLIs para o gate de qualidade
 
 ## Contrato do documento
 
-| Propriedade | Definição |
-| --- | --- |
-| Papel | registrar a pesquisa de disponibilidade de executáveis CLI no ambiente WSL, com linha do tempo, evidências e conclusões |
-| Objetivo | fundamentar a decisão de instalar dependências de desenvolvimento ausentes ([DEC-CLI-001](./DEC-CLI-001-dependencias-dev.md#dec-cli-001)) |
-| Escopo | ambiente WSL do projeto `selecao-brasileira`; extensões VS Code instaladas; executáveis disponíveis no `PATH` via `nvm` |
-| Caminho canônico | `scripts/docs-script/INV-CLI-001-disponibilidade.md` |
-| Autoridade | investigação de suporte a decisão; não autoriza instalação por si mesma |
-| Contexto mínimo | este documento, [BRD/URS](./BRD_URS_Verificador_Qualidade.md#brd-root), [FRS/SyRS v2.0](./FRS_SyRS_Verificador_Qualidade_Deterministica_v2.0.md#frs-root) e [DEC-CLI-001](./DEC-CLI-001-dependencias-dev.md#dec-cli-001) |
-| Dependências | inventário INV-EXT-001 (50 extensões), DH-01 do BRD/URS |
-| Restrições | registrar somente o que foi observado por execução real; não inferir disponibilidade de documentação ou extensão instalada |
-| Riscos mitigados | conclusão sem evidência; confundir presença de extensão com disponibilidade de CLI; afirmar sucesso falso do gate |
+| Propriedade      | Definição                                                                                                                                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Papel            | registrar a pesquisa de disponibilidade de executáveis CLI no ambiente WSL, com linha do tempo, evidências e conclusões                                                                                                  |
+| Objetivo         | fundamentar a decisão de instalar dependências de desenvolvimento ausentes ([DEC-CLI-001](./DEC-CLI-001-dependencias-dev.md#dec-cli-001))                                                                                |
+| Escopo           | ambiente WSL do projeto `selecao-brasileira`; extensões VS Code instaladas; executáveis disponíveis no `PATH` via `nvm`                                                                                                  |
+| Caminho canônico | `scripts/docs-script/INV-CLI-001-disponibilidade.md`                                                                                                                                                                     |
+| Autoridade       | investigação de suporte a decisão; não autoriza instalação por si mesma                                                                                                                                                  |
+| Contexto mínimo  | este documento, [BRD/URS](./BRD_URS_Verificador_Qualidade.md#brd-root), [FRS/SyRS v2.0](./FRS_SyRS_Verificador_Qualidade_Deterministica_v2.0.md#frs-root) e [DEC-CLI-001](./DEC-CLI-001-dependencias-dev.md#dec-cli-001) |
+| Dependências     | inventário INV-EXT-001 (50 extensões), DH-01 do BRD/URS                                                                                                                                                                  |
+| Restrições       | registrar somente o que foi observado por execução real; não inferir disponibilidade de documentação ou extensão instalada                                                                                               |
+| Riscos mitigados | conclusão sem evidência; confundir presença de extensão com disponibilidade de CLI; afirmar sucesso falso do gate                                                                                                        |
 
 ## 1. Motivo da investigação
 
-A especificação [FRS/SyRS v2.0](./FRS_SyRS_Verificador_Qualidade_Deterministica_v2.0.md#frs-root)
-foi elaborada sem acesso ao terminal do ambiente real. Suas afirmações sobre ferramentas
-(FR-031: "verificar disponibilidade do executável antes de executar") e a recomendação técnica
-([TEC-003](./Especificacao_Tecnica_Completa.md#tec-003): "localizar executável no PATH efetivo WSL")
-dependem de informações que a documentação classifica explicitamente como NÃO VERIFICADAS
-(NV-01: "executáveis disponíveis no WSL").
+A especificação
+[FRS/SyRS v2.0](./FRS_SyRS_Verificador_Qualidade_Deterministica_v2.0.md#frs-root)
+foi elaborada sem acesso ao terminal do ambiente real. Suas afirmações sobre
+ferramentas (FR-031: "verificar disponibilidade do executável antes de
+executar") e a recomendação técnica
+([TEC-003](./Especificacao_Tecnica_Completa.md#tec-003): "localizar executável
+no PATH efetivo WSL") dependem de informações que a documentação classifica
+explicitamente como NÃO VERIFICADAS (NV-01: "executáveis disponíveis no WSL").
 
-A decisão DH-01 do BRD/URS ("ponte VS Code ou CLIs equivalentes?") não pode ser tomada sem
-saber quais CLIs existem de fato. Esta investigação preenche essa lacuna.
+A decisão DH-01 do BRD/URS ("ponte VS Code ou CLIs equivalentes?") não pode ser
+tomada sem saber quais CLIs existem de fato. Esta investigação preenche essa
+lacuna.
 
 ## 2. Linha do tempo das ações
 
 ### 2026-11-13 — Sessão inicial
 
 **Ação:** usuário perguntou como listar extensões instaladas no VS Code/WSL.
-**Resultado:** orientação para executar `code --list-extensions --show-versions` no terminal integrado do VS Code.
-**Estado da investigação:** iniciada implicitamente; inventário de extensões ainda não verificado.
+**Resultado:** orientação para executar `code --list-extensions --show-versions`
+no terminal integrado do VS Code. **Estado da investigação:** iniciada
+implicitamente; inventário de extensões ainda não verificado.
 
 ### 2026-11-14T16:30-03:00 — Revisão da documentação
 
@@ -50,14 +54,15 @@ saber quais CLIs existem de fato. Esta investigação preenche essa lacuna.
 ([BRD/URS](./BRD_URS_Verificador_Qualidade.md#brd-root),
 [FRS/SyRS v2.0](./FRS_SyRS_Verificador_Qualidade_Deterministica_v2.0.md#frs-root),
 [Especificação Técnica](./Especificacao_Tecnica_Completa.md#tec-root)).
-**Resultado:** identificadas afirmações com status NÃO VERIFICADO sobre CLIs e AdocMD Forge.
-**Decisão pendente identificada:** DH-01 requer conhecimento de quais CLIs existem.
+**Resultado:** identificadas afirmações com status NÃO VERIFICADO sobre CLIs e
+AdocMD Forge. **Decisão pendente identificada:** DH-01 requer conhecimento de
+quais CLIs existem.
 
 ### 2026-11-14T16:33-03:00 — Verificação das extensões
 
 **Ação executada:**
 
-```bash
+````bash
 code --list-extensions --show-versions 2>/dev/null | sort
 
 ```text
@@ -274,3 +279,4 @@ VALIDO: estrutura e links bidirecionais correspondem aos registros-fonte.
 
 **DONE desta investigação:** linha do tempo, evidências e cadeia lógica registradas;
 conclusão encaminhada para [DEC-CLI-001](./DEC-CLI-001-dependencias-dev.md#dec-cli-001).
+````

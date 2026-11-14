@@ -11,17 +11,17 @@ atualizado_em: 2026-11-13
 
 ## Contrato do documento
 
-| Propriedade | Definição |
-| --- | --- |
-| Papel | catálogo da estrutura permanente, responsabilidades e rotas mínimas de contexto |
-| Objetivo | permitir auditoria e navegação rápida sem carregar arquivos irrelevantes |
-| Escopo | arquivos gerenciados do workspace; diretórios técnicos, temporários e evidências dinâmicas são classificados separadamente |
-| Caminho canônico | `mapa-repositorio.md` |
-| Autoridade | agentes devem consultar a rota da tarefa antes de ler ou alterar artefatos |
-| Contexto mínimo | contrato, rota aplicável e linhas do catálogo dos arquivos afetados |
-| Dependências | diretrizes centrais e contratos individuais dos documentos |
-| Restrições | não catalogar segredo; não tratar `tmp/` como evidência permanente; não omitir arquivo permanente |
-| Riscos mitigados | contexto excessivo, arquivo invisível, responsabilidade ambígua e alteração fora do escopo |
+| Propriedade      | Definição                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Papel            | catálogo da estrutura permanente, responsabilidades e rotas mínimas de contexto                                            |
+| Objetivo         | permitir auditoria e navegação rápida sem carregar arquivos irrelevantes                                                   |
+| Escopo           | arquivos gerenciados do workspace; diretórios técnicos, temporários e evidências dinâmicas são classificados separadamente |
+| Caminho canônico | `mapa-repositorio.md`                                                                                                      |
+| Autoridade       | agentes devem consultar a rota da tarefa antes de ler ou alterar artefatos                                                 |
+| Contexto mínimo  | contrato, rota aplicável e linhas do catálogo dos arquivos afetados                                                        |
+| Dependências     | diretrizes centrais e contratos individuais dos documentos                                                                 |
+| Restrições       | não catalogar segredo; não tratar `tmp/` como evidência permanente; não omitir arquivo permanente                          |
+| Riscos mitigados | contexto excessivo, arquivo invisível, responsabilidade ambígua e alteração fora do escopo                                 |
 
 ## Árvore permanente
 
@@ -63,43 +63,43 @@ atualizado_em: 2026-11-13
 
 ## Catálogo de arquivos permanentes
 
-| Caminho canônico | Papel | Leitura obrigatória quando |
-| --- | --- | --- |
-| `.gitignore` | exclusões locais do versionamento | alterar estrutura temporária ou gerada |
-| `AGENTS.md` | autoridade central imutável para agentes | toda tarefa |
-| `governanca-testes.md` | norma dos testes, registros e validações | criar, executar ou interpretar teste |
-| `grupo-whatsapp.md` | registro operacional do grupo | alterar composição, regras ou totais do grupo |
-| `mapa-repositorio.md` | árvore, catálogo e rotas de contexto | incluir, mover ou remover arquivo permanente |
-| `mensagens-treinadores.md` | registro-fonte das conversas | alterar ou consumir unidade `WA-*` |
-| `rastreabilidade-tecnica.md` | critérios e matriz técnica `RT-*` | alterar regra, marcador ou implementação de rastreabilidade |
-| `regras-rastreabilidade.md` | norma da rastreabilidade | alterar IDs, vínculos, metadados ou governança |
-| `tecnicas-rastreabilidade.md` | referência conceitual `RT-TECH-*` | alterar princípio técnico ou justificativa |
-| `scripts/testar-conformidade-repositorio.sh` | runner governado em desenvolvimento | executar casos `TST-CASE-*` |
-| `scripts/testar-rastreabilidade.sh` | suíte legada inválida | migrar cenário histórico; nunca para aceite |
-| `scripts/validar-rastreabilidade.sh` | validador legado inválido | migrar regra histórica; nunca para aceite |
-| `testes/matriz-testes.md` | relações requisito–decisão–caso–execução–evidência | qualquer mudança de teste |
-| `testes/casos/TST-CASE-001.md` | contrato dos documentos | alterar documentação permanente |
-| `testes/casos/TST-CASE-002.md` | especificidade dos links internos | criar ou alterar link local |
-| `testes/casos/TST-CASE-003.md` | árvore e rotas | alterar estrutura do repositório |
-| `testes/casos/TST-CASE-004.md` | preservação de comentários | alterar Markdown com comentário HTML |
-| `testes/casos/TST-CASE-005.md` | integridade estrutural do grupo | alterar lista ou título do grupo |
-| `testes/casos/TST-CASE-006.md` | preservação das unidades `WA-*` | alterar mensagens ou links de origem |
-| `testes/casos/TST-CASE-007.md` | quarentena do legado | mencionar ou migrar automação antiga |
-| `testes/casos/TST-CASE-008.md` | esquema dos registros de execução | criar ou corrigir `TST-RUN-*` |
-| `testes/configuracoes/TST-CFG-001.env` | ambiente reprodutível | executar a suíte governada |
-| `testes/configuracoes/TST-CFG-001.baseline` | hashes de preservação | validar comentários ou IDs antigos |
-| `testes/defeitos/TST-DEF-001.md` | falso negativo do detector de registros | corrigir ou revisar `TST-CASE-008` |
+| Caminho canônico                             | Papel                                              | Leitura obrigatória quando                                  |
+| -------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
+| `.gitignore`                                 | exclusões locais do versionamento                  | alterar estrutura temporária ou gerada                      |
+| `AGENTS.md`                                  | autoridade central imutável para agentes           | toda tarefa                                                 |
+| `governanca-testes.md`                       | norma dos testes, registros e validações           | criar, executar ou interpretar teste                        |
+| `grupo-whatsapp.md`                          | registro operacional do grupo                      | alterar composição, regras ou totais do grupo               |
+| `mapa-repositorio.md`                        | árvore, catálogo e rotas de contexto               | incluir, mover ou remover arquivo permanente                |
+| `mensagens-treinadores.md`                   | registro-fonte das conversas                       | alterar ou consumir unidade `WA-*`                          |
+| `rastreabilidade-tecnica.md`                 | critérios e matriz técnica `RT-*`                  | alterar regra, marcador ou implementação de rastreabilidade |
+| `regras-rastreabilidade.md`                  | norma da rastreabilidade                           | alterar IDs, vínculos, metadados ou governança              |
+| `tecnicas-rastreabilidade.md`                | referência conceitual `RT-TECH-*`                  | alterar princípio técnico ou justificativa                  |
+| `scripts/testar-conformidade-repositorio.sh` | runner governado em desenvolvimento                | executar casos `TST-CASE-*`                                 |
+| `scripts/testar-rastreabilidade.sh`          | suíte legada inválida                              | migrar cenário histórico; nunca para aceite                 |
+| `scripts/validar-rastreabilidade.sh`         | validador legado inválido                          | migrar regra histórica; nunca para aceite                   |
+| `testes/matriz-testes.md`                    | relações requisito–decisão–caso–execução–evidência | qualquer mudança de teste                                   |
+| `testes/casos/TST-CASE-001.md`               | contrato dos documentos                            | alterar documentação permanente                             |
+| `testes/casos/TST-CASE-002.md`               | especificidade dos links internos                  | criar ou alterar link local                                 |
+| `testes/casos/TST-CASE-003.md`               | árvore e rotas                                     | alterar estrutura do repositório                            |
+| `testes/casos/TST-CASE-004.md`               | preservação de comentários                         | alterar Markdown com comentário HTML                        |
+| `testes/casos/TST-CASE-005.md`               | integridade estrutural do grupo                    | alterar lista ou título do grupo                            |
+| `testes/casos/TST-CASE-006.md`               | preservação das unidades `WA-*`                    | alterar mensagens ou links de origem                        |
+| `testes/casos/TST-CASE-007.md`               | quarentena do legado                               | mencionar ou migrar automação antiga                        |
+| `testes/casos/TST-CASE-008.md`               | esquema dos registros de execução                  | criar ou corrigir `TST-RUN-*`                               |
+| `testes/configuracoes/TST-CFG-001.env`       | ambiente reprodutível                              | executar a suíte governada                                  |
+| `testes/configuracoes/TST-CFG-001.baseline`  | hashes de preservação                              | validar comentários ou IDs antigos                          |
+| `testes/defeitos/TST-DEF-001.md`             | falso negativo do detector de registros            | corrigir ou revisar `TST-CASE-008`                          |
 
 ## Diretórios classificados
 
-| Caminho | Classificação | Regra |
-| --- | --- | --- |
-| `.git/` | histórico determinístico | não editar manualmente; usar Git local; escrita remota depende de autorização |
-| `.agents/`, `.aws/`, `.codex/` | infraestrutura do ambiente | não carregar como contexto do domínio nem versionar automaticamente |
-| `tmp/` | temporário | planejamento e resultados intermediários; não serve como evidência final |
-| `testes/evidencias/` | dinâmico permanente | cada arquivo deve possuir ID, hash e execução de origem |
-| `testes/execucoes/` | dinâmico permanente | cada registro fechado é imutável e encadeado |
-| `testes/validacoes/` | dinâmico permanente | somente parte independente pode emitir validação |
+| Caminho                        | Classificação              | Regra                                                                         |
+| ------------------------------ | -------------------------- | ----------------------------------------------------------------------------- |
+| `.git/`                        | histórico determinístico   | não editar manualmente; usar Git local; escrita remota depende de autorização |
+| `.agents/`, `.aws/`, `.codex/` | infraestrutura do ambiente | não carregar como contexto do domínio nem versionar automaticamente           |
+| `tmp/`                         | temporário                 | planejamento e resultados intermediários; não serve como evidência final      |
+| `testes/evidencias/`           | dinâmico permanente        | cada arquivo deve possuir ID, hash e execução de origem                       |
+| `testes/execucoes/`            | dinâmico permanente        | cada registro fechado é imutável e encadeado                                  |
+| `testes/validacoes/`           | dinâmico permanente        | somente parte independente pode emitir validação                              |
 
 ## Rotas para contexto frugal
 
@@ -137,8 +137,11 @@ atualizado_em: 2026-11-13
 
 ## Regras de manutenção
 
-- inclusão ou remoção de arquivo permanente atualiza árvore e catálogo na mesma alteração;
+- inclusão ou remoção de arquivo permanente atualiza árvore e catálogo na mesma
+  alteração;
 - mudança de responsabilidade atualiza contrato individual e catálogo;
 - rota nova deve reduzir contexto, não duplicar uma rota existente;
-- arquivos dinâmicos são governados por padrão e não enumerados um a um na árvore;
-- referência deste mapa a outro artefato usa caminho em código; links ativos, quando necessários, devem apontar para âncora específica.
+- arquivos dinâmicos são governados por padrão e não enumerados um a um na
+  árvore;
+- referência deste mapa a outro artefato usa caminho em código; links ativos,
+  quando necessários, devem apontar para âncora específica.

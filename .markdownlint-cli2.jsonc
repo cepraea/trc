@@ -1,0 +1,50 @@
+// Configuração do markdownlint para o repositório selecao-brasileira
+// Autoridade: DEC-DH-03-markdownlint (scripts/docs-script/DEC-DH-03-markdownlint.md)
+// Versão: 1.0.0 — 2026-11-14
+//
+// Regras habilitadas: padrão + sobreposições abaixo.
+// Regras desabilitadas com justificativa explícita exigida por DH-03.
+{
+  // Lista de pastas que a ferramenta não deve ler
+  "ignores": [
+    "dist/**",
+    "build/**",
+    ".claude/**",
+    ".temp/**",
+    ".vscode/**",
+    "node_modules/**",
+    ".gitignore",
+    ".prettierignore"
+  ],
+
+  "config": {
+    // MD013 — line-length
+    // Desabilitado: o repositório é de documentação com tabelas, links e
+    // citações de código que legitimamente excedem 80 caracteres.
+    // 778 ocorrências nos arquivos principais; nenhuma indica defeito real.
+    // Referência: DEC-DH-03 seção 3, item MD013.
+    "MD013": false,
+
+    // MD033 — no-inline-html
+    // Desabilitado: AG-04 e NFR-010 exigem preservação de comentários HTML
+    // existentes nos arquivos Markdown. Adicionalmente, spec-template-empty.md
+    // utiliza tags XML de template (<doc:change_log>, <entry>) que são parte
+    // intencional da estrutura do arquivo.
+    // Referência: DEC-DH-03 seção 3, item MD033.
+    "MD033": false,
+
+    // MD041 — first-line-heading
+    // Desabilitado: arquivos de especificação e template iniciam com frontmatter
+    // YAML ou blocos XML antes do primeiro heading H1. Exigir H1 na primeira
+    // linha quebraria todos os arquivos com frontmatter.
+    // Referência: DEC-DH-03 seção 3, item MD041.
+    "MD041": false,
+
+    // MD060 — table-column-style
+    // Desabilitado: o estilo de alinhamento de colunas de tabela é variado de
+    // forma intencional nos documentos existentes; forçar uniformidade geraria
+    // diff sem valor semântico.
+    // Referência: DEC-DH-03 seção 3, item MD060.
+    "MD060": false
+  }
+}
