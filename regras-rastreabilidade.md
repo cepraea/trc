@@ -1,11 +1,28 @@
 ---
+documento_id: "DOC-TRACE-RULES-001"
 tipo: "especificação-normativa"
 status: "vigente"
 escopo: "rastreabilidade bidirecional"
+caminho_canonico: "regras-rastreabilidade.md"
+versao: "2.0.0"
 atualizado_em: "2026-11-13"
 ---
 
 # Regras de rastreabilidade bidirecional
+
+## Contrato do documento
+
+| Propriedade | Definição |
+| --- | --- |
+| Papel | fonte normativa das unidades, vínculos, metadados e processos de rastreabilidade |
+| Objetivo | governar alterações sem quebrar identidade, proveniência, reciprocidade ou verificabilidade |
+| Escopo | conversas, mensagens, entidades futuras, documentos técnicos, scripts e testes governados |
+| Caminho canônico | `regras-rastreabilidade.md` |
+| Autoridade | agentes devem obedecer às obrigações marcadas, subordinadas às diretrizes centrais |
+| Contexto mínimo | contrato, seção normativa afetada e matriz de marcadores correspondente |
+| Dependências | registro-fonte, documento técnico, técnicas estruturais e governança de testes |
+| Restrições | preservar comentários, IDs e vínculos; não usar automação legada como aceite |
+| Riscos mitigados | órfão, duplicidade, quebra bidirecional, metadado decorativo e falsa aprovação |
 
 > **Estado da automação legada:** inválida para aceite. As referências `RT-TEST-*` existentes descrevem cenários históricos, mas não são evidência aprovada porque faltam registros de TDD, configuração, execução persistente, oráculos completos e validação independente. Os scripts legados permanecem preservados somente para migração controlada.
 
@@ -28,12 +45,12 @@ Os termos **DEVE**, **NÃO DEVE**, **OBRIGATÓRIO** e **PROIBIDO** indicam regra
 
 Esta norma abrange:
 
-- as conversas e mensagens registradas em [mensagens-treinadores.md](./mensagens-treinadores.md);
+- as conversas e mensagens no [registro-fonte estruturado](./mensagens-treinadores.md#exportação-das-conversas-do-whatsapp);
 - a especificação de transformação de equipes, treinadores(as), atletas e respectivos contatos em unidades rastreáveis;
-- a explicação e a matriz técnica em [rastreabilidade-tecnica.md](./rastreabilidade-tecnica.md);
-- os fundamentos e técnicas em [tecnicas-rastreabilidade.md](./tecnicas-rastreabilidade.md);
-- o validador [validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh);
-- a suíte [testar-rastreabilidade.sh](./scripts/testar-rastreabilidade.sh);
+- a [explicação e matriz técnica](./rastreabilidade-tecnica.md#rastreabilidade-bidirecional);
+- os [fundamentos e técnicas marcados](./tecnicas-rastreabilidade.md#convenção-de-marcação-normativa);
+- o validador legado `scripts/validar-rastreabilidade.sh`, pesquisável pelo marcador `RT-VER-001`;
+- a suíte legada `scripts/testar-rastreabilidade.sh`, pesquisável pelo marcador `RT-TEST-001`;
 - os marcadores `RT-CRIT-*`, `RT-TEST-*`, `RT-VER-*` e `RT-VAL-*` compartilhados entre documentação e código.
 
 Esta norma não comprova a autenticidade jurídica da exportação, a veracidade do conteúdo das mensagens, a correção dos nomes e telefones ou a inexistência de alterações históricas. Esses controles exigem origem preservada, controle de versão, restrição de acesso e, quando necessário, soma de verificação.
@@ -42,13 +59,13 @@ Esta norma não comprova a autenticidade jurídica da exportação, a veracidade
 
 | Artefato | Papel | Fonte de verdade para |
 | --- | --- | --- |
-| [regras-rastreabilidade.md](./regras-rastreabilidade.md) | especificação normativa | regras, governança e procedimentos obrigatórios |
-| [mensagens-treinadores.md](./mensagens-treinadores.md) | registro-fonte estruturado | conversas, mensagens, metadados, IDs e âncoras |
-| [rastreabilidade-tecnica.md](./rastreabilidade-tecnica.md) | especificação técnica e matriz | justificativas, critérios, relações e evidências |
-| [tecnicas-rastreabilidade.md](./tecnicas-rastreabilidade.md) | referência conceitual marcada | fundamentos técnicos que sustentam regras normativas |
-| [validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh) | implementação de verificação e validação | regras executáveis e códigos de saída |
-| [testar-rastreabilidade.sh](./scripts/testar-rastreabilidade.sh) | suíte legada inválida | inventário histórico de cenários a migrar; não produz aceite |
-| [AGENTS.md](./AGENTS.md) | regras gerais do repositório | preservação de comentários HTML e restrições de alteração |
+| [regras e governança](./regras-rastreabilidade.md#1-finalidade) | especificação normativa | regras, governança e procedimentos obrigatórios |
+| [registro-fonte](./mensagens-treinadores.md#exportação-das-conversas-do-whatsapp) | registro-fonte estruturado | conversas, mensagens, metadados, IDs e âncoras |
+| [matriz técnica](./rastreabilidade-tecnica.md#rastreabilidade-bidirecional) | especificação técnica e matriz | justificativas, critérios, relações e evidências |
+| [técnicas marcadas](./tecnicas-rastreabilidade.md#convenção-de-marcação-normativa) | referência conceitual marcada | fundamentos técnicos que sustentam regras normativas |
+| `scripts/validar-rastreabilidade.sh`, marcador `RT-VER-001` | implementação legada | regras executáveis históricas e códigos de saída |
+| `scripts/testar-rastreabilidade.sh`, marcador `RT-TEST-001` | suíte legada inválida | inventário histórico de cenários a migrar; não produz aceite |
+| [diretrizes de documentação](./AGENTS.md#1-regras-de-documentação) | regras gerais do repositório | preservação de comentários HTML e restrições de alteração |
 
 Nenhum artefato substitui os demais. A norma define o que deve ocorrer; o documento técnico explica e conecta; o registro-fonte contém as unidades; o validador executa as regras; e a suíte demonstra que falhas são detectadas.
 
@@ -393,11 +410,11 @@ Uma alteração de rastreabilidade somente pode ser aceita quando:
 
 Esta norma DEVE ser atualizada quando houver mudança no modelo de IDs, nos artefatos abrangidos, nos critérios `RT-CRIT-*`, nas validações `RT-VAL-*`, na verificação `RT-VER-*`, nos testes `RT-TEST-*` ou nos procedimentos de governança.
 
-Toda mudança normativa DEVE manter a rastreabilidade bidirecional com [rastreabilidade-tecnica.md](./rastreabilidade-tecnica.md) e com os comentários marcados nos scripts. A auditoria automatizada de cobertura deve reprovar quando um marcador obrigatório existir apenas na documentação ou apenas no código.
+Toda mudança normativa DEVE manter a rastreabilidade bidirecional com a [matriz técnica](./rastreabilidade-tecnica.md#rastreabilidade-bidirecional) e com os comentários marcados nos scripts. A auditoria automatizada de cobertura deve reprovar quando um marcador obrigatório existir apenas na documentação ou apenas no código.
 
 ### 16.1 Regras essenciais marcadas no documento técnico
 
-Os marcadores `RT-RULE-*` identificam afirmações essenciais em [rastreabilidade-tecnica.md](./rastreabilidade-tecnica.md) que devem permanecer sustentadas por regra normativa. Eles formam um vínculo documental bidirecional: a marca técnica aponta para esta matriz, e esta matriz aponta para a obrigação correspondente.
+Os marcadores `RT-RULE-*` identificam afirmações essenciais nos [critérios técnicos](./rastreabilidade-tecnica.md#criterios-de-aceitacao-e-escopo) que devem permanecer sustentadas por regra normativa. Eles formam um vínculo documental bidirecional: a marca técnica aponta para esta matriz, e esta matriz aponta para a obrigação correspondente.
 
 | Marcador | Regra normativa sustentada | Seção normativa principal |
 | --- | --- | --- |
@@ -417,7 +434,7 @@ Uma marca `RT-RULE-*` presente somente em um dos documentos é referência órf�
 
 ### 16.2 Princípios técnicos que sustentam a norma
 
-Os marcadores `RT-TECH-*` conectam os princípios essenciais de [tecnicas-rastreabilidade.md](./tecnicas-rastreabilidade.md) às regras deste documento. Eles não transformam exemplos ou recomendações gerais em obrigações; somente os princípios listados abaixo sustentam regra normativa no repositório.
+Os marcadores `RT-TECH-*` conectam os [princípios técnicos essenciais](./tecnicas-rastreabilidade.md#convencao-de-marcacao-normativa) às regras deste documento. Eles não transformam exemplos ou recomendações gerais em obrigações; somente os princípios listados abaixo sustentam regra normativa no repositório.
 
 | Marcador | Princípio técnico sustentado | Aplicação normativa principal |
 | --- | --- | --- |
@@ -441,7 +458,7 @@ Um marcador `RT-TECH-*` presente somente na referência técnica ou somente nest
 
 ### 17.1 Estado de implantação
 
-As regras desta seção são normativas para a transformação de equipes, treinadores(as), atletas e contatos em unidades rastreáveis. No estado atual, [mensagens-treinadores.md](./mensagens-treinadores.md) é a evidência de origem, mas essas cinco classes ainda não possuem um cadastro canônico completo nem validação automatizada específica.
+As regras desta seção são normativas para a transformação de equipes, treinadores(as), atletas e contatos em unidades rastreáveis. No estado atual, o [registro das conversas](./mensagens-treinadores.md#exportacao-das-conversas-do-whatsapp) é a evidência de origem, mas essas cinco classes ainda não possuem um cadastro canônico completo nem validação automatizada específica.
 
 A transformação somente poderá ser declarada **implantada** depois que:
 

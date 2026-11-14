@@ -1,9 +1,28 @@
 ---
-tipo: "documentação"
-criado em: "12-11-2026"
+documento_id: "DOC-TRACE-REF-001"
+tipo: "referencia-tecnica"
+status: "vigente"
+caminho_canonico: "tecnicas-rastreabilidade.md"
+versao: "1.0.0"
+criado_em: "2026-11-12"
+atualizado_em: "2026-11-13"
 ---
 
 # Técnicas estruturadas de marcação e rastreabilidade de requisitos e artefatos de engenharia
+
+## Contrato do documento
+
+| Propriedade | Definição |
+| --- | --- |
+| Papel | referência conceitual das técnicas que sustentam a norma |
+| Objetivo | explicar por que identificadores, metadados, vínculos, decisões e evidências são necessários |
+| Escopo | fundamentos de rastreabilidade de requisitos, arquitetura, testes e configuração |
+| Caminho canônico | `tecnicas-rastreabilidade.md` |
+| Autoridade | princípios `RT-TECH-*` governam agentes somente quando possuem correspondência normativa |
+| Contexto mínimo | contrato, princípio marcado e seção conceitual diretamente relacionada |
+| Dependências | matriz normativa `RT-TECH-*` e fontes técnicas citadas junto às afirmações |
+| Restrições | exemplos não são requisitos; técnica não implantada não pode ser declarada como evidência |
+| Riscos mitigados | escolha sem justificativa, excesso de técnica, conceito tratado como implementação e decisão perdida |
 
 **Domínio:** Engenharia de Sistemas e Software  
 **Área central:** Engenharia de Requisitos  
@@ -12,7 +31,8 @@ criado em: "12-11-2026"
 
 ## Convenção de marcação normativa
 
-As marcações `RT-TECH-*` identificam princípios técnicos essenciais que sustentam regras em [regras-rastreabilidade.md](./regras-rastreabilidade.md). O mesmo marcador deve existir na matriz normativa correspondente. Exemplos, referências bibliográficas e técnicas opcionais permanecem sem marca quando não impõem obrigação ao repositório.
+As marcações `RT-TECH-*` identificam princípios técnicos essenciais que sustentam a [matriz normativa correspondente](./regras-rastreabilidade.md#162-principios-tecnicos-que-sustentam-a-norma).
+O mesmo marcador deve existir nos dois lados. Exemplos, referências bibliográficas e técnicas opcionais permanecem sem marca quando não impõem obrigação ao repositório.
 
 ## Glossário de referência
 

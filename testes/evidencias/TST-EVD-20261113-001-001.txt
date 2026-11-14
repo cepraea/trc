@@ -1,0 +1,50 @@
+TST-EVD-20261113-001-001
+execution=TST-RUN-20261113-001
+phase=red
+capture=combined tool output; stdout/stderr ordering preserved as returned by executor
+exit_code=1
+
+FAIL [TST-CASE-001] contratos documentais incompletos
+grupo-whatsapp.md: seção Contrato do documento ausente
+mensagens-treinadores.md: seção Contrato do documento ausente
+rastreabilidade-tecnica.md: seção Contrato do documento ausente
+regras-rastreabilidade.md: seção Contrato do documento ausente
+tecnicas-rastreabilidade.md: seção Contrato do documento ausente
+FAIL [TST-CASE-002] links internos apontam para arquivo inteiro
+/home/davis/selecao-brasileira/rastreabilidade-tecnica.md:9:[mensagens-treinadores.md](./mensagens-treinadores.md)
+/home/davis/selecao-brasileira/rastreabilidade-tecnica.md:89:[scripts/validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/rastreabilidade-tecnica.md:155:[validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/rastreabilidade-tecnica.md:155:[testar-rastreabilidade.sh](./scripts/testar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/rastreabilidade-tecnica.md:162:[validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/rastreabilidade-tecnica.md:163:[validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/rastreabilidade-tecnica.md:164:[testar-rastreabilidade.sh](./scripts/testar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:31:[mensagens-treinadores.md](./mensagens-treinadores.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:33:[rastreabilidade-tecnica.md](./rastreabilidade-tecnica.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:34:[tecnicas-rastreabilidade.md](./tecnicas-rastreabilidade.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:35:[validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:36:[testar-rastreabilidade.sh](./scripts/testar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:45:[regras-rastreabilidade.md](./regras-rastreabilidade.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:46:[mensagens-treinadores.md](./mensagens-treinadores.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:47:[rastreabilidade-tecnica.md](./rastreabilidade-tecnica.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:48:[tecnicas-rastreabilidade.md](./tecnicas-rastreabilidade.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:49:[validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:50:[testar-rastreabilidade.sh](./scripts/testar-rastreabilidade.sh)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:51:[AGENTS.md](./AGENTS.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:396:[rastreabilidade-tecnica.md](./rastreabilidade-tecnica.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:400:[rastreabilidade-tecnica.md](./rastreabilidade-tecnica.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:420:[tecnicas-rastreabilidade.md](./tecnicas-rastreabilidade.md)
+/home/davis/selecao-brasileira/regras-rastreabilidade.md:444:[mensagens-treinadores.md](./mensagens-treinadores.md)
+/home/davis/selecao-brasileira/tecnicas-rastreabilidade.md:15:[regras-rastreabilidade.md](./regras-rastreabilidade.md)
+FAIL [TST-CASE-003] mapa canônico do repositório ausente
+mapa-repositorio.md não existe
+PASS [TST-CASE-004] comentários HTML preservados
+FAIL [TST-CASE-005] estrutura do grupo incoerente
+### A. BUD'S Handbeach — 2**: título quantificado fora do padrão
+### **Niterói Rugby FC — 6**: declarado=6, itens=7
+### **A confirmar — 19**: declarado=19, itens=26
+nome duplicado: Nicolle de Souza Silva Flores (2 ocorrências)
+PASS [TST-CASE-006] IDs e âncoras WA preservados
+PASS [TST-CASE-007] automação legada isolada do aceite
+FAIL [TST-CASE-008] nenhum registro de execução existente
+SUMMARY total=8 pass=3 fail=5 config=TST-CFG-001
+diretório testes/execucoes sem TST-RUN-*.md

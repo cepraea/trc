@@ -1,12 +1,31 @@
 ---
-tipo: "historico"
-criado em: "12-11-2026"
+documento_id: "DOC-TRACE-TECH-001"
+tipo: "especificacao-tecnica"
+status: "em-migracao"
+caminho_canonico: "rastreabilidade-tecnica.md"
+versao: "2.0.0"
+criado_em: "2026-11-12"
+atualizado_em: "2026-11-13"
 ---
 # Rastreabilidade
 
+## Contrato do documento
+
+| Propriedade | Definição |
+| --- | --- |
+| Papel | explicar critérios, decisões e vínculos técnicos da rastreabilidade |
+| Objetivo | permitir percorrer origem, regra, implementação, caso e evidência nos dois sentidos |
+| Escopo | unidades `WA-*`, marcadores `RT-*` e migração da automação legada |
+| Caminho canônico | `rastreabilidade-tecnica.md` |
+| Autoridade | orienta agentes tecnicamente, subordinado à norma e à governança de testes |
+| Contexto mínimo | contrato, regra `RT-*` afetada, critério relacionado e unidade de origem |
+| Dependências | regras normativas, técnicas estruturais, registro-fonte e governança de testes |
+| Restrições | não declarar autenticidade; não usar legado como aceite; não apagar comentários HTML |
+| Riscos mitigados | regra sem evidência, código sem decisão, teste órfão e falsa validação |
+
 > **Estado da automação legada:** inválida para aceite. Os arquivos `scripts/validar-rastreabilidade.sh` e `scripts/testar-rastreabilidade.sh` foram preservados somente como fonte histórica de cenários. Eles não possuem proveniência TDD, configuração completa, registros persistentes de execução nem validação independente. Nenhum resultado produzido por esses scripts comprova conformidade enquanto os casos não forem migrados para a governança vigente.
 
-As 8 conversas receberam identificadores inequívocos no arquivo [mensagens-treinadores.md](./mensagens-treinadores.md).
+As 8 conversas receberam identificadores inequívocos no [registro das conversas](./mensagens-treinadores.md#exportação-das-conversas-do-whatsapp).
 
 <!-- Por que esse link acima para o arquivo mensagens-treinadores.  é necessário e por que tem :14 no final?
 Quais identificadores foram inseridos? 
@@ -86,7 +105,7 @@ Foi adotada uma validação estrutural automatizada, baseada em quatro critério
 4. inspeção de cada bloco, para confirmar que existe exatamente uma âncora e um identificador, ambos com o mesmo valor, entre um cabeçalho de equipe e o seguinte;
 5. validação dos nomes, cardinalidades, domínios e relações de coerência dos metadados obrigatórios.
 
-O procedimento está implementado no script [scripts/validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh), armazenado junto aos documentos.
+O procedimento legado está implementado em `scripts/validar-rastreabilidade.sh`, localizável no VS Code pelo marcador `RT-VER-001`.
 Ele pode ser reproduzido a partir da raiz do diretório de trabalho com:
 
 ```bash
@@ -152,16 +171,16 @@ A conexão bidirecional é sustentada por **identificadores de rastreabilidade e
 
 No Visual Studio Code, o percurso funciona nos dois sentidos:
 
-1. do documento para o código: copie o marcador da afirmação, abra a busca global com `Ctrl+Shift+F` e localize o mesmo marcador em [validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh) ou [testar-rastreabilidade.sh](./scripts/testar-rastreabilidade.sh);
+1. do documento para o código: copie o marcador da afirmação, abra a busca global com `Ctrl+Shift+F` e localize o mesmo marcador em `scripts/validar-rastreabilidade.sh` ou `scripts/testar-rastreabilidade.sh`;
 2. do código para o documento: a partir do marcador no comentário do script, use a mesma busca global para retornar à afirmação, ao critério e à evidência de teste correspondentes neste arquivo.
 
 ### Matriz de verificação e validação
 
 | Afirmação | Finalidade | Implementação marcada | Evidência executável |
 | --- | --- | --- | --- |
-| `RT-VER-001` | verificar estrutura, formato, cardinalidade, correspondência, unicidade, metadados e completude | [validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh), junto ao encerramento das verificações estruturais | `RT-TEST-001` a `RT-TEST-005`, `RT-TEST-007` a `RT-TEST-010` e `RT-TEST-012` a `RT-TEST-022` |
-| `RT-VAL-001` | validar que cada link documental localiza uma âncora existente e que não há âncoras sem referência | [validar-rastreabilidade.sh](./scripts/validar-rastreabilidade.sh), na comparação entre os dois conjuntos | `RT-TEST-001` e `RT-TEST-006` |
-| `RT-VAL-002` | validar que todas as afirmações marcadas possuem correspondência no código e vice-versa | [testar-rastreabilidade.sh](./scripts/testar-rastreabilidade.sh), na comparação dos conjuntos de marcadores | `RT-TEST-011` |
+| `RT-VER-001` | verificar estrutura, formato, cardinalidade, correspondência, unicidade, metadados e completude | `scripts/validar-rastreabilidade.sh`, marcador `RT-VER-001` | `RT-TEST-001` a `RT-TEST-005`, `RT-TEST-007` a `RT-TEST-010` e `RT-TEST-012` a `RT-TEST-022` |
+| `RT-VAL-001` | validar que cada link documental localiza uma âncora existente e que não há âncoras sem referência | `scripts/validar-rastreabilidade.sh`, marcador `RT-VAL-001` | `RT-TEST-001` e `RT-TEST-006` |
+| `RT-VAL-002` | validar que todas as afirmações marcadas possuem correspondência no código e vice-versa | `scripts/testar-rastreabilidade.sh`, marcador `RT-VAL-002` | `RT-TEST-011` |
 
 ### Matriz de testes
 

@@ -1,0 +1,16 @@
+TST-EVD-20261113-003-001
+execution=TST-RUN-20261113-003
+phase=green
+capture=combined tool output
+exit_code=1
+
+PASS [TST-CASE-001] contratos documentais completos
+PASS [TST-CASE-002] links internos possuem localização específica
+PASS [TST-CASE-003] árvore e rotas representam o repositório
+PASS [TST-CASE-004] comentários HTML preservados
+FAIL [TST-CASE-005] estrutura do grupo incoerente
+nome duplicado: Nicolle de Souza Silva Flores (2 ocorrências)
+PASS [TST-CASE-006] IDs e âncoras WA preservados
+PASS [TST-CASE-007] automação legada isolada do aceite
+PASS [TST-CASE-008] registros de execução completos
+SUMMARY total=8 pass=7 fail=1 config=TST-CFG-001

@@ -1,9 +1,28 @@
 ---
-tipo: "documentação"
-criado em: "12-11-2026"
+documento_id: "DOC-GRUPO-001"
+tipo: "registro-operacional"
+status: "em-revisao"
+caminho_canonico: "grupo-whatsapp.md"
+versao: "1.0.0"
+criado_em: "2026-11-12"
+atualizado_em: "2026-11-13"
 ---
 
 # Grupo de WhatsApp — Monitoramento Seleção Brasileira
+
+## Contrato do documento
+
+| Propriedade | Definição |
+| --- | --- |
+| Papel | registrar finalidade, regras e composição declarada do grupo de monitoramento |
+| Objetivo | manter uma relação auditável das atletas associadas ou em análise, sem transformar acompanhamento em convocação |
+| Escopo | descrição do grupo e listas de atletas por clube ou estado de análise |
+| Caminho canônico | `grupo-whatsapp.md` |
+| Autoridade | agentes podem corrigir estrutura comprovável, mas não podem inferir inclusão, exclusão, equipe, função ou identidade |
+| Contexto mínimo | contrato, regras de funcionamento e seção específica da atleta ou clube afetado |
+| Dependências | decisão humana autorizada para mudanças semânticas; governança de testes para mudanças estruturais |
+| Restrições | não criar IDs sem cadastro; não apagar atleta por duplicidade aparente; não expor contato; não tratar monitoramento como convocação |
+| Riscos mitigados | total divergente, identidade inferida, estado incompatível e identificador sem registro |
 
 Para centralizar a comunicação direta com as atletas sob acompanhamento contínuo e integrar o planejamento técnico para o ciclo 2026–2028, foi criado o grupo oficial no WhatsApp denominado **Monitoramento Seleção Brasileira - Handebol de Praia**.
 
@@ -21,7 +40,7 @@ Canal exclusivo de acompanhamento e suporte técnico promovido pela comissão t�
 
 ## Relação de Atletas por Clube
 
-### A. BUD'S Handbeach — 2**
+### **A. BUD'S Handbeach — 2**
 
 - Marcela Brunelli — Pivô (A. BUD'S Handbeach)  
 - Winnie Jennifer Moreno Candido — Lateral Direita (A. BUD'S Handbeach)
@@ -76,7 +95,7 @@ Canal exclusivo de acompanhamento e suporte técnico promovido pela comissão t�
 - Julia Gomes da Silva Ermida Nunes — Defensora base (IDEC)  
 - Rafaela da Silva — Central — especialista (IDEC)
 
-### **Niterói Rugby FC — 6**
+### **Niterói Rugby FC — 7**
 
 - Beatriz Morais Esteves de Lima — Central — especialista (Niterói Rugby FC)  
 - Eduarda Lanzellotte Serour — Lateral direita (Niterói Rugby FC)  
@@ -93,7 +112,7 @@ Canal exclusivo de acompanhamento e suporte técnico promovido pela comissão t�
 
 ### **Atletas em Análise para Grupo de Monitoramento**
 
-### **A confirmar — 19**
+### **A confirmar — 26**
 
 - Isabella Palmiro — Goleira (Niterói Rugby FC)  
 - Ana Clara Qunitanilha Festas Giminez — A confirmar (Não informado)  

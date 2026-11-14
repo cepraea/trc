@@ -1,9 +1,28 @@
 ---
-tipo: "histórico"
-criado em: "12-11-2026"
+documento_id: "DOC-MENSAGENS-001"
+tipo: "registro-fonte"
+status: "preservado"
+caminho_canonico: "mensagens-treinadores.md"
+versao: "1.0.0"
+criado_em: "2026-11-12"
+atualizado_em: "2026-11-13"
 ---
 
 # Exportação de conversas do WhatsApp
+
+## Contrato do documento
+
+| Propriedade | Definição |
+| --- | --- |
+| Papel | preservar o registro-fonte estruturado das conversas e mensagens extraídas |
+| Objetivo | permitir localização inequívoca e conferência da evidência textual sem reescrever seu conteúdo |
+| Escopo | oito conversas, seus metadados declarados e 31 mensagens identificadas por `WA-*` |
+| Caminho canônico | `mensagens-treinadores.md` |
+| Autoridade | agentes podem acrescentar estrutura aprovada, mas não podem alterar conteúdo histórico, IDs ou titularidade por inferência |
+| Contexto mínimo | contrato, cabeçalho da conversa e unidade `WA-*` diretamente afetada |
+| Dependências | norma de rastreabilidade, governança de testes e evidência humana para correção factual |
+| Restrições | preservar IDs, âncoras, comentários, texto e dados originais; minimizar exposição em artefatos derivados |
+| Riscos mitigados | perda de proveniência, renumeração, alteração histórica e associação incorreta |
 
 Este documento registra formalmente a comunicação mantida com os treinadores e responsáveis técnicos das equipes brasileiras de handebol de praia da categoria adulto feminino. O principal propósito dessa iniciativa foi mapear e obter os telefones de contato direto de cada atleta atuante, visando estruturar o canal oficial de comunicação e monitoramento do programa de desenvolvimento nacional.
 
