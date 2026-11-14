@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Schema Frontmatter de Qualidade Documental",
+  "type": "object",
+  "properties": {
+    "documento_id": { "type": "string", "pattern": "^[A-Z0-9]+-[A-Z0-9]+-[0-9]+$" },
+    "tipo": { "type": "string" },
+    "versao": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[\\da-z\\-]+(?:\\.[\\da-z\\-]+)*)?(?:\\+[\\da-z\\-]+(?:\\.[\\da-z\\-]+)*)?$" },
+    "caminho_canonico": { "type": "string", "pattern": "\\.md$" },
+    "criado_em": { "type": "string", "format": "date" },
+    "atualizado_em": { "type": "string", "format": "date" },
+    "fase_documento": { "type": "string", "enum": ["draft", "proposta", "final", "obsoleto"] },
+    "status_aprovacao": { "type": "string", "enum": ["pendente", "revisao", "homologado", "rejeitado"] },
+    "status_implementacao": { "type": "string", "enum": ["n/a", "pendente", "em-progresso", "implementado"] },
+    "autoridade": { "type": "string" },
+    "documentos_relacionados": { "type": "array", "items": { "type": "string" } },
+    "repositorio_alvo": { "type": "string" }
+  },
+  "required": [
+    "documento_id", "tipo", "versao", "caminho_canonico", 
+    "criado_em", "atualizado_em", "fase_documento", 
+    "status_aprovacao", "status_implementacao"
+  ],
+  "additionalProperties": false
+}

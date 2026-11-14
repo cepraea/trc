@@ -41,9 +41,9 @@ flowchart TD
 
 ### Nível 3: Análise Sintática de Requisitos e Cenários (EARS e Gherkin)
 
-* **Padrões EARS no Capítulo 2:** 
+* **Padrões EARS no Capítulo 2:**
 Analisa por expressões regulares (*regex*) se cada requisito declarado no Capítulo 2 segue estritamente um dos 5 padrões linguísticos da sintaxe EARS (`Ubíquo`, `Event-Driven`, `State-Driven`, `Unwanted Behavior` ou `Opcional`).
-* **Oráculos Gherkin no Capítulo 4:** 
+* **Oráculos Gherkin no Capítulo 4:**
 Confirma se os blocos delimitados por ` ```gherkin ` contêm a tríade léxica padronizada (`Dado`, `Quando`, `Então`) e a marcação de rastreabilidade explícita com o ID do requisito correspondente: `(traces: REQ-...)`.
 
 ### Nível 4: Integridade do Rodapé (Footer *Append-Only*)
@@ -149,8 +149,82 @@ exit 0
 
 Conforme comprovado nos relatórios de auditoria e segurança da infraestrutura:
 
-* **Hooks de Git locais não são barreiras de segurança absolutas:** 
+* **Hooks de Git locais não são barreiras de segurança absolutas:**
 Um agente de IA com acesso ao shell pode tentar forçar o commit utilizando `git commit --no-verify`, ignorando o hook de pré-commit.
-* **A Proteção Definitiva Reside no Servidor:** 
-Por essa razão, a arquitetura do projeto implementa a **defesa em profundidade**: 
+* **A Proteção Definitiva Reside no Servidor:**
+Por essa razão, a arquitetura do projeto implementa a **defesa em profundidade**:
 o pré-commit serve como retorno imediato e barato para o desenvolvedor; contudo, a trava inviolável é imposta na esteira remota do GitHub (via **Branch Protection Rules** e a assinatura exclusiva do **GitHub App ID 5476799** com o check `eud-gate/verified`), impedindo qualquer mesclagem na branch principal se o código não tiver sido aprovado pelo validador independente.
+
+### 1. Arquitetura e Funcionamento do Script (`validate-spec-template.py`)
+
+O script foi desenvolvido utilizando **exclusivamente a biblioteca padrão do Python** (`sys`, `re`, `pathlib`), garantindo execução autônoma, rápida e imune a ataques de cadeia de suprimentos (*supply chain*). Ele opera em cinco etapas de auditoria estática:
+
+1. **Validação do Common Block (Tags XML Universais):**
+   * Confere a presença das 14 tags mandatórias (`<doc:schema_version>`, `<doc:file_type>`, `<doc:document_status>`, `<doc:owner>`, etc.).
+   * **Trava de Autoaprovação:** Rejeita qualquer arquivo com `<doc:document_status>approved</doc:document_status>` se houver marcadores de revisão pendente (`approval_status: PENDENTE` ou `EM_REVISAO`), preservando a autoridade humana exclusiva sob as normas ISO/IEC 42001 e 38507.
+   * Valida a conformidade de datas e tipos de arquivo permitidos (`spec-architecture` e `spec-functional`).
+
+2. **Validação do Form Block (Métricas de Engenharia):**
+   * Checa se os campos de controle de CI/CD existem e estão preenchidos (`<spec-architecture:completed_chapters>`, `<spec-architecture:component_count>`, etc.).
+   * Verifica se os capítulos declarados pertencem ao intervalo válido (`1` a `6`).
+
+3. **Validação da Sintaxe EARS (Capítulo 2):**
+   * Localiza os requisitos do Capítulo 2 e exige a palavra-chave mandatória **`SHALL`** (RFC 2119).
+   * Confere as cláusulas sintáticas canônicas:
+     * *Event-Driven:* Exige a cláusula `Quando / When`.
+     * *State-Driven:* Exige a cláusula `Enquanto / While`.
+     * *Unwanted Behavior:* Exige a condicional defensiva `Se / If`.
+     * *Opcional:* Exige a cláusula `Onde / Where`.
+
+4. **Validação de Oráculos Gherkin/BDD (Capítulo 4):**
+   * Analisa cada bloco delimitado por ` ```gherkin `.
+   * Exige a presença completa da tríade léxica: **`Dado`**, **`Quando`** e **`Então`**.
+   * Exige a marcação explícita de rastreabilidade bidirecional vinculando o cenário a um requisito: **`(traces: REQ-...)`**.
+
+5. **Validação do Rodapé Imutável (Footer):**
+   * Confere a existência do bloco `<doc:change_log>` com entradas `<entry>` registradas, além de `<doc:updated_by>` e `<doc:updated_at>`.
+
+---
+
+### 2. Integração Prática com o Pré-Commit do Git
+
+Para que a verificação ocorra de forma automática a cada comando `git commit`, configure o hook no repositório:
+
+#### Passo A: Salvar o hook no Git
+
+Crie ou edite o arquivo **`.git/hooks/pre-commit`** na raiz do seu repositório:
+
+```bash
+#!/usr/bin/env bash
+# .git/hooks/pre-commit
+
+# 1. Filtra apenas os arquivos Markdown que estão no stage do commit
+STAGED_MD_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' || true)
+
+if [ -n "$STAGED_MD_FILES" ]; then
+    echo "Executando linter estático de governança e spec-template..."
+    
+    # Executa o script Python passando os arquivos adicionados
+    python3 scripts/validate-spec-template.py $STAGED_MD_FILES
+    EXIT_CODE=$?
+
+    # Se houver qualquer falha sintática, aborta o commit
+    if [ $EXIT_CODE -ne 0 ]; then
+        echo ""
+        echo "❌ COMMIT CANCELADO: Foram detectadas não conformidades no spec-template."
+        echo "Corrija os erros apontados acima antes de comitar."
+        exit 1
+    fi
+fi
+
+exit 0
+```
+
+#### Passo B: Conceder permissão de execução
+
+```bash
+chmod +x .git/hooks/pre-commit
+chmod +x scripts/validate-spec-template.py
+```
+
+---

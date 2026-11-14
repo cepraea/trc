@@ -1,0 +1,8 @@
+{
+  "yaml.schemas": {
+    "./.vscode/frontmatter-schema.json": ["*.md", "**/*.md"]
+  },
+  "yaml.customTags": [
+    "!include scalar"
+  ]
+}

@@ -32,7 +32,7 @@ path_proposto: "BRD_URS_Verificador_Qualidade.md"
 ## 2. Problema, necessidade e evidência
 
 | Origem | Registro disponível | Limite |
-|---|---|---|
+| --- | --- | --- |
 | USR-01 | Pedido atual: agente executa script ao finalizar criação/edição de Markdown e só declara DONE com exit `0` | Decisão do usuário sobre objetivo; não é implementação |
 | USR-02 | Inventário de **50 extensões** copiado do terminal VS Code | Evidência declarativa de instalação; não de CLI, configuração ou execução |
 | USR-03 | Auditoria anteriormente fornecida: 863 ocorrências em 23 Markdown, 848 MD013, âncoras AG↔EV quebradas | Relato histórico; não reproduzido nesta entrega |

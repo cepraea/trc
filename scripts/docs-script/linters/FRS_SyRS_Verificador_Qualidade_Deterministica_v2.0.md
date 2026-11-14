@@ -68,7 +68,6 @@ path_proposto: "FRS_SyRS_Verificador_Qualidade_Deterministica_v2.0.md"
 | EXT-17 | [Prettier ESLint / extensão](https://marketplace.visualstudio.com/items?itemName=rvest.vs-code-prettier-eslint) | Capacidade técnica documentada no tema indicado; não comprova instalação local | Documentação externa |
 | EXT-18 | [Rust Clippy / execução](https://github.com/rust-lang/rust-clippy) | Capacidade técnica documentada no tema indicado; não comprova instalação local | Documentação externa |
 
-
 ### INV-EXT-001
 
 **Fonte:** inventário de 50 extensões fornecido pelo usuário nesta solicitação; espelho integral na tabela da seção 3.2 deste documento. **Limite:** instalação declarada, não execução local comprovada.
