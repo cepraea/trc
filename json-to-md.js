@@ -2,22 +2,34 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = process.argv[2] || process.cwd();
-const OUTPUT_FILE = path.join(ROOT_DIR, "linters-reference.md");
 
-const EXCLUDED_DIRS = new Set([
-  "node_modules",
-  ".git",
-  "dist",
-  "build",
-  ".temp"
-
+const INCLUDED_FILES = new Set([
+  ".markdownlint-cli2.jsonc",
+  ".prettierignore",
+  ".prettierrc",
+  ".prettierrc.json",
+  ".prettierrc.yaml",
+  ".prettierrc.yml",
+  ".prettierrc.js"
 ]);
 
-function slugify(text) {
+const OUTPUT_FILE =
+  path.join(ROOT_DIR, "linters-reference.md");
+
+const EXCLUDED_DIRS = new Set([
+  ".git",
+  "node_modules"
+]);
+
+const EXCLUDED_FILES = new Set([
+  "package-lock.json"
+]);
+
+function slug(text) {
   return text
     .toLowerCase()
     .replace(/[\\/]/g, "-")
-    .replace(/[^a-z0-9.-]/g, "-")
+    .replace(/[^a-z0-9-]/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
 }
@@ -30,218 +42,268 @@ function walk(dir) {
   let files = [];
 
   for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
+    const full = path.join(dir, entry.name);
 
     if (entry.isDirectory()) {
-      if (EXCLUDED_DIRS.has(entry.name)) {
+      if (EXCLUDED_DIRS.has(entry.name))
         continue;
-      }
 
-      files.push(...walk(fullPath));
+      files.push(...walk(full));
       continue;
     }
 
+    const lowerName =
+      entry.name.toLowerCase();
+
+    const isJson =
+      lowerName.endsWith(".json");
+
+    const isExtraConfig =
+      INCLUDED_FILES.has(entry.name);
+
     if (
       entry.isFile() &&
-      entry.name.endsWith(".json")
+      (isJson || isExtraConfig) &&
+      !EXCLUDED_FILES.has(entry.name)
     ) {
-      files.push(fullPath);
+      files.push(full);
     }
   }
 
   return files;
 }
 
-function groupFiles(files) {
-  const groups = {};
+function detectTools(content, fileName) {
+  const text =
+    `${fileName}\n${content}`.toLowerCase();
+
+  return {
+    eslint:
+      text.includes("eslint"),
+    prettier:
+      text.includes("prettier") ||
+      fileName.includes(".prettierrc") ||
+      fileName.includes(".prettierignore"),
+    markdownlint:
+      text.includes("markdownlint") ||
+      fileName.includes("markdownlint"),
+    biome:
+      text.includes("biome"),
+    typescript:
+      text.includes("typescript") ||
+      text.includes("tsconfig")
+  };
+}
+
+function createStats(content) {
+  return {
+    lines:
+      content.split("\n").length,
+    chars:
+      content.length
+  };
+}
+
+function main() {
+  const files =
+    walk(ROOT_DIR).sort();
+
+  const folders = {};
+  const tech = {
+    eslint: false,
+    prettier: false,
+    markdownlint: false,
+    biome: false,
+    typescript: false
+  };
+
+  let validJson = 0;
 
   for (const file of files) {
-    const relative = path.relative(ROOT_DIR, file);
+    const relative =
+      path.relative(ROOT_DIR, file);
 
     const folder =
       path.dirname(relative) === "."
         ? "Raiz"
         : path.dirname(relative);
 
-    if (!groups[folder]) {
-      groups[folder] = [];
+    if (!folders[folder]) {
+      folders[folder] = [];
     }
 
-    groups[folder].push(file);
-  }
+    const content =
+      fs.readFileSync(file, "utf8");
 
-  return groups;
-}
+    try {
+      JSON.parse(content);
+      validJson++;
+    } catch {}
 
-function validateJson(content) {
-  try {
-    JSON.parse(content);
-    return true;
-  } catch {
-    return false;
-  }
-}
+    const detected =
+      detectTools(content, relative);
 
-function buildIndex(groups) {
-  const lines = [];
-
-  lines.push("## Índice");
-  lines.push("");
-
-  for (const folder of Object.keys(groups).sort()) {
-    const folderSlug =
-      slugify(folder);
-
-    lines.push(
-      `- [${folder}](#${folderSlug})`
+    Object.keys(detected).forEach(
+      key => {
+        if (detected[key]) {
+          tech[key] = true;
+        }
+      }
     );
 
-    for (const file of groups[folder]) {
-      const relative =
-        path.relative(ROOT_DIR, file);
-
-      const anchor =
-        slugify(relative);
-
-      lines.push(
-        `  - [${path.basename(file)}](#${anchor})`
-      );
-    }
-
-    lines.push("");
+    folders[folder].push({
+      file,
+      relative,
+      content
+    });
   }
 
-  return lines;
-}
+  const md = [];
 
-function buildSections(groups) {
-  const lines = [];
+  md.push("# Linters Reference");
+  md.push("");
 
-  for (const folder of Object.keys(groups).sort()) {
-    const folderSlug =
-      slugify(folder);
+  md.push("## Resumo");
+  md.push("");
+  md.push("| Tecnologia | Detectada |");
+  md.push("|------------|------------|");
 
-    lines.push(
+  Object.entries(tech).forEach(
+    ([name, found]) => {
+      md.push(
+        `| ${name} | ${found ? "✅" : "❌"} |`
+      );
+    }
+  );
+
+  md.push("");
+
+  md.push("## Estatísticas");
+  md.push("");
+  md.push("| Métrica | Valor |");
+  md.push("|----------|--------|");
+  md.push(
+    `| JSON analisados | ${files.length} |`
+  );
+  md.push(
+    `| JSON válidos | ${validJson} |`
+  );
+  md.push(
+    `| Pastas | ${Object.keys(folders).length} |`
+  );
+
+  md.push("");
+
+  md.push("## Índice");
+  md.push("");
+
+  for (const folder of Object.keys(
+    folders
+  ).sort()) {
+    md.push(
+      `- [${folder}](#folder-${slug(folder)})`
+    );
+
+    folders[folder].forEach(f => {
+      md.push(
+        `  - [${path.basename(
+          f.file
+        )}](#file-${slug(
+          f.relative
+        )})`
+      );
+    });
+
+    md.push("");
+  }
+
+  md.push("---");
+  md.push("");
+
+  for (const folder of Object.keys(
+    folders
+  ).sort()) {
+    md.push(
+      `<a id="folder-${slug(folder)}"></a>`
+    );
+    md.push(
       `# ${folder}`
     );
-    lines.push(
-      `<a id="${folderSlug}"></a>`
-    );
-    lines.push("");
+    md.push("");
 
-    for (const file of groups[folder]) {
-      const relative =
-        path.relative(ROOT_DIR, file);
+    for (const item of folders[
+      folder
+    ]) {
+      const stats =
+        createStats(item.content);
 
-      const json =
-        fs.readFileSync(file, "utf8");
+      md.push(
+        `<a id="file-${slug(
+          item.relative
+        )}"></a>`
+      );
 
-      const anchor =
-        slugify(relative);
+      md.push(
+        `## ${path.basename(
+          item.file
+        )}`
+      );
 
-      const valid =
-        validateJson(json);
+      md.push("");
 
-      let output = json;
+      md.push(
+        `**Arquivo:** \`${item.relative}\``
+      );
 
-      if (valid) {
-        output = JSON.stringify(
-          JSON.parse(json),
-          null,
-          2
+      md.push("");
+
+      md.push("| Métrica | Valor |");
+      md.push("|----------|--------|");
+      md.push(
+        `| Linhas | ${stats.lines} |`
+      );
+      md.push(
+        `| Caracteres | ${stats.chars} |`
+      );
+
+      md.push("");
+
+      md.push("");
+      md.push("```json");
+
+      try {
+        md.push(
+          JSON.stringify(
+            JSON.parse(item.content),
+            null,
+            2
+          )
         );
+      } catch {
+        md.push(item.content);
       }
 
-      lines.push(
-        `## ${path.basename(file)}`
-      );
-      lines.push(
-        `<a id="${anchor}"></a>`
-      );
-      lines.push("");
+      md.push("```");
+      md.push("");
 
-      lines.push(
-        `**Arquivo:** \`${relative}\``
-      );
-      lines.push("");
-
-      lines.push(
-        valid
-          ? "✅ JSON válido"
-          : "❌ JSON inválido"
-      );
-
-      lines.push("");
-
-      lines.push("```json");
-      lines.push(output);
-      lines.push("```");
-
-      lines.push("");
-
-      lines.push(
+      md.push("");
+      md.push(
         "[↑ Voltar ao índice](#índice)"
       );
-
-      lines.push("");
-      lines.push("---");
-      lines.push("");
+      md.push("");
+      md.push("---");
+      md.push("");
     }
   }
-
-  return lines;
-}
-
-function generateMarkdown(files) {
-  const groups =
-    groupFiles(files);
-
-  const document = [];
-
-  document.push(
-    "# Linters Reference"
-  );
-  document.push("");
-
-  document.push(
-    `Gerado em: ${new Date().toISOString()}`
-  );
-  document.push("");
-
-  document.push(
-    `Total de arquivos JSON: ${files.length}`
-  );
-  document.push("");
-
-  document.push(
-    ...buildIndex(groups)
-  );
-
-  document.push("---");
-  document.push("");
-
-  document.push(
-    ...buildSections(groups)
-  );
-
-  return document.join("\n");
-}
-
-function main() {
-  const files = walk(ROOT_DIR)
-    .sort();
-
-  const markdown =
-    generateMarkdown(files);
 
   fs.writeFileSync(
     OUTPUT_FILE,
-    markdown,
+    md.join("\n"),
     "utf8"
   );
 
   console.log(
-    `✅ Arquivo criado: ${OUTPUT_FILE}`
+    `✅ Gerado: ${OUTPUT_FILE}`
   );
 }
 
