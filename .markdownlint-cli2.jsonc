@@ -15,7 +15,8 @@
     "node_modules/**",
     ".draft/**",
     ".gitignore",
-    ".prettierignore"
+    ".prettierignore",
+    "linters-reference*.md"
   ],
 
   "config": {
