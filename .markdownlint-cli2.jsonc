@@ -13,6 +13,7 @@
     ".temp/**",
     ".vscode/**",
     "node_modules/**",
+    ".draft/**",
     ".gitignore",
     ".prettierignore"
   ],
