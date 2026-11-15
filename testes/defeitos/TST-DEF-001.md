@@ -31,7 +31,7 @@ versao: 1.0.0
 | Caso                  | `TST-CASE-008`                                                               |
 | Observado             | o detector relatou ausência de `Hashes dos objetos`                          |
 | Esperado              | aceitar a seção `## Hashes dos objetos` contendo tabela não vazia            |
-| Causa                 | implementação procurava apenas a linha `                                     | Hashes dos objetos | `   |
+| Causa                 | implementação procurava apenas a linha `Hashes dos objetos`                  |
 | Classificação         | falso negativo do teste                                                      |
 | Impacto               | Green global bloqueado por motivo diferente do requisito                     |
 | Correção autorizada   | aceitar campo canônico ou seção canônica e exigir ao menos uma linha de hash |

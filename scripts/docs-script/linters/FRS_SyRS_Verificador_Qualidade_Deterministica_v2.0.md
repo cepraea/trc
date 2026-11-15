@@ -61,7 +61,7 @@ frescor. O gate é limitado à política, arquivos e provedores requeridos.
 
 ## FONTES
 
-**2. Fontes e classes de evidência**
+**2. Fontes e classes de evidência:**
 
 | ID          | Fonte                                                                                                                        | O que sustenta                                                                 | Classe                      |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------- |

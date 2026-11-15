@@ -1,37 +1,33 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 const ROOT_DIR = process.argv[2] || process.cwd();
 
 const INCLUDED_FILES = new Set([
-  ".markdownlint-cli2.jsonc",
-  ".prettierignore",
-  ".prettierrc",
-  ".prettierrc.json",
-  ".prettierrc.yaml",
-  ".prettierrc.yml",
-  ".prettierrc.js"
+  '.markdownlint-cli2.jsonc',
+  '.prettierignore',
+  '.prettierrc',
+  '.prettierrc.json',
+  '.prettierrc.yaml',
+  '.prettierrc.yml',
+  '.prettierrc.js'
 ]);
 
-const OUTPUT_FILE =
-  path.join(ROOT_DIR, "linters-reference.md");
+const INCLUDED_PATHS = new Set(['scripts/agent-lint-report.js']);
 
-const EXCLUDED_DIRS = new Set([
-  ".git",
-  "node_modules"
-]);
+const OUTPUT_FILE = path.join(ROOT_DIR, 'linters-reference.md');
 
-const EXCLUDED_FILES = new Set([
-  "package-lock.json"
-]);
+const EXCLUDED_DIRS = new Set(['.git', 'node_modules']);
+
+const EXCLUDED_FILES = new Set(['package-lock.json']);
 
 function slug(text) {
   return text
     .toLowerCase()
-    .replace(/[\\/]/g, "-")
-    .replace(/[^a-z0-9-]/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
+    .replace(/[\\/]/g, '-')
+    .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
 function walk(dir) {
@@ -45,27 +41,23 @@ function walk(dir) {
     const full = path.join(dir, entry.name);
 
     if (entry.isDirectory()) {
-      if (EXCLUDED_DIRS.has(entry.name))
-        continue;
+      if (EXCLUDED_DIRS.has(entry.name)) continue;
 
       files.push(...walk(full));
       continue;
     }
 
-    const lowerName =
-      entry.name.toLowerCase();
+    const lowerName = entry.name.toLowerCase();
 
-    const isJson =
-      lowerName.endsWith(".json");
+    const isJson = lowerName.endsWith('.json');
 
-    const isExtraConfig =
-      INCLUDED_FILES.has(entry.name);
+    const relative = path.relative(ROOT_DIR, full).split(path.sep).join('/');
 
-    if (
-      entry.isFile() &&
-      (isJson || isExtraConfig) &&
-      !EXCLUDED_FILES.has(entry.name)
-    ) {
+    const isExtraConfig = INCLUDED_FILES.has(entry.name);
+
+    const isIncludedPath = INCLUDED_PATHS.has(relative);
+
+    if (entry.isFile() && (isJson || isExtraConfig || isIncludedPath) && !EXCLUDED_FILES.has(entry.name)) {
       files.push(full);
     }
   }
@@ -74,39 +66,44 @@ function walk(dir) {
 }
 
 function detectTools(content, fileName) {
-  const text =
-    `${fileName}\n${content}`.toLowerCase();
+  const text = `${fileName}\n${content}`.toLowerCase();
 
   return {
-    eslint:
-      text.includes("eslint"),
-    prettier:
-      text.includes("prettier") ||
-      fileName.includes(".prettierrc") ||
-      fileName.includes(".prettierignore"),
-    markdownlint:
-      text.includes("markdownlint") ||
-      fileName.includes("markdownlint"),
-    biome:
-      text.includes("biome"),
-    typescript:
-      text.includes("typescript") ||
-      text.includes("tsconfig")
+    eslint: text.includes('eslint'),
+    prettier: text.includes('prettier') || fileName.includes('.prettierrc') || fileName.includes('.prettierignore'),
+    markdownlint: text.includes('markdownlint') || fileName.includes('markdownlint'),
+    biome: text.includes('biome'),
+    typescript: text.includes('typescript') || text.includes('tsconfig')
   };
 }
 
 function createStats(content) {
   return {
-    lines:
-      content.split("\n").length,
-    chars:
-      content.length
+    lines: content.split('\n').length,
+    chars: content.length
   };
 }
 
+function languageFor(fileName) {
+  const lowerName = fileName.toLowerCase();
+
+  if (lowerName.endsWith('.js')) {
+    return 'javascript';
+  }
+
+  if (lowerName.endsWith('.yaml') || lowerName.endsWith('.yml')) {
+    return 'yaml';
+  }
+
+  if (lowerName.endsWith('.prettierignore')) {
+    return 'text';
+  }
+
+  return 'json';
+}
+
 function main() {
-  const files =
-    walk(ROOT_DIR).sort();
+  const files = walk(ROOT_DIR).sort();
 
   const folders = {};
   const tech = {
@@ -120,36 +117,28 @@ function main() {
   let validJson = 0;
 
   for (const file of files) {
-    const relative =
-      path.relative(ROOT_DIR, file);
+    const relative = path.relative(ROOT_DIR, file);
 
-    const folder =
-      path.dirname(relative) === "."
-        ? "Raiz"
-        : path.dirname(relative);
+    const folder = path.dirname(relative) === '.' ? 'Raiz' : path.dirname(relative);
 
     if (!folders[folder]) {
       folders[folder] = [];
     }
 
-    const content =
-      fs.readFileSync(file, "utf8");
+    const content = fs.readFileSync(file, 'utf8');
 
     try {
       JSON.parse(content);
       validJson++;
     } catch {}
 
-    const detected =
-      detectTools(content, relative);
+    const detected = detectTools(content, relative);
 
-    Object.keys(detected).forEach(
-      key => {
-        if (detected[key]) {
-          tech[key] = true;
-        }
+    Object.keys(detected).forEach((key) => {
+      if (detected[key]) {
+        tech[key] = true;
       }
-    );
+    });
 
     folders[folder].push({
       file,
@@ -160,151 +149,94 @@ function main() {
 
   const md = [];
 
-  md.push("# Linters Reference");
-  md.push("");
+  md.push('# Linters Reference');
+  md.push('');
 
-  md.push("## Resumo");
-  md.push("");
-  md.push("| Tecnologia | Detectada |");
-  md.push("|------------|------------|");
+  md.push('## Resumo');
+  md.push('');
+  md.push('| Tecnologia | Detectada |');
+  md.push('|------------|------------|');
 
-  Object.entries(tech).forEach(
-    ([name, found]) => {
-      md.push(
-        `| ${name} | ${found ? "✅" : "❌"} |`
-      );
-    }
-  );
+  Object.entries(tech).forEach(([name, found]) => {
+    md.push(`| ${name} | ${found ? '✅' : '❌'} |`);
+  });
 
-  md.push("");
+  md.push('');
 
-  md.push("## Estatísticas");
-  md.push("");
-  md.push("| Métrica | Valor |");
-  md.push("|----------|--------|");
-  md.push(
-    `| JSON analisados | ${files.length} |`
-  );
-  md.push(
-    `| JSON válidos | ${validJson} |`
-  );
-  md.push(
-    `| Pastas | ${Object.keys(folders).length} |`
-  );
+  md.push('## Estatísticas');
+  md.push('');
+  md.push('| Métrica | Valor |');
+  md.push('|----------|--------|');
+  md.push(`| Arquivos analisados | ${files.length} |`);
+  md.push(`| JSON válidos | ${validJson} |`);
+  md.push(`| Pastas | ${Object.keys(folders).length} |`);
 
-  md.push("");
+  md.push('');
 
-  md.push("## Índice");
-  md.push("");
+  md.push('## Índice');
+  md.push('');
 
-  for (const folder of Object.keys(
-    folders
-  ).sort()) {
-    md.push(
-      `- [${folder}](#folder-${slug(folder)})`
-    );
+  for (const folder of Object.keys(folders).sort()) {
+    md.push(`- [${folder}](#folder-${slug(folder)})`);
 
-    folders[folder].forEach(f => {
-      md.push(
-        `  - [${path.basename(
-          f.file
-        )}](#file-${slug(
-          f.relative
-        )})`
-      );
+    folders[folder].forEach((f) => {
+      md.push(`  - [${path.basename(f.file)}](#file-${slug(f.relative)})`);
     });
 
-    md.push("");
+    md.push('');
   }
 
-  md.push("---");
-  md.push("");
+  md.push('---');
+  md.push('');
 
-  for (const folder of Object.keys(
-    folders
-  ).sort()) {
-    md.push(
-      `<a id="folder-${slug(folder)}"></a>`
-    );
-    md.push(
-      `# ${folder}`
-    );
-    md.push("");
+  for (const folder of Object.keys(folders).sort()) {
+    md.push(`<a id="folder-${slug(folder)}"></a>`);
+    md.push(`# ${folder}`);
+    md.push('');
 
-    for (const item of folders[
-      folder
-    ]) {
-      const stats =
-        createStats(item.content);
+    for (const item of folders[folder]) {
+      const stats = createStats(item.content);
 
-      md.push(
-        `<a id="file-${slug(
-          item.relative
-        )}"></a>`
-      );
+      md.push(`<a id="file-${slug(item.relative)}"></a>`);
 
-      md.push(
-        `## ${path.basename(
-          item.file
-        )}`
-      );
+      md.push(`## ${path.basename(item.file)}`);
 
-      md.push("");
+      md.push('');
 
-      md.push(
-        `**Arquivo:** \`${item.relative}\``
-      );
+      md.push(`**Arquivo:** \`${item.relative}\``);
 
-      md.push("");
+      md.push('');
 
-      md.push("| Métrica | Valor |");
-      md.push("|----------|--------|");
-      md.push(
-        `| Linhas | ${stats.lines} |`
-      );
-      md.push(
-        `| Caracteres | ${stats.chars} |`
-      );
+      md.push('| Métrica | Valor |');
+      md.push('|----------|--------|');
+      md.push(`| Linhas | ${stats.lines} |`);
+      md.push(`| Caracteres | ${stats.chars} |`);
 
-      md.push("");
+      md.push('');
 
-      md.push("");
-      md.push("```json");
+      md.push('');
+      md.push(`\`\`\`${languageFor(item.relative)}`);
 
       try {
-        md.push(
-          JSON.stringify(
-            JSON.parse(item.content),
-            null,
-            2
-          )
-        );
+        md.push(JSON.stringify(JSON.parse(item.content), null, 2));
       } catch {
         md.push(item.content);
       }
 
-      md.push("```");
-      md.push("");
+      md.push('```');
+      md.push('');
 
-      md.push("");
-      md.push(
-        "[↑ Voltar ao índice](#índice)"
-      );
-      md.push("");
-      md.push("---");
-      md.push("");
+      md.push('');
+      md.push('[↑ Voltar ao índice](#índice)');
+      md.push('');
+      md.push('---');
+      md.push('');
     }
   }
 
-  fs.writeFileSync(
-    OUTPUT_FILE,
-    md.join("\n"),
-    "utf8"
-  );
+  fs.writeFileSync(OUTPUT_FILE, md.join('\n'), 'utf8');
 
-  console.log(
-    `✅ Gerado: ${OUTPUT_FILE}`
-  );
+  console.log(`✅ Gerado: ${OUTPUT_FILE}`);
 }
 
 main();

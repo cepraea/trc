@@ -6,13 +6,9 @@
     "agent:lint": "node scripts/agent-lint-report.js",
     "agent:lint:fix": "node scripts/agent-lint-report.js --fix",
     "agent:lint:json": "node scripts/agent-lint-report.js --json"
-    
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.24.1",
     "prettier": "^3.10.1"
   }
 }
-
-  
-    

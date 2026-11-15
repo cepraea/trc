@@ -16,7 +16,7 @@
     ".draft/**",
     ".gitignore",
     ".prettierignore",
-    "linters-reference*.md"
+    "linters-reference.md"
   ],
 
   "config": {
