@@ -2,21 +2,25 @@
 
 ## GATE DE QUALIDADE OBRIGATÓRIO (MARKDOWN)
 
-Você NUNCA deve dar uma tarefa envolvendo arquivos `.md` como concluída sem antes validar o código.
+Você NUNCA deve dar uma tarefa envolvendo arquivos `.md` como concluída sem
+antes validar o código.
 
 Ao finalizar a edição/criação de qualquer arquivo `.md`:
 
 1. Execute no terminal: `npm run agent:lint`
 2. Analise o resultado:
    - Se retornar vazio/sucesso: A tarefa está 100% concluída.
-   - Se retornar logs com a tag `<erros>`: Você DEVE corrigir as falhas antes de prosseguir.
+   - Se retornar logs com a tag `<erros>`: Você DEVE corrigir as falhas antes de
+     prosseguir.
 
 REGRAS DE CORREÇÃO (STRICT MODE):
 
 - Altere APENAS as linhas exatas indicadas nos blocos de erro.
 - NUNCA reescreva o restante do documento.
 - Não resuma seções nem remova conteúdo válido apenas para se livrar do erro.
-- Se receber o aviso de "ÚLTIMA TENTATIVA", seja estritamente conservador. Se o limite for ultrapassado, pare de tentar e marque a tarefa como FAILED_MANUAL_REVIEW.
+- Se receber o aviso de "ÚLTIMA TENTATIVA", seja estritamente conservador. Se o
+  limite for ultrapassado, pare de tentar e marque a tarefa como
+  FAILED_MANUAL_REVIEW.
 
 <orientacao_de_produto>
 
