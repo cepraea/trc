@@ -55,6 +55,47 @@ ação, materializando a navegação nos dois sentidos.
 CONCLUÍDA e 4 ações PENDENTES. Ação pendente não foi presumida como falha: seu
 estado significa somente ausência de evidência de execução no escopo auditado.
 
+**Estado de `P01-VAL-001`:** SUPERADA por `P01-VAL-002`; preservada como linha
+de base anterior à inclusão das respostas humanas.
+
+<a id="p01-val-002"></a>
+
+## Revalidação após as respostas humanas
+
+**ID da validação:** `P01-VAL-002`
+
+**Data da validação:** 2026-11-16
+
+**Motivo:** inclusão, no diagnóstico P1, das observações de Davi Sermenho para
+PRB-01 a PRB-14.
+
+| ID da ação                        | Classificação          | Evidência bidirecional                                                                                                                                                                                                                                   | Justificativa e limite                                                                                                                                  |
+| --------------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`P01-ACT-01-01`](#p01-act-01-01) | CONCLUÍDA              | [`P01-EV-CLAUDE-001`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-001)                                                                                                                                                                | O histórico preserva a sequência P0 → P1 na mesma conversa.                                                                                             |
+| [`P01-ACT-01-02`](#p01-act-01-02) | CONCLUÍDA              | [`P01-EV-CLAUDE-002`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-002) e [`P01-EV-P1-001`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-001)                                                                                | Os insumos iniciais e os limites de tecnologia e funcionalidades foram registrados.                                                                     |
+| [`P01-ACT-02-01`](#p01-act-02-01) | CONCLUÍDA              | [`P01-EV-CLAUDE-002`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-002)                                                                                                                                                                | O histórico contém integralmente o prompt P0 v1.0 enviado.                                                                                              |
+| [`P01-ACT-02-02`](#p01-act-02-02) | CONCLUÍDA              | [`P01-EV-CLAUDE-003`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-003)                                                                                                                                                                | A resposta ao P0 atende aos quatro critérios de verificação.                                                                                            |
+| [`P01-ACT-03-01`](#p01-act-03-01) | CONCLUÍDA              | [`P01-EV-CLAUDE-004`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-004)                                                                                                                                                                | O P1 foi enviado depois da resposta ao P0 no mesmo histórico.                                                                                           |
+| [`P01-ACT-03-02`](#p01-act-03-02) | CONCLUÍDA              | [`P01-EV-CLAUDE-004`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-004) e [`P01-EV-P1-001`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-001)                                                                                | A investigação e suas limitações foram registradas sem apresentar hipóteses como entrevistas realizadas.                                                |
+| [`P01-ACT-04-01`](#p01-act-04-01) | CONCLUÍDA              | [`P01-EV-P1-002`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-002)                                                                                                                                                                            | E01 a E10 permanecem materializados; a conclusão comprova cobertura estrutural, não validação representativa.                                           |
+| [`P01-ACT-04-02`](#p01-act-04-02) | PARCIALMENTE CONCLUÍDA | [`P01-EV-CLAUDE-005`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-005), [`P01-EV-P1-001`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-001) e [`P01-EV-P1-006`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-006) | A lacuna de observação humana foi reduzida, mas nove fontes não tiveram a página completa conferida e o relato de uma pessoa não valida todo o público. |
+| [`P01-ACT-05-01`](#p01-act-05-01) | CONCLUÍDA              | [`P01-EV-P1-006`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-006)                                                                                                                                                                            | O responsável revisou PRB-01 a PRB-14, registrando observação, situação e frequência.                                                                   |
+| [`P01-ACT-05-02`](#p01-act-05-02) | CONCLUÍDA              | [`P01-EV-P1-006`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-006)                                                                                                                                                                            | As observações humanas foram registradas no diagnóstico e vinculadas aos IDs dos problemas.                                                             |
+| [`P01-ACT-06-01`](#p01-act-06-01) | CONCLUÍDA              | [`P01-EV-P1-004`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-004)                                                                                                                                                                            | O diagnóstico permanece disponível em Markdown, com IDs, relações, evidências e pendências.                                                             |
+| [`P01-ACT-07-01`](#p01-act-07-01) | PENDENTE               | [`P01-EV-CLAUDE-006`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-006) e [`P01-EV-P1-005`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-005)                                                                                | P2 continua apenas recomendado; não há entrega ou registro de execução.                                                                                 |
+| [`P01-ACT-07-02`](#p01-act-07-02) | PENDENTE               | [`P01-EV-CLAUDE-006`](./Claude_Contrato-mestre-para-app-de-handebol.md#p01-ev-claude-006) e [`P01-EV-P1-005`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-005)                                                                                | P3 depende de P2, e não há evidência de concepção integral executada.                                                                                   |
+
+**Resultado de `P01-VAL-002`:** 10 ações CONCLUÍDAS, 1 ação PARCIALMENTE
+CONCLUÍDA e 2 ações PENDENTES. As observações de Davi Sermenho são evidência
+humana direta da experiência declarada, não comprovação representativa de todos
+os atletas e treinadores.
+
+```mermaid
+graph TD
+    A[P0: Contrato de consultoria] --> B[P1: Diagnóstico]
+    B --> C[P2/P3: Concepção]
+```
+
 ## ETAPA 1 — Preparar o ambiente de trabalho
 
 <a id="p01-act-01-01"></a>

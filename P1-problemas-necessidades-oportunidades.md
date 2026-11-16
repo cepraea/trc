@@ -197,6 +197,432 @@ não obriga o produto a tratá-lo.
 | PRB-13 | TRE               | Decidir e comunicar durante o jogo: dois sets de 10 minutos e tempo técnico [F03] [F01] deixam pouca janela; o ambiente aberto pode dificultar a comunicação                                                                                                                                                                                             | Ajustes tardios ou não comunicados (HIP)                                    | HIP; VER-D só do formato                                                                                                                                                                              | A validar    |
 | PRB-14 | TRE-2, TRE-5, ATL | Coordenar treinos e presença do grupo, dependentes de areia disponível, clima e horários                                                                                                                                                                                                                                                                 | Treinos esvaziados; falta de continuidade (HIP)                             | HIP, sem fonte                                                                                                                                                                                        | A validar    |
 
+<a id="p01-respostas-davi"></a>
+
+## RESPOSTAS DAVI SERMENHO
+
+Davi Sermenho é o de responsável pelo produto e treinador/gestor técnico
+(atuando na liderança da investigação de problemas, necessidades e oportunidades
+— etapas P0, P1 e P2).
+
+### PRB-01 — Registro tático na areia
+
+1. **Observação direta:** Você já vivenciou a dificuldade de anotar e registrar
+   dados táticos ou estatísticos durante os jogos ou treinos ao ar livre?
+
+   - Sim
+
+2. **Situação (X):** Em qual torneio, etapa ou condição climática (ex.: sol
+   forte, vento, chuva) isso ocorreu?
+
+   - **(Pelo Clube):** Em razão de a comissão técnica ser composta por apenas um
+     treinador, os registros táticos e estatísticos não são realizados em nenhum
+     treino, etapa ou torneio. Devido ao grande volume de atribuições sob
+     responsabilidade do treinador, outras demandas tornam-se prioritárias. Essa
+     limitação independe dos fatores climáticos, uma vez que as regras oficiais
+     estabelecem a viabilidade de realização das partidas sob tais condições.
+   - **(Pela Seleção):** A dificuldade no registro de dados táticos ou
+     estatísticos durante treinos e jogos ao ar livre é virtualmente
+     inexistente. A comissão técnica conta com um analista de desempenho
+     dedicado exclusivamente a essa atribuição, o qual pode atuar sem restrições
+     climáticas. Diferente do treinador, do auxiliar técnico e do
+     fisioterapeuta, o analista não precisa permanecer à beira da quadra,
+     podendo se abrigar das intempéries sem ter seu trabalho afetado.
+
+3. **Frequência (Y):** Isso acontece em todos os jogos, apenas em partidas
+   decisivas ou raramente?
+
+   - **(No Clube):** Essa limitação para tomar notas e compilar dados táticos ou
+     estatísticos em treinos e partidas ao ar livre é constante. Ela ocorre
+     tanto em confrontos decisivos quanto em jogos comuns e sessões de treino,
+     já que é inviável instruir, monitorar e analisar o desempenho das atletas
+     e, simultaneamente, efetuar os registros táticos.
+   - **(Na Seleção):** Por outro lado, o entrave para registrar dados táticos e
+     estatísticas durante atividades e partidas ao ar livre é virtualmente
+     inexistente, ocorrendo apenas em cenários pontuais e excepcionais, como:
+     - Falha total de equipamentos eletrônicos sob tempestade severa:
+       **Exemplo:** Uma súbita tempestade com raios e ventos destrutivos que
+       obrigue a interrupção imediata da partida e a retirada às pressas da
+       comissão técnica e dos equipamentos sensíveis (laptops, câmeras e tripés)
+       para uma área totalmente coberta, suspendendo temporariamente a captação
+       de imagens por alguns minutos até a realocação.
+     - Queda de energia na arena ou falha na rede de transmissão interna:
+       **Exemplo:** Em jogos oficiais de grande porte transmitidos por
+       streaming, se houver um blecaute total na estrutura provisória da arena
+       que afete as fontes de alimentação das baterias dos equipamentos de
+       vídeo, forçando o analista a registrar dados manualmente em papel por um
+       curto intervalo até o restabelecimento do sistema.
+     - Visibilidade severamente comprometida por intempéries extremas:
+       **Exemplo:** Uma rajada de vento atípica carregada de areia (um vendaval
+       na praia) que atinja diretamente as lentes das câmeras principais
+       posicionadas nas torres elevadas, exigindo que o operador desça para
+       limpar ou reposicionar o equipamento durante o andamento de um set.
+     - Fora essas exceções físicas e operacionais de grande impacto, na Seleção
+       o trabalho do analista transcorre sem os gargalos diários enfrentados por
+       equipes de clube, onde o treinador precisa acumular a função de comandar
+       a equipe e tentar anotar dados simultaneamente.
+
+---
+
+### PRB-02 — Distorção de estatísticas de ataque (gols de aérea)
+
+1. Observação direta: Você já percebeu que avaliar uma equipe ou atleta apenas
+   pelo percentual de arremessos do indoor gera escolhas táticas erradas por não
+   considerar o valor dobrado dos gols de aérea?
+
+   - Sim. Avaliar uma equipe ou atleta apenas pelo total de gols ou percentual
+     bruto de arremessos gera escolhas táticas erradas, pois desconsidera que,
+     no handebol de praia, o gol de aérea, o gol de giro e o gol do
+     especialista, vale o dobro (2 pontos).
+
+2. Situação (X): Em qual jogo ou momento da competição essa leitura distorcida
+   prejudicou a tomada de decisão?
+
+   - Em uma partida decisiva do campeonato nacional, a comissão técnica
+     valorizou um arremessador de tiro de 7 metros ou da linha de 6m com base
+     apenas no volume de gols acumulados, enquanto o atleta especialista em
+     aéreas — que decidia o placar com menos arremessos, mas com pontuação
+     dobrada — acabou subutilizado nas jogadas finais."
+
+3. Frequência (Y): Com que frequência essa distorção de dados afeta o
+   planejamento tático?
+
+   - Isso ocorre com frequência recorrente em torneios onde as planilhas
+     estatísticas e súmulas não ponderam automaticamente o peso real da
+     pontuação diferenciada. Além disso, as súmulas não são divulgas pela
+     confederação brasileira e as federações locais. Apenas a IHF faz essa
+     divulgação.
+
+---
+
+### PRB-03 — Gestão de carga e exaustão física
+
+1. Observação direta: Você já presenciou atletas com queda drástica de
+   rendimento ou sinais de exaustão por falta de monitoramento adequado de carga
+   no esporte intermitente?
+
+   - Sim. Em torneios curtos e intensos com múltiplos jogos no mesmo dia (ex.:
+     3.º ou 4.º jogo), a queda acentuada de rendimento físico e técnico é
+     claramente perceptível sem a devida gestão de rotação e carga.
+
+2. Situação (X): Em qual fase da temporada ou torneio específico (ex.: 3º ou 4º
+   jogo do dia) essa exaustão ficou evidente?
+
+   - Etapas do circuito estadual do Rio de Janeiro: 8 equipes divididas em 2
+     grupos → semi final → final. Total de 5 jogos corridos por equipes em um
+     único dia. Jogos alternados por naipes (masculino e feminino), sem pausa
+     para almoço ou lanche. Início 8:00 término 16h.
+   - Circuito Brasileiro de Handebol de Praia, último dia de competição: último
+     jogo do main round → semifinal → final. os 3 jogos mais desgastantes
+     ocorrem no último dia, também com alternância entre os naipes, porém a
+     distância entre semifinal e final é mais curta pois só existe 1 jogo de
+     “descanso” (disputa de 3º e 4º).
+   - Durante a disputa de fases decisivas (main-round, semifinais e finais) os
+     atletas apresentaram queda vertiginosa nas frequências de salto e sprints
+     no 2.º set e shoot-out.
+
+3. Frequência (Y): Com que frequência a falta de controle de carga compromete o
+   desempenho do grupo?
+
+   - Ocorre com frequência alta em equipes de clube sem comissão técnica ampla
+     ou sem ferramentas de controle de carga interna/externa, impactando a
+     consistência das equipes do início ao fim das etapas.
+
+---
+
+### PRB-04 — Incidência de lesões em membros inferiores
+
+1. **Observação direta:** Você já observou atletas sofrendo lesões recorrentes
+   (ex.: isquiotibiais, tornozelos) ou dores crônicas associadas ao acúmulo de
+   torneios?
+
+   - Sim. As lesões e dores crônicas nos membros inferiores ocorrem com
+     frequência em razão de colisões físicas após bloqueios aéreos e quedas
+     desequilibradas sobre as pernas e pés do atacante após a finalização.
+
+2. **Situação (X):** Qual foi o caso mais marcante de lesão ou afastamento
+   registrado na sua equipe ou circuito?
+
+   - O caso mais marcante envolveu atletas de ataque e defesa após disputas
+     aéreas na linha de 6 metros, resultando em quedas com impacto direto sobre
+     os membros inferiores e afastamento das quadras.
+
+3. **Frequência (Y):** Com que frequência lesões decorrentes de sobrecarga
+   afetam o grupo por temporada?
+
+   - Acontece com frequência constante ao longo de todas as temporadas, sendo um
+     risco inerente às disputas intensas de bloqueio aéreo e aterrissagens em
+     contato físico na areia.
+
+---
+
+### PRB-05 — Fragmentação do histórico de lesões
+
+1. Observação direta: Você já teve dificuldades em autorizar o retorno de um
+   atleta ao jogo por não ter um histórico clínico/físico estruturado,
+   dependendo apenas do relato verbal do atleta?
+
+   - Sim. Há dificuldades em gerenciar o histórico clínico e o retorno seguro
+     dos atletas à quadra devido à ausência de um sistema integrado de dados
+     físicos e médicos, o que muitas vezes obriga a comissão a depender apenas
+     do relato verbal do próprio atleta.
+
+2. Situação (X): Em qual momento a ausência desse histórico gerou incerteza ou
+   precipitação no retorno?
+
+   - Ocorre com frequência quando um atleta retorna de um período de recuperação
+     e relata estar "pronto para jogar", mas a comissão técnica e o departamento
+     médico carecem de métricas objetivas ou de um prontuário unificado para
+     cruzar a carga de treinos e o histórico da lesão anterior.
+
+3. Frequência (Y): Com que frequência você lida com atletas sem histórico médico
+   consolidado?
+
+   - Acontece de forma recorrente ao longo da temporada, especialmente em
+     equipes que não contam com suporte multidisciplinar permanente ou
+     plataformas centralizadas de saúde esportiva.
+
+---
+
+### PRB-06 — Sobrecarga na transição indoor/praia
+
+1. Observação direta: Você já observou atletas chegando para a temporada de
+   areia já lesionados ou sobrecarregados do piso rígido da quadra?
+
+   - Sim. Atletas que transitam diretamente do piso rígido da quadra para a
+     areia frequentemente apresentam sobrecarga física ou sinais de desgaste
+     acumulado, pois o volume de treinos e jogos em pisos diferentes nem sempre
+     é gerido de forma integrada entre as modalidades.
+
+2. Situação (X): Em qual período do ano ou campeonato essa transição entre
+   quadra e areia mais causou problemas?
+
+   - Ocorre principalmente no início da temporada de praia ou durante a
+     entressafra, quando os atletas encerram o calendário competitivo indoor e
+     iniciam imediatamente os treinamentos na areia, acumulando o impacto
+     articular anterior com as novas exigências de esforço na superfície
+     instável.
+
+3. Frequência (Y): Isso é um problema recorrente a cada mudança de temporada?
+
+   - Acontece de forma recorrente a cada mudança de temporada, afetando o
+     planejamento físico dos atletas que acumulam duplas jornadas ou transições
+     rápidas entre as duas modalidades.
+
+---
+
+### PRB-07 — Calor extremo e hidratação
+
+1. Observação direta: Além do caso de Niterói-RJ, você observou outros episódios
+   de desidratação ou risco térmico?
+
+   - Sim. Episódios de estresse térmico, queda acentuada de rendimento e
+     desidratação severa ocorrem frequentemente quando jogos consecutivos são
+     agendados nos horários de pico solar sem a devida infraestrutura de
+     resfriamento da areia.
+
+2. Situação (X): Em quais outras etapas ou locais o calor extremo prejudicou a
+   saúde/desempenho?
+
+   - Além do evento de Niterói-RJ (temperatura \> 40°C e paralisação), em etapas
+     do Circuito Brasileiro realizadas em regiões de clima tropical úmido, a
+     falta de irrigação periódica da areia causou bolhas nos pés dos atletas e
+     tonturas em partidas disputadas entre 11h e 14h.
+
+3. Frequência (Y): Com que frequência o calor e a falta de infraestrutura para
+   resfriar a areia impactam os torneios?
+
+   - Ocorre com frequência alta durante as etapas de verão e primavera no
+     circuito nacional e estadual, impactando diretamente o bem-estar e a
+     integridade física dos atletas.
+
+---
+
+### PRB-08 — Desalinhamento com novas regras da IHF
+
+1. Observação direta: Sua equipe ou adversários já foram penalizados ou
+   prejudicados por desatualização em relação às mudanças recentes de regras
+   (ex.: jogo passivo, sanções finais)?
+
+   - Sim. Equipes e comissões técnicas frequentemente demonstram desalinhamento
+     com as atualizações recentes de regras da IHF, resultando em punições
+     evitáveis e perda de posse de bola em momentos cruciais.
+
+2. Situação (X): Em qual partida ou torneio ocorreu um lance decisivo afetado
+   por essa falta de alinhamento?
+
+   - Durante os 15 segundos finais de uma partida eliminatória do Circuito
+     Brasileiro, a equipe cometeu uma falta tática sem o devido conhecimento da
+     gravidade das novas sanções disciplinares diretas da IHF, resultando em
+     tiro de 7 metros decisivo para o adversário.
+
+3. Frequência (Y): Com que frequência as atualizações de regras causam confusão
+   na quadra?
+
+   - Acontece com frequência média, concentrando-se principalmente nas primeiras
+     etapas após a publicação oficial de novas diretrizes pela IHF.
+
+---
+
+### PRB-09 — Preparação contra adversários desconhecidos
+
+1. Observação direta: Você já precisou definir a estratégia de um jogo decisivo
+   sem nenhuma informação ou estatística prévia do adversário, baseando-se
+   apenas na memória ou em vídeos informais?
+
+   - Sim. A falta de banco de dados ou estatísticas consolidadas obriga os
+     treinadores a estruturar planos de jogo contra equipes de outros estados de
+     forma totalmente empírica.
+
+2. Situação (X): Em qual etapa ou circuito com grande quantidade de equipes essa
+   falta de dados ocorreu?
+
+   - Nas fases classificatórias do Circuito Brasileiro, com mais de 50 equipes
+     participantes, o confronto contra adversários de polos distantes ocorreu
+     sem qualquer padrão tático conhecido previamente.
+
+3. Frequência (Y): Com que frequência você enfrenta equipes sem histórico de
+   dados disponível?
+
+   - Ocorre com frequência alta em âmbito nacional e regional devido à ausência
+     de repositórios centrais de dados estatísticos de partidas.
+
+---
+
+### PRB-10 — Burocracia e retrabalho logístico
+
+1. Observação direta: Você ou sua comissão técnica já perderam tempo excessivo
+   preenchendo fichas repetitivas de inscrição e dados de atletas a cada etapa?
+
+   - Sim. O preenchimento manual e redundante de cadastros para federações e
+     confederação consome tempo que deveria ser destinado ao preparo técnico e
+     tático.
+
+2. Situação (X): Em qual competição o acúmulo de burocracia logística mais gerou
+   retrabalho ou erros cadastrais?
+
+   - Na transição de etapas intermunicipais, em que cada federação local exige
+     formulários em formatos próprios, levando a erros na emissão de súmulas
+     oficiais.
+
+3. Frequência (Y): Isso acontece em todas as etapas do circuito ou apenas em
+   eventos específicos?
+
+   - Acontece em todas as etapas do circuito de clubes que exigem validação
+     cadastral presencial ou em sistemas legados desintegrados.
+
+---
+
+### PRB-11 — Perda de histórico na transição de categorias
+
+1. Observação direta: Você já observou a perda total de registros de desempenho
+   e histórico físico quando atletas migram das categorias de base
+   (cadete/juvenil) para a adulta?
+
+   - Sim. Não existe acompanhamento longitudinal de dados longitudinal entre
+     categorias de base e a categoria adulta, fazendo com que métricas físicas e
+     técnicas sejam reiniciadas a cada mudança.
+
+2. Situação (X): Cite um exemplo de atleta cuja transição foi dificultada pela
+   falta desse histórico prévio.
+
+   - Atletas promovidos da equipe juvenil para a adulta sem registro de volume
+     de carga acumulado e histórico de lesões, resultando em sobrecarga precoce
+     na pré-temporada.
+
+3. Frequência (Y): Com que frequência essa descontinuidade de dados ocorre na
+   formação dos atletas?
+
+   - Ocorre de forma constante a cada ciclo anual de transição de faixa etária
+     dos atletas nas equipes de base.
+
+---
+
+### PRB-12 — Ausência de retorno (feedback) individual
+
+1. Observação direta: Você já percebeu desmotivação ou evolução mais lenta em
+   atletas devido à falta de relatórios e retornos individuais claros sobre o
+   desempenho deles?
+
+   - Sim. A ausência de estatísticas individuais periódicas dificulta o
+     alinhamento de expectativas e a evolução focada dos atletas da equipe.
+
+2. Situação (X): Em qual momento da temporada a falta de feedback estruturado
+   causou ruído ou insatisfação?
+
+   - Ao final de etapas decisivas, quando cortes ou substituições na equipe
+     titular precisam ser feitos sem embasamento de dados quantitativos de
+     eficiência individual.
+
+3. Frequência (Y): Com que frequência a rotina da equipe impede a entrega de
+   feedbacks individuais?
+
+   - Acontece com frequência recorrente em clubes sem equipe analítica dedicada.
+
+---
+
+### PRB-13 — Dificuldade de comunicação em jogo
+
+1. Observação direta: Você já teve orientações táticas frustradas ou não
+   comunicadas durante o jogo devido à curta duração dos sets (10 min), barulho
+   da torcida ou vento?
+
+   - Sim. O tempo exíguo dos sets e fatores ambientais comprometem severamente a
+     passagem de instruções da comissão técnica durante as partidas.
+
+2. Situação (X): Em qual partida decisiva a janela de tempo técnico foi
+   insuficiente para ajustar a equipe?
+
+   - Em uma final de set decidida nos últimos 30 segundos, onde o vento forte e
+     o barulho da arena impediram que a troca de posicionamento defensivo fosse
+     compreendida a tempo.
+
+3. Frequência (Y): Com que frequência o ambiente externo impede a comunicação
+   tática eficiente?
+
+   - Ocorre com frequência alta em todas as competições ao ar livre com grande
+     presença de público e ruído ambiente.
+
+---
+
+### PRB-14 — Desafios de coordenação de treinos e logística
+
+1. Observação direta: Você já enfrentou treinos esvaziados ou desgastes
+   excessivos decorrentes de horários, disponibilidade de quadra de areia ou
+   logística de alojamento/deslocamento nas etapas?
+
+   - Sim. A escassez de infraestrutura adequada é um dos gargalos centrais na
+     rotina das equipes. Principalmente durante os dias úteis no período noturno
+     (após a jornada de trabalho e estudo dos atletas e comissão), torna-se
+     extremamente difícil encontrar quadras de areia com as dimensões oficiais
+     recomendadas para o handebol de praia e que contem com iluminação
+     artificial apropriada. Essa limitação de horários e locais gera frequentes
+     treinos esvaziados, baixa adesão do grupo e descontinuidade direta na
+     preparação física e tática, afetando severamente o cumprimento de um
+     cronograma de treinos contínuo e um planejamento estruturado para a
+     temporada.
+
+2. Situação (X): Em qual cidade ou torneio as limitações de infraestrutura e
+   hospedagem mais impactaram a rotina da equipe?
+
+   - Em etapas disputadas fora dos grandes centros urbanos — como em São Miguel
+     do Iguaçu (onde as acomodações se assemelhavam a um motel), Paranaguá e
+     Cascavel, os longos e desgastantes deslocamentos entre o alojamento e a
+     arena de jogo prejudicaram diretamente a rotina dos atletas, além de
+     reduzirem o tempo disponível para aquecimento. Nesses locais, as partidas
+     eram realizadas em campos de areia localizados em praças públicas. O
+     impacto desses trajetos extensos em etapas distantes dos grandes centros
+     refletiu-se no desgaste físico da equipe e no comprometimento da preparação
+     pré-jogo.
+
+3. Frequência (Y): Com que frequência a falta de infraestrutura de areia ou
+   logística compromete a continuidade dos treinos?
+
+   - Acontece de forma recorrente em equipes amadoras e semiprofissionais ao
+     longo de toda a temporada. A indisponibilidade de locais adequados e a
+     inconsistência na logística geram um impacto continuado na assiduidade dos
+     atletas, prejudicando o ritmo de treino e o alinhamento tático do grupo.
+
 <a id="p01-e04"></a>
 
 ## E04 — Inventário de necessidades
@@ -339,10 +765,11 @@ inicial, e o trabalho segue sem elas, com a fragilidade já assinalada.
 | Q-08 | Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso de seus dados?                                         | ATL-3, PRB-11, privacidade das fases seguintes                     | Responsável; análise jurídica especializada em etapa posterior           |
 | Q-09 | Quais problemas do E03 o responsável já observou diretamente, em que situação e com que frequência?                                   | Eleva itens de HIP ou INF para evidência observada; reordena o E07 | Registro das observações do responsável, com contexto                    |
 
-Q-09 é a de maior efeito: uma observação documentada do responsável ("vi isso
-acontecer em tal torneio") vale mais do que qualquer fonte de contexto que eu
-tenha reunido para os problemas HIP. Sem ela, os problemas HIP (PRB-07, PRB-09 e
-PRB-11 a PRB-14) seguem sem fundamento além de plausibilidade.
+Q-09 foi respondida pelo responsável em
+[RESPOSTAS DAVI SERMENHO](#p01-respostas-davi), com observação, situação e
+frequência para PRB-01 a PRB-14. Esse relato humano documentado sustenta a
+ocorrência na experiência do responsável, mas não representa validação de todo o
+público de atletas e treinadores.
 
 <a id="p01-e09"></a>
 
@@ -378,7 +805,8 @@ descartado, seu ID fica registrado como descartado.
 
 Os registros abaixo identificam as evidências usadas em
 [P01-VAL-001](./P0-P1-tutorial.md#registro-de-validacao-das-acoes-p0p1) e
-materializam o retorno para cada ação classificada.
+[P01-VAL-002](./P0-P1-tutorial.md#p01-val-002), materializando o retorno para
+cada ação classificada.
 
 ### P01-EV-P1-001
 
@@ -404,12 +832,12 @@ das dores com atletas e treinadores.
 
 ### P01-EV-P1-003
 
-A seção [E08](#p01-e08) mantém Q-09 como questão de maior efeito e requer
-observações documentadas do responsável. Os documentos auditados não contêm
-resposta a Q-09 nem registro de revisão humana com problemas confirmados,
-corrigidos ou rejeitados.
+**Estado histórico:** evidência superada por [`P01-EV-P1-006`](#p01-ev-p1-006).
+Na linha de base de `P01-VAL-001`, anterior à inclusão das respostas humanas, a
+seção [E08](#p01-e08) mantinha Q-09 sem resposta documentada.
 
-**Retorno:** sustenta [`P01-ACT-05-01`](./P0-P1-tutorial.md#p01-act-05-01) e
+**Retorno histórico:** sustentou
+[`P01-ACT-05-01`](./P0-P1-tutorial.md#p01-act-05-01) e
 [`P01-ACT-05-02`](./P0-P1-tutorial.md#p01-act-05-02).
 
 ### P01-EV-P1-004
@@ -429,14 +857,26 @@ decisão humana, especificação e critério de aceitação ainda não existem.
 **Retorno:** sustenta [`P01-ACT-07-01`](./P0-P1-tutorial.md#p01-act-07-01) e
 [`P01-ACT-07-02`](./P0-P1-tutorial.md#p01-act-07-02).
 
+### P01-EV-P1-006
+
+A seção [RESPOSTAS DAVI SERMENHO](#p01-respostas-davi) registra observação
+direta, situação e frequência para PRB-01 a PRB-14. O registro materializa a
+revisão e o envio das observações do responsável. Sua força probatória é
+limitada à experiência declarada por Davi Sermenho e não deve ser generalizada
+para todo o público sem validação adicional com atletas e outros treinadores.
+
+**Retorno:** sustenta [`P01-ACT-05-01`](./P0-P1-tutorial.md#p01-act-05-01) e
+[`P01-ACT-05-02`](./P0-P1-tutorial.md#p01-act-05-02) em
+[`P01-VAL-002`](./P0-P1-tutorial.md#p01-val-002).
+
 ---
 
 ## Glossário de Termos Especializados do Handebol de Praia
 
-_Legenda de abreviações gramaticais: s. m. = substantivo masculino; s. m. e f. =
-substantivo masculino e feminino._
+Legenda de abreviações gramaticais: s. m. = substantivo masculino; s. m. e f. =
+substantivo masculino e feminino.
 
-**Gol de aérea (In-flight)** _s. m._
+**Gol de aérea (In-flight)** s. m.
 
 Gol marcado no ar por um atleta que controla a bola — vinda de um passe de
 companheiro ou de um rebote na trave, no goleiro ou na defesa adversária — e
@@ -445,7 +885,7 @@ jogador passe ou lance a bola para si mesmo para executar a jogada. Concede 2
 pontos à equipe apenas se o atleta no ar controlar a bola e arremessar; dar um
 tapa ou empurrar a bola para o gol vale apenas 1 ponto.
 
-**Gol de giro (Spin Shot)** _s. m._
+**Gol de giro (Spin Shot)** s. m.
 
 Arremesso realizado com uma rotação completa do corpo no ar (360 graus) antes da
 finalização à meta. Considera-se um giro completo e correto quando os pés do
@@ -453,7 +893,7 @@ jogador no momento da impulsão apontam diretamente em direção ao gol, devendo
 bola sair da mão do atleta antes que qualquer parte do seu corpo toque a areia.
 É bonificado com 2 pontos.
 
-**Especialista** _s. m. e f._
+**Especialista** s. m. e f.
 
 Jogador de linha encarregado de substituir o goleiro na fase ofensiva da equipe.
 Utiliza um uniforme idêntico ao do goleiro da própria equipe para se diferenciar
@@ -507,7 +947,7 @@ devem ser conferidos nas páginas antes de qualquer uso externo.
 [6]: https://pubmed.ncbi.nlm.nih.gov/
 [7]: https://investiga.upo.es
 [8]: https://www.jhse.ua.es
-[9]: https://www.termedia.pl/Journal/Human_Movement
+[9]: https://www.termedia.pl/Journal/HumanMovement
 [10]: https://www.aspetar.com/journal/
 [11]: https://auniao.pb.gov.br
 [12]: https://www.longmansportsoft.com
