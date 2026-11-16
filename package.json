@@ -8,6 +8,7 @@
     "agent:lint:json": "node scripts/agent-lint-report.js --json"
   },
   "devDependencies": {
+    "markdownlint": "^0.42.1",
     "markdownlint-cli2": "^0.24.1",
     "prettier": "^3.10.1"
   }

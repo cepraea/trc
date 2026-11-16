@@ -1,26 +1,22 @@
 # Criar app de handebol
 
-Você **NUNCA DEVE** dar uma tarefa de criação ou edição de documento como
-concluída sem antes passar por este gate.**
+## GATE DE QUALIDADE OBRIGATÓRIO (MARKDOWN)
 
-Sempre que terminar de editar/criar um arquivo `.md`, siga este protocolo:
+Você NUNCA deve dar uma tarefa envolvendo arquivos `.md` como concluída sem antes validar o código.
 
-1. **Execute o Gate:** Rode o comando `npm run agent:lint` no terminal do
-   projeto.
-2. **Avaliação do Resultado:**
-   - Se o script retornar sucesso/vazio: O arquivo está aprovado e a tarefa está
-     concluída.
-   - Se o script falhar: Ele devolverá um log estruturado contendo a tag
-     `<erros>`. Você deve obrigatoriamente corrigir esses problemas.
-3. Se receber um log de erro você DEVE:
-   - Alterar APENAS as linhas exatas indicadas no bloco `<erros>`.
-   - NUNCA reescreva o restante do documento, não resuma seções e não remova
-     conteúdo válido na tentativa de resolver um erro.
-   - O sistema monitora suas tentativas. Se você receber um aviso de "ÚLTIMA
-     TENTATIVA", seja extremamente conservador na correção. Se o limite for
-     atingido, a tarefa será travada sob o status `FAILED_MANUAL_REVIEW`.
-4. Ao obter PASS faça a conferência do status da branch atual e se tudo estiver
-   em conformidade, faça o commit e o push.
+Ao finalizar a edição/criação de qualquer arquivo `.md`:
+
+1. Execute no terminal: `npm run agent:lint`
+2. Analise o resultado:
+   - Se retornar vazio/sucesso: A tarefa está 100% concluída.
+   - Se retornar logs com a tag `<erros>`: Você DEVE corrigir as falhas antes de prosseguir.
+
+REGRAS DE CORREÇÃO (STRICT MODE):
+
+- Altere APENAS as linhas exatas indicadas nos blocos de erro.
+- NUNCA reescreva o restante do documento.
+- Não resuma seções nem remova conteúdo válido apenas para se livrar do erro.
+- Se receber o aviso de "ÚLTIMA TENTATIVA", seja estritamente conservador. Se o limite for ultrapassado, pare de tentar e marque a tarefa como FAILED_MANUAL_REVIEW.
 
 <orientacao_de_produto>
 

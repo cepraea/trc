@@ -2,6 +2,28 @@
 
 > **AGENTES NÃO DEVEM EDITAR ESSE ARQUIVO**
 
+Você **NUNCA DEVE** dar uma tarefa de criação ou edição de documento como
+concluída sem antes passar por este gate.
+
+Sempre que terminar de editar/criar um arquivo `.md`, siga este protocolo:
+
+1. **Execute o Gate:** Rode o comando `npm run agent:lint` no terminal do
+   projeto.
+2. **Avaliação do Resultado:**
+   - Se o script retornar sucesso/vazio: O arquivo está aprovado e a tarefa está
+     concluída.
+   - Se o script falhar: Ele devolverá um log estruturado contendo a tag
+     `<erros>`. Você deve obrigatoriamente corrigir esses problemas.
+3. Se receber um log de erro você DEVE:
+   - Alterar APENAS as linhas exatas indicadas no bloco `<erros>`.
+   - NUNCA reescreva o restante do documento, não resuma seções e não remova
+     conteúdo válido na tentativa de resolver um erro.
+   - O sistema monitora suas tentativas. Se você receber um aviso de "ÚLTIMA
+     TENTATIVA", seja extremamente conservador na correção. Se o limite for
+     atingido, a tarefa será travada sob o status `FAILED_MANUAL_REVIEW`.
+4. Ao obter PASS faça a conferência do status da branch atual e se tudo estiver
+   em conformidade, faça o commit e o push.
+
 **Papel:** instruções operacionais para agentes de desenvolvimento.
 **Objetivo:** executar apenas mudanças autorizadas, rastreáveis e verificáveis.
 **Escopo:** repositório em que este arquivo for instalado e suas subpastas,

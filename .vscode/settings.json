@@ -4,5 +4,43 @@
   },
   "yaml.customTags": [
     "!include scalar"
-  ]
+  ],
+
+  // 1. BLINDAGEM DE TOKENS (Oculta lixo da visão do agente)
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.vscode/**": true,
+    "**/.draft": true,
+    "**/build": true,
+    ".markdownlint-cli2.jsonc": true,
+    ".prettierrc": true,
+    "tasks.json": true,
+    "agent-lint-retries.json": true,
+    "**/scripts/agent-lint-report.js": true,
+    "**/.tmp": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/*.lock": true,
+    "**/package-lock.json": true,
+    ".markdownlint-cli2.jsonc": true,
+    ".prettierrc": true,
+    "tasks.json": true,
+    "agent-lint-retries.json": true,
+    "**/scripts/agent-lint-report.js": true,
+    "**/.tmp": true
+  },
+
+  // 2. PREVENÇÃO DE CONFLITOS DE EDIÇÃO (Regras de Diff)
+  "editor.formatOnSave": false,
+  "files.trimTrailingWhitespace": false,
+  "files.insertFinalNewline": false,
+
+  // 3. EXPANSÃO DE MEMÓRIA DO TERMINAL
+  "terminal.integrated.scrollback": 15000
 }

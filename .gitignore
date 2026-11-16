@@ -1,5 +1,6 @@
-.tmp/
-.tmp/*
+.temp
+.temp/
+.temp/agent-lint-retries.json
 
 .claude
 .claude/
@@ -8,11 +9,13 @@
 .markdownlintignore
 .prettierignore
 
-node_modules/**
 node_modules
+node_modules/
+
 
 .draft
-.draft/**
+.draft/
 
-.vscode/**
+
 .vscode
+.vscode/

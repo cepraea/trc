@@ -2,25 +2,39 @@
 
 const fs = require('fs');
 const path = require('path');
-const { spawnSync } = require('child_process');
 
 const EXIT_SUCCESS = 0;
 const EXIT_LINT_ERROR = 1;
 const EXIT_EXECUTION_ERROR = 2;
 
-const NPX_COMMAND = process.platform === 'win32' ? 'npx.cmd' : 'npx';
+const MAX_RETRIES = 3;
+const MAX_BATCH_ERRORS = 10;
+
+const RETRY_STATE_FILE = path.resolve(
+  process.cwd(),
+  '.temp',
+  'agent-lint-retries.json'
+);
 
 const args = process.argv.slice(2);
 
-const FIX_MODE = args.includes('--fix') || process.env.npm_config_fix === 'true';
+const JSON_MODE =
+  args.includes('--json') ||
+  process.env.npm_config_json === 'true';
 
-const JSON_MODE = args.includes('--json') || process.env.npm_config_json === 'true';
+const RESET_RETRIES = args.includes('--reset-retries');
+
+const TARGET_FILES = args.filter(
+  arg => !arg.startsWith('--')
+);
 
 const SUGGESTION_MAP = {
   MD012: 'Remover linhas em branco consecutivas',
   MD022: 'Adicionar linha em branco antes e depois do heading',
   MD024: 'Renomear ou remover o heading duplicado',
   MD025: 'Manter apenas um heading H1 (#) por documento',
+  MD026: 'Remover pontuação final do heading',
+  MD030: 'Usar exatamente 1 espaço após o marcador de lista',
   MD032: 'Adicionar linha em branco antes e depois da lista',
   MD034: 'Converter a URL nua em um link Markdown',
   MD036: 'Substituir texto em negrito por heading Markdown (## Título)',
@@ -37,13 +51,26 @@ const RULE_SEVERITY = {
   MD025: 'error'
 };
 
+class MaxRetriesExceededError extends Error {
+  constructor(file, attempts, maxRetries = MAX_RETRIES) {
+    super(
+      `Limite máximo de tentativas excedido para "${file}" (${attempts}/${maxRetries}). Status: FAILED_MANUAL_REVIEW`
+    );
+    this.name = 'MaxRetriesExceededError';
+    this.file = file;
+    this.attempts = attempts;
+    this.maxRetries = maxRetries;
+    this.status = 'FAILED_MANUAL_REVIEW';
+  }
+}
+
+const retryCounters = new Map();
+
 const RESULT = {
   success: true,
   fatal: false,
-  fixMode: FIX_MODE,
   timestamp: new Date().toISOString(),
-  autofix: null,
-  summary: createSummary([]),
+  maxRetries: MAX_RETRIES,
   files: [],
   errors: []
 };
@@ -54,11 +81,20 @@ function log(...messages) {
   }
 }
 
-function fail(message) {
+function fail(error) {
+  const isMaxRetries = error instanceof MaxRetriesExceededError;
+  const message =
+    error instanceof Error ? error.message : String(error);
+
   const failure = {
     success: false,
     fatal: true,
-    fixMode: FIX_MODE,
+    errorType: isMaxRetries
+      ? 'MaxRetriesExceededError'
+      : 'ExecutionError',
+    status: isMaxRetries ? error.status : 'FAILED',
+    file: isMaxRetries ? error.file : null,
+    attempts: isMaxRetries ? error.attempts : null,
     timestamp: new Date().toISOString(),
     message
   };
@@ -89,21 +125,98 @@ function readLines(file) {
   }
 }
 
+function loadPersistedRetries() {
+  if (RESET_RETRIES || !fileExists(RETRY_STATE_FILE)) {
+    return;
+  }
+
+  try {
+    const raw = fs.readFileSync(RETRY_STATE_FILE, 'utf8');
+    const parsed = JSON.parse(raw);
+
+    if (parsed && typeof parsed === 'object') {
+      for (const [file, count] of Object.entries(parsed)) {
+        if (typeof count === 'number' && count > 0) {
+          retryCounters.set(file, count);
+        }
+      }
+    }
+  } catch {}
+}
+
+function savePersistedRetries() {
+  try {
+    const dir = path.dirname(RETRY_STATE_FILE);
+    fs.mkdirSync(dir, { recursive: true });
+
+    const serialized = {};
+    for (const [file, count] of retryCounters.entries()) {
+      if (count > 0) {
+        serialized[file] = count;
+      }
+    }
+
+    fs.writeFileSync(
+      RETRY_STATE_FILE,
+      JSON.stringify(serialized, null, 2),
+      'utf8'
+    );
+  } catch {}
+}
+
+function getAttempts(file) {
+  return retryCounters.get(file) || 0;
+}
+
+function recordFileCheckResult(file, hasErrors) {
+  if (!hasErrors) {
+    retryCounters.delete(file);
+    return {
+      attempts: 0,
+      status: 'PASSED',
+      isLastAttempt: false
+    };
+  }
+
+  const attempts = getAttempts(file);
+
+  if (attempts >= MAX_RETRIES) {
+    retryCounters.set(file, attempts);
+    savePersistedRetries();
+    throw new MaxRetriesExceededError(
+      file,
+      attempts,
+      MAX_RETRIES
+    );
+  }
+
+  const nextAttempts = attempts + 1;
+  retryCounters.set(file, nextAttempts);
+
+  const isLastAttempt = attempts === MAX_RETRIES - 1;
+
+  return {
+    attempts,
+    nextAttempts,
+    status: isLastAttempt ? 'LAST_ATTEMPT' : 'RETRYING',
+    isLastAttempt
+  };
+}
+
 function createContext(file, lineNumber) {
-  if (!fileExists(file)) {
+  if (!fileExists(file) || !lineNumber) {
     return null;
   }
 
   const lines = readLines(file);
-
   const start = Math.max(0, lineNumber - 2);
-
   const end = Math.min(lines.length, lineNumber + 1);
-
   const context = [];
 
   for (let index = start; index < end; index++) {
-    context.push(`${String(index + 1).padStart(4)} | ${lines[index]}`);
+    context.push(
+      `${String(index + 1).padStart(4)} | ${lines[index]}`
+    );
   }
 
   return context.join('\n');
@@ -111,12 +224,14 @@ function createContext(file, lineNumber) {
 
 function ruleCode(rule) {
   const match = String(rule).match(/^MD\d+/);
-
   return match ? match[0] : String(rule);
 }
 
 function suggestionFor(rule) {
-  return SUGGESTION_MAP[ruleCode(rule)] || 'Revisão manual necessária';
+  return (
+    SUGGESTION_MAP[ruleCode(rule)] ||
+    'Revisão manual necessária'
+  );
 }
 
 function severityFor(rule) {
@@ -130,7 +245,9 @@ function countTableColumns(rowText) {
     return 0;
   }
 
-  const normalized = trimmed.replace(/^\|/, '').replace(/\|$/, '');
+  const normalized = trimmed
+    .replace(/^\|/, '')
+    .replace(/\|$/, '');
 
   if (!normalized.trim()) {
     return 0;
@@ -139,8 +256,14 @@ function countTableColumns(rowText) {
   return normalized.split(/(?<!\\)\|/).length;
 }
 
-function findExpectedTableColumns(lines, lineIndex, description) {
-  const expectedMatch = String(description).match(/Expected:\s*(\d+)/i);
+function findExpectedTableColumns(
+  lines,
+  lineIndex,
+  description
+) {
+  const expectedMatch = String(description).match(
+    /Expected:\s*(\d+)/i
+  );
 
   if (expectedMatch) {
     return Number(expectedMatch[1]);
@@ -148,7 +271,10 @@ function findExpectedTableColumns(lines, lineIndex, description) {
 
   let cursor = lineIndex;
 
-  while (cursor > 0 && lines[cursor - 1].trim().includes('|')) {
+  while (
+    cursor > 0 &&
+    lines[cursor - 1].trim().includes('|')
+  ) {
     cursor--;
   }
 
@@ -157,9 +283,15 @@ function findExpectedTableColumns(lines, lineIndex, description) {
 
 function buildAdjustedTableRow(rawLine, expectedColumns) {
   const trimmed = String(rawLine).trim();
-  const normalized = trimmed.replace(/^\|/, '').replace(/\|$/, '');
+  const normalized = trimmed
+    .replace(/^\|/, '')
+    .replace(/\|$/, '');
 
-  const cells = normalized ? normalized.split(/(?<!\\)\|/).map((cell) => cell.trim()) : [];
+  const cells = normalized
+    ? normalized
+        .split(/(?<!\\)\|/)
+        .map(cell => cell.trim())
+    : [];
 
   if (expectedColumns <= 0) {
     return trimmed;
@@ -167,7 +299,11 @@ function buildAdjustedTableRow(rawLine, expectedColumns) {
 
   if (cells.length < expectedColumns) {
     while (cells.length < expectedColumns) {
-      cells.push(cells.length === 1 ? 'Valor' : `Coluna ${cells.length + 1}`);
+      cells.push(
+        cells.length === 1
+          ? 'Valor'
+          : `Coluna ${cells.length + 1}`
+      );
     }
   } else if (cells.length > expectedColumns) {
     cells.length = expectedColumns;
@@ -176,7 +312,12 @@ function buildAdjustedTableRow(rawLine, expectedColumns) {
   return `| ${cells.join(' | ')} |`;
 }
 
-function createConcreteFix(file, lineNumber, rule, description) {
+function createConcreteFix(
+  file,
+  lineNumber,
+  rule,
+  description
+) {
   if (!fileExists(file) || !lineNumber) {
     return null;
   }
@@ -189,302 +330,426 @@ function createConcreteFix(file, lineNumber, rule, description) {
   }
 
   const rawLine = lines[lineIndex];
+  const trimmedLine = rawLine.trim();
   const code = ruleCode(rule);
 
   if (code === 'MD036') {
-    const cleanText = rawLine
-      .trim()
+    const cleanText = trimmedLine
       .replace(/^(\*\*|__)(.*)\1$/, '$2')
       .replace(/^(\*|_)(.*)\1$/, '$2')
       .trim();
 
+    if (!cleanText) {
+      return null;
+    }
+
+    const beforeLine = rawLine;
+    const afterLine = `## ${cleanText}`;
+
     return {
       type: 'before-after',
-      before: cleanText,
-      after: `## ${cleanText}`,
-      formatted: ['Correção sugerida', '', 'ANTES', cleanText, '', 'DEPOIS', `## ${cleanText}`].join('\n')
+      before: beforeLine,
+      after: afterLine,
+      formatted: [
+        'Correção sugerida',
+        '',
+        'ANTES',
+        beforeLine,
+        '',
+        'DEPOIS',
+        afterLine
+      ].join('\n')
     };
   }
 
   if (code === 'MD056') {
-    const expectedColumns = findExpectedTableColumns(lines, lineIndex, description);
+    const expectedColumns = findExpectedTableColumns(
+      lines,
+      lineIndex,
+      description
+    );
 
-    const problemLine = rawLine.trim();
-    const possibleFix = buildAdjustedTableRow(rawLine, expectedColumns);
+    const possibleFix = buildAdjustedTableRow(
+      rawLine,
+      expectedColumns
+    );
 
     return {
       type: 'table-columns',
       expectedColumns,
-      problemLine,
+      problemLine: rawLine,
       possibleFix,
       formatted: [
         `Tabela possui ${expectedColumns} colunas esperadas.`,
         'Linha problemática:',
-        problemLine,
+        rawLine,
         'Possível correção:',
         possibleFix
       ].join('\n')
     };
   }
 
-  if (code === 'MD025') {
-    const afterLine = rawLine.replace(/^(\s*)#(\s+)/, '$1##$2');
+  if (code === 'MD026') {
+    const cleanedHeading = rawLine.replace(
+      /([.,;:!?\u3002\uff0c\uff1b\uff1a\uff01\uff1f]+)(\s*#*\s*)$/,
+      '$2'
+    );
+
+    if (cleanedHeading === rawLine) {
+      return null;
+    }
 
     return {
       type: 'before-after',
-      before: rawLine.trim(),
-      after: afterLine.trim(),
-      formatted: ['Correção sugerida', '', 'ANTES', rawLine.trim(), '', 'DEPOIS', afterLine.trim()].join('\n')
+      before: rawLine,
+      after: cleanedHeading,
+      formatted: [
+        'Correção sugerida',
+        '',
+        'ANTES',
+        rawLine,
+        '',
+        'DEPOIS',
+        cleanedHeading
+      ].join('\n')
     };
   }
 
-  if (code === 'MD034') {
-    const afterLine = rawLine.replace(/(https?:\/\/[^\s)>]+)/g, '<$1>');
+  if (code === 'MD025') {
+    if (!/^\s*#\s+/.test(rawLine)) {
+      return null;
+    }
+
+    const afterLine = rawLine.replace(
+      /^(\s*)#(\s+)/,
+      '$1##$2'
+    );
+
+    if (afterLine === rawLine) {
+      return null;
+    }
 
     return {
       type: 'before-after',
-      before: rawLine.trim(),
-      after: afterLine.trim(),
-      formatted: ['Correção sugerida', '', 'ANTES', rawLine.trim(), '', 'DEPOIS', afterLine.trim()].join('\n')
+      before: rawLine,
+      after: afterLine,
+      formatted: [
+        'Correção sugerida',
+        '',
+        'ANTES',
+        rawLine,
+        '',
+        'DEPOIS',
+        afterLine
+      ].join('\n')
     };
   }
 
   if (code === 'MD040') {
-    const trimmed = rawLine.trim();
-    const afterLine = trimmed === '```' ? '```text' : `${trimmed}text`;
+    if (!/^(\s*)(`{3,}|~{3,})\s*$/.test(rawLine)) {
+      return null;
+    }
+
+    const afterLine = rawLine.replace(
+      /^(\s*)(`{3,}|~{3,})\s*$/,
+      '$1$2text'
+    );
 
     return {
       type: 'before-after',
-      before: trimmed,
+      before: rawLine,
       after: afterLine,
-      formatted: ['Correção sugerida', '', 'ANTES', trimmed, '', 'DEPOIS', afterLine].join('\n')
+      formatted: [
+        'Correção sugerida',
+        '',
+        'ANTES',
+        rawLine,
+        '',
+        'DEPOIS',
+        afterLine
+      ].join('\n')
     };
   }
 
   return null;
 }
 
-function commandOutput(result) {
-  return [result.stdout, result.stderr].filter(Boolean).join('\n');
+async function loadCli2Main() {
+  try {
+    const mod = await import('markdownlint-cli2');
+    if (typeof mod.main === 'function') {
+      return mod.main;
+    }
+    if (typeof mod.default === 'function') {
+      return mod.default;
+    }
+    if (typeof mod.default?.main === 'function') {
+      return mod.default.main;
+    }
+  } catch {}
+
+  const mod = require('markdownlint-cli2');
+  if (typeof mod.main === 'function') {
+    return mod.main;
+  }
+  if (typeof mod === 'function') {
+    return mod;
+  }
+
+  throw new Error(
+    'Não foi possível carregar a API programática do markdownlint-cli2.'
+  );
 }
 
-function runCommand(commandArgs, allowedStatuses = [0]) {
-  const result = spawnSync(NPX_COMMAND, commandArgs, {
-    encoding: 'utf8',
-    maxBuffer: 10 * 1024 * 1024
-  });
+function readGitignorePatterns() {
+  const gitignorePath = path.resolve(
+    process.cwd(),
+    '.gitignore'
+  );
 
-  if (result.error) {
-    throw new Error(`Erro executando npx ${commandArgs.join(' ')}: ${result.error.message}`);
+  if (!fileExists(gitignorePath)) {
+    return [];
   }
 
-  if (result.signal) {
-    throw new Error(`Comando interrompido pelo sinal ${result.signal}: npx ${commandArgs.join(' ')}`);
-  }
-
-  if (!allowedStatuses.includes(result.status)) {
-    const output = commandOutput(result).trim();
-
-    throw new Error(
-      [`Comando falhou com código ${result.status}: npx ${commandArgs.join(' ')}`, output].filter(Boolean).join('\n')
-    );
-  }
-
-  return {
-    status: result.status,
-    output: commandOutput(result)
-  };
-}
-
-function parseMarkdownlintOutput(output) {
-  const errors = [];
-
-  const lines = output
+  return fs
+    .readFileSync(gitignorePath, 'utf8')
     .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith('#'));
+}
 
-  const pattern = /^(.+?):(\d+)(?::(\d+))?\s+error\s+([^\s]+)\s+(.+)$/;
+function readCli2ConfigObject() {
+  const configPath = path.resolve(
+    process.cwd(),
+    '.markdownlint-cli2.jsonc'
+  );
 
-  for (const line of lines) {
-    const match = line.match(pattern);
+  if (!fileExists(configPath)) {
+    return {};
+  }
 
-    if (!match) {
+  const raw = fs.readFileSync(configPath, 'utf8');
+
+  try {
+    const jsoncParser = require('jsonc-parser');
+    return jsoncParser.parse(raw) || {};
+  } catch {
+    return {};
+  }
+}
+
+function buildEffectiveIgnores() {
+  const cli2Config = readCli2ConfigObject();
+  const baseIgnores = Array.isArray(cli2Config.ignores)
+    ? cli2Config.ignores
+    : [];
+  const gitignorePatterns = readGitignorePatterns();
+
+  return [
+    ...new Set([
+      ...baseIgnores,
+      ...gitignorePatterns,
+      '.git/**',
+      'node_modules/**'
+    ])
+  ];
+}
+
+async function resolveTargetMarkdownFiles(
+  targetGlobs = TARGET_FILES.length > 0
+    ? TARGET_FILES
+    : ['**/*.md']
+) {
+  const ignores = buildEffectiveIgnores();
+
+  try {
+    const globbyMod = await import('globby');
+    const globbyFn = globbyMod.globby || globbyMod.default;
+
+    if (typeof globbyFn === 'function') {
+      return await globbyFn(targetGlobs, {
+        gitignore: true,
+        ignore: ignores,
+        dot: true
+      });
+    }
+  } catch {}
+
+  return targetGlobs;
+}
+
+async function runPrettierSilently(files) {
+  if (!Array.isArray(files) || files.length === 0) {
+    return;
+  }
+
+  let prettier;
+  try {
+    prettier = await import('prettier');
+  } catch {
+    prettier = require('prettier');
+  }
+
+  const prettierApi = prettier.default || prettier;
+
+  for (const relativeFile of files) {
+    const fullPath = path.resolve(
+      process.cwd(),
+      relativeFile
+    );
+
+    if (!fileExists(fullPath)) {
       continue;
     }
 
-    const [, file, lineNumber, columnNumber, rule, description] = match;
+    try {
+      const info = await prettierApi.getFileInfo(fullPath, {
+        ignorePath: path.resolve(
+          process.cwd(),
+          '.prettierignore'
+        )
+      });
 
-    const numericLine = Number(lineNumber);
+      if (info.ignored || !info.inferredParser) {
+        continue;
+      }
+
+      const source = fs.readFileSync(fullPath, 'utf8');
+      const resolvedConfig =
+        (await prettierApi.resolveConfig(fullPath)) || {};
+
+      const formatted = await prettierApi.format(source, {
+        ...resolvedConfig,
+        filepath: fullPath
+      });
+
+      if (formatted !== source) {
+        fs.writeFileSync(fullPath, formatted, 'utf8');
+      }
+    } catch {}
+  }
+}
+
+async function runMarkdownlintCli2Pass({
+  fix = false,
+  targetGlobs = TARGET_FILES.length > 0
+    ? TARGET_FILES
+    : ['**/*.md']
+}) {
+  const markdownlintCli2 = await loadCli2Main();
+  const capturedResults = [];
+  const ignores = buildEffectiveIgnores();
+  const argv = fix
+    ? ['--fix', ...targetGlobs]
+    : [...targetGlobs];
+
+  const captureFormatter = options => {
+    if (options && Array.isArray(options.results)) {
+      capturedResults.push(...options.results);
+    }
+  };
+
+  await markdownlintCli2({
+    directory: process.cwd(),
+    argv,
+    logMessage: () => {},
+    logError: () => {},
+    optionsDefault: {
+      gitignore: true,
+      ignores
+    },
+    optionsOverride: {
+      fix,
+      gitignore: true,
+      noBanner: true,
+      noProgress: true,
+      outputFormatters: [[captureFormatter]]
+    }
+  });
+
+  return capturedResults;
+}
+
+function transformResultsToErrors(results) {
+  const errors = [];
+
+  for (const issue of results) {
+    const file = issue.fileName;
+    const rule = Array.isArray(issue.ruleNames)
+      ? issue.ruleNames.join('/')
+      : String(issue.ruleName || 'UNKNOWN');
+    const line = issue.lineNumber || null;
+    const column =
+      Array.isArray(issue.errorRange) &&
+      issue.errorRange.length > 0
+        ? issue.errorRange[0]
+        : null;
+
+    const description = [
+      issue.ruleDescription,
+      issue.errorDetail
+    ]
+      .filter(Boolean)
+      .join(' - ');
 
     errors.push({
       tool: 'markdownlint',
       severity: severityFor(rule),
       file,
       absoluteFile: path.resolve(file),
-      line: numericLine,
-      column: columnNumber ? Number(columnNumber) : null,
+      line,
+      column,
       rule,
       description,
       reason: ruleCode(rule),
       suggestion: suggestionFor(rule),
-      concreteFix: createConcreteFix(file, numericLine, rule, description),
-      context: createContext(file, numericLine)
+      concreteFix: createConcreteFix(
+        file,
+        line,
+        rule,
+        issue.errorDetail || description
+      ),
+      context: createContext(file, line)
     });
   }
 
   return errors;
 }
 
-function collectMarkdownlintErrors() {
-  const result = runCommand(['markdownlint-cli2', '**/*.md'], [0, 1]);
+async function executeTwoPassPipeline(
+  targetGlobs = TARGET_FILES.length > 0
+    ? TARGET_FILES
+    : ['**/*.md']
+) {
+  const targetFiles =
+    await resolveTargetMarkdownFiles(targetGlobs);
 
-  return parseMarkdownlintOutput(result.output);
-}
+  // 1a. Formata primeiro com Prettier (.prettierrc)
+  await runPrettierSilently(targetFiles);
 
-function extractPrettierFiles(output) {
-  const files = new Set();
-
-  const lines = output
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  for (const line of lines) {
-    if (!line.startsWith('[warn]')) {
-      continue;
-    }
-
-    const value = line.replace(/^\[warn\]\s*/, '').trim();
-
-    if (!value || value.startsWith('Code style issues found') || value.startsWith('Ignored unknown option')) {
-      continue;
-    }
-
-    files.add(value);
-  }
-
-  return [...files];
-}
-
-function checkPrettierFile(file) {
-  const result = runCommand(['prettier', file, '--check'], [0, 1]);
-
-  return {
-    formatted: result.status === 0,
-    output: result.output
-  };
-}
-
-function collectPrettierErrors() {
-  const result = runCommand(['prettier', '.', '--check'], [0, 1]);
-
-  const files = extractPrettierFiles(result.output);
-
-  const errors = [];
-
-  for (const file of files) {
-    const individual = checkPrettierFile(file);
-
-    if (individual.formatted) {
-      continue;
-    }
-
-    errors.push({
-      tool: 'prettier',
-      severity: 'warning',
-      file,
-      absoluteFile: path.resolve(file),
-      line: null,
-      column: null,
-      rule: 'FORMATTING',
-      description: 'Arquivo fora do padrão Prettier',
-      reason: 'formatting',
-      suggestion: `Executar prettier --write "${file}"`,
-      concreteFix: null,
-      context: null
-    });
-  }
-
-  return errors;
-}
-
-function collectErrors() {
-  return [...collectMarkdownlintErrors(), ...collectPrettierErrors()];
-}
-
-function runAutofix() {
-  runCommand(['markdownlint-cli2', '**/*.md', '--fix'], [0, 1]);
-
-  runCommand(['prettier', '.', '--write'], [0, 1]);
-}
-
-function createSummary(errors) {
-  const summary = {
-    markdownlint: {
-      errors: 0
-    },
-    prettier: {
-      errors: 0
-    },
-    severity: {
-      error: 0,
-      warning: 0
-    },
-    rules: {},
-    total: errors.length
-  };
-
-  const ruleCounts = new Map();
-
-  for (const error of errors) {
-    if (error.tool === 'markdownlint') {
-      summary.markdownlint.errors++;
-    }
-
-    if (error.tool === 'prettier') {
-      summary.prettier.errors++;
-    }
-
-    if (Object.hasOwn(summary.severity, error.severity)) {
-      summary.severity[error.severity]++;
-    }
-
-    ruleCounts.set(error.rule, (ruleCounts.get(error.rule) || 0) + 1);
-  }
-
-  const sortedRules = [...ruleCounts.entries()].sort((left, right) => {
-    if (left[0] === 'FORMATTING') {
-      return 1;
-    }
-
-    if (right[0] === 'FORMATTING') {
-      return -1;
-    }
-
-    if (right[1] !== left[1]) {
-      return right[1] - left[1];
-    }
-
-    return left[0].localeCompare(right[0]);
+  // 1b. Aplica auto-fix do markdownlint-cli2 por último na 1ª passagem
+  // para que o Prettier não reintroduza 2 espaços após "1.  " (MD030)
+  await runMarkdownlintCli2Pass({
+    fix: true,
+    targetGlobs
   });
 
-  for (const [rule, count] of sortedRules) {
-    summary.rules[rule] = count;
-  }
+  // 2. Segunda passagem: coleta apenas os erros estruturais restantes
+  const secondPassResults = await runMarkdownlintCli2Pass({
+    fix: false,
+    targetGlobs
+  });
 
-  return summary;
-}
+  const errors =
+    transformResultsToErrors(secondPassResults);
 
-function createToolCounts(errors) {
   return {
-    markdownlint: errors.filter((error) => error.tool === 'markdownlint').length,
-    prettier: errors.filter((error) => error.tool === 'prettier').length,
-    total: errors.length
+    targetFiles,
+    errors
   };
 }
 
-function buildStructuredFiles(errors) {
+function buildStructuredFiles(errors, targetFiles = []) {
   const fileGroups = new Map();
 
   for (const error of errors) {
@@ -492,189 +757,247 @@ function buildStructuredFiles(errors) {
       fileGroups.set(error.file, {
         file: error.file,
         absoluteFile: error.absoluteFile,
-        errorCount: 0,
+        totalErrors: 0,
+        displayedErrors: 0,
+        truncated: false,
+        attempts: 0,
+        status: 'PENDING',
+        isLastAttempt: false,
+        allOccurrences: [],
         rules: new Map()
       });
     }
 
     const fileGroup = fileGroups.get(error.file);
+    fileGroup.totalErrors++;
+    fileGroup.allOccurrences.push(error);
+  }
 
-    fileGroup.errorCount++;
+  for (const cleanFile of targetFiles) {
+    if (!fileGroups.has(cleanFile)) {
+      recordFileCheckResult(cleanFile, false);
+    }
+  }
 
-    const ruleKey = `${error.tool}:${error.rule}`;
+  const structured = [];
 
-    if (!fileGroup.rules.has(ruleKey)) {
-      fileGroup.rules.set(ruleKey, {
-        tool: error.tool,
-        rule: error.rule,
-        severity: error.severity,
-        description: error.description,
-        reason: error.reason,
-        suggestion: error.suggestion,
-        errorCount: 0,
-        occurrences: []
+  const sortedFileGroups = [
+    ...fileGroups.values()
+  ].sort((left, right) =>
+    left.file.localeCompare(right.file)
+  );
+
+  for (const fileGroup of sortedFileGroups) {
+    const retryState = recordFileCheckResult(
+      fileGroup.file,
+      fileGroup.totalErrors > 0
+    );
+
+    fileGroup.attempts = retryState.attempts;
+    fileGroup.status = retryState.status;
+    fileGroup.isLastAttempt = retryState.isLastAttempt;
+
+    const batchedErrors = fileGroup.allOccurrences.slice(
+      0,
+      MAX_BATCH_ERRORS
+    );
+
+    fileGroup.displayedErrors = batchedErrors.length;
+    fileGroup.truncated =
+      fileGroup.totalErrors > MAX_BATCH_ERRORS;
+
+    for (const error of batchedErrors) {
+      const ruleKey = `${error.tool}:${error.rule}`;
+
+      if (!fileGroup.rules.has(ruleKey)) {
+        fileGroup.rules.set(ruleKey, {
+          tool: error.tool,
+          rule: error.rule,
+          severity: error.severity,
+          description: error.description,
+          reason: error.reason,
+          suggestion: error.suggestion,
+          errorCount: 0,
+          occurrences: []
+        });
+      }
+
+      const ruleGroup = fileGroup.rules.get(ruleKey);
+      ruleGroup.errorCount++;
+
+      ruleGroup.occurrences.push({
+        line: error.line,
+        column: error.column,
+        context: error.context,
+        concreteFix: error.concreteFix
       });
     }
 
-    const ruleGroup = fileGroup.rules.get(ruleKey);
-
-    ruleGroup.errorCount++;
-
-    ruleGroup.occurrences.push({
-      line: error.line,
-      column: error.column,
-      context: error.context,
-      concreteFix: error.concreteFix
+    structured.push({
+      file: fileGroup.file,
+      absoluteFile: fileGroup.absoluteFile,
+      errorCount: fileGroup.totalErrors,
+      displayedErrorCount: fileGroup.displayedErrors,
+      truncated: fileGroup.truncated,
+      attempts: fileGroup.attempts,
+      status: fileGroup.status,
+      isLastAttempt: fileGroup.isLastAttempt,
+      rules: [...fileGroup.rules.values()].sort(
+        (left, right) =>
+          left.rule.localeCompare(right.rule)
+      )
     });
   }
 
-  return [...fileGroups.values()]
-    .sort((left, right) => left.file.localeCompare(right.file))
-    .map((fileGroup) => ({
-      file: fileGroup.file,
-      absoluteFile: fileGroup.absoluteFile,
-      errorCount: fileGroup.errorCount,
-      rules: [...fileGroup.rules.values()].sort((left, right) => left.rule.localeCompare(right.rule))
-    }));
+  savePersistedRetries();
+  return structured;
 }
 
-function printAutofixSummary() {
-  if (!RESULT.autofix) {
-    return;
+function formatAgentFriendlyReport(files) {
+  if (files.length === 0) {
+    return '✅ Nenhum problema estrutural encontrado.';
   }
 
-  log('');
-  log('='.repeat(80));
-  log('AUTOFIX');
-  log(`${RESULT.autofix.corrected} problemas corrigidos`);
-  log('VALIDAÇÃO FINAL');
-  log(`MarkdownLint: ${RESULT.autofix.remaining.markdownlint}`);
-  log(`Prettier: ${RESULT.autofix.remaining.prettier}`);
-  log(`Total: ${RESULT.autofix.remaining.total}`);
-  log('='.repeat(80));
-}
+  const lines = [];
+  const hasLastAttempt = files.some(
+    fileGroup => fileGroup.isLastAttempt
+  );
 
-function printOccurrences(ruleGroup) {
-  for (const occurrence of ruleGroup.occurrences) {
-    if (occurrence.line) {
-      const column = occurrence.column ? `, coluna ${occurrence.column}` : '';
-
-      log(`  - linha ${occurrence.line}${column}`);
-    } else {
-      log('  - arquivo completo');
-    }
-
-    if (occurrence.context) {
-      log('');
-      log(occurrence.context);
-      log('');
-    }
-
-    if (occurrence.concreteFix && occurrence.concreteFix.formatted) {
-      log(occurrence.concreteFix.formatted);
-      log('');
-    }
-  }
-}
-
-function printHumanReport() {
-  printAutofixSummary();
-
-  log('');
-  log('='.repeat(80));
-
-  log(FIX_MODE ? 'VALIDAÇÃO FINAL — DETALHES' : 'AGENT LINT REPORT');
-
-  log('='.repeat(80));
-
-  if (RESULT.files.length === 0) {
-    log('');
-    log('✅ Nenhum problema encontrado.');
+  if (hasLastAttempt) {
+    lines.push(
+      '⚠️ ALERTA CRÍTICO: ESTA É A SUA ÚLTIMA TENTATIVA PARA CORRIGIR ESTE ARQUIVO. SEJA ESTRITAMENTE CONSERVADOR.'
+    );
+    lines.push('');
   }
 
-  for (const fileGroup of RESULT.files) {
-    log('');
-    log(`Arquivo: ${fileGroup.file}`);
+  for (let index = 0; index < files.length; index++) {
+    const fileGroup = files[index];
 
-    log(`Caminho absoluto: ${fileGroup.absoluteFile}`);
+    if (index > 0) {
+      lines.push('');
+    }
 
-    log(`${fileGroup.errorCount} erro(s)`);
+    lines.push(`Arquivo: ${fileGroup.file}`);
+    lines.push(
+      `Caminho absoluto: ${fileGroup.absoluteFile}`
+    );
+    lines.push(`${fileGroup.errorCount} erro(s)`);
+    lines.push('<erros>');
 
     for (const ruleGroup of fileGroup.rules) {
-      log('');
-      log(`${ruleGroup.severity.toUpperCase()}`);
+      lines.push('');
+      lines.push(ruleGroup.severity.toUpperCase());
+      lines.push(
+        `${ruleGroup.rule} — ${ruleGroup.errorCount} ocorrência(s)`
+      );
+      lines.push(`Descrição: ${ruleGroup.description}`);
+      lines.push(`Correção: ${ruleGroup.suggestion}`);
 
-      log(`${ruleGroup.rule} — ${ruleGroup.errorCount} ocorrência(s)`);
+      for (const occurrence of ruleGroup.occurrences) {
+        if (occurrence.line) {
+          const column = occurrence.column
+            ? `, coluna ${occurrence.column}`
+            : '';
+          lines.push(
+            `  - linha ${occurrence.line}${column}`
+          );
+        } else {
+          lines.push('  - arquivo completo');
+        }
 
-      log(`Descrição: ${ruleGroup.description}`);
+        if (occurrence.context) {
+          lines.push('');
+          lines.push(occurrence.context);
+          lines.push('');
+        }
 
-      log(`Correção: ${ruleGroup.suggestion}`);
+        if (
+          occurrence.concreteFix &&
+          occurrence.concreteFix.formatted
+        ) {
+          lines.push(occurrence.concreteFix.formatted);
+          lines.push('');
+        }
+      }
+    }
 
-      printOccurrences(ruleGroup);
+    lines.push('</erros>');
+
+    if (fileGroup.truncated) {
+      lines.push(
+        '(Existem mais erros neste arquivo. Corrija estes primeiro para prosseguirmos)'
+      );
     }
   }
 
-  log('');
-  log('='.repeat(80));
-  log('RESUMO');
+  lines.push('');
+  lines.push('INSTRUÇÕES OBRIGATÓRIAS:');
+  lines.push(
+    '1. Altere APENAS as linhas indicadas nos blocos acima.'
+  );
+  lines.push(
+    '2. Não reescreva ou resuma o restante do documento.'
+  );
+  lines.push(
+    '3. Não adicione textos explicativos, retorne apenas o conteúdo corrigido.'
+  );
 
-  log(`MarkdownLint: ${RESULT.summary.markdownlint.errors}`);
-
-  log(`Prettier: ${RESULT.summary.prettier.errors}`);
-
-  log(`Errors: ${RESULT.summary.severity.error}`);
-
-  log(`Warnings: ${RESULT.summary.severity.warning}`);
-
-  log(`Total: ${RESULT.summary.total}`);
-
-  const ruleEntries = Object.entries(RESULT.summary.rules);
-
-  if (ruleEntries.length > 0) {
-    log('');
-    log('REGRAS');
-
-    for (const [rule, count] of ruleEntries) {
-      log(`${rule}: ${count}`);
-    }
-  }
-
-  log('='.repeat(80));
+  return lines.join('\n');
 }
 
-function finalize(errors) {
+async function runGate(options = {}) {
+  const targetGlobs =
+    options.files ||
+    (TARGET_FILES.length > 0 ? TARGET_FILES : ['**/*.md']);
+
+  loadPersistedRetries();
+
+  const { targetFiles, errors } =
+    await executeTwoPassPipeline(targetGlobs);
+
+  const structuredFiles = buildStructuredFiles(
+    errors,
+    targetFiles
+  );
+
   RESULT.errors = errors;
-  RESULT.summary = createSummary(errors);
-  RESULT.files = buildStructuredFiles(errors);
+  RESULT.files = structuredFiles;
   RESULT.success = errors.length === 0;
+  RESULT.prompt = formatAgentFriendlyReport(
+    structuredFiles
+  );
+
+  return RESULT;
 }
 
-try {
-  if (FIX_MODE) {
-    const before = collectErrors();
+if (require.main === module) {
+  (async () => {
+    try {
+      await runGate();
 
-    runAutofix();
+      if (JSON_MODE) {
+        process.stdout.write(
+          JSON.stringify(RESULT, null, 2)
+        );
+      } else {
+        log(RESULT.prompt);
+      }
 
-    const remaining = collectErrors();
-
-    RESULT.autofix = {
-      before: createToolCounts(before),
-      corrected: Math.max(0, before.length - remaining.length),
-      remaining: createToolCounts(remaining)
-    };
-
-    finalize(remaining);
-  } else {
-    finalize(collectErrors());
-  }
-
-  if (JSON_MODE) {
-    process.stdout.write(JSON.stringify(RESULT, null, 2));
-  } else {
-    printHumanReport();
-  }
-
-  process.exit(RESULT.success ? EXIT_SUCCESS : EXIT_LINT_ERROR);
-} catch (error) {
-  fail(error instanceof Error ? error.message : String(error));
+      process.exit(
+        RESULT.success ? EXIT_SUCCESS : EXIT_LINT_ERROR
+      );
+    } catch (error) {
+      fail(error);
+    }
+  })();
 }
+
+module.exports = {
+  MAX_RETRIES,
+  MAX_BATCH_ERRORS,
+  RULE_SEVERITY,
+  MaxRetriesExceededError,
+  runGate,
+  executeTwoPassPipeline,
+  formatAgentFriendlyReport
+};
