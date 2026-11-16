@@ -20,7 +20,8 @@
     "tasks.json": true,
     "agent-lint-retries.json": true,
     "**/scripts/agent-lint-report.js": true,
-    "**/.tmp": true
+    "**/.temp": true,
+    ".gitignore": true
   },
   "search.exclude": {
     "**/node_modules": true,
