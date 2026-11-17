@@ -90,6 +90,40 @@ CONCLUÍDA e 2 ações PENDENTES. As observações de Davi Sermenho são evidên
 humana direta da experiência declarada, não comprovação representativa de todos
 os atletas e treinadores.
 
+<a id="p01-val-003"></a>
+
+## Revalidação após a conferência documental das fontes
+
+**ID da validação:** `P01-VAL-003`
+
+**Data da validação:** 2026-11-16
+
+**Escopo:** efeito da conferência integral de F01, F04 e F08–F14 sobre a AÇÃO
+4.2. As demais ações conservam a classificação e as evidências de
+[`P01-VAL-002`](#p01-val-002).
+
+| ID da ação                        | Classificação          | Evidência e resultado da revalidação                                                                                                                                                                                                                                                                                                |
+| --------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`P01-ACT-01-01`](#p01-act-01-01) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                                                 |
+| [`P01-ACT-01-02`](#p01-act-01-02) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                                                 |
+| [`P01-ACT-02-01`](#p01-act-02-01) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                                                 |
+| [`P01-ACT-02-02`](#p01-act-02-02) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                                                 |
+| [`P01-ACT-03-01`](#p01-act-03-01) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                                                 |
+| [`P01-ACT-03-02`](#p01-act-03-02) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                                                 |
+| [`P01-ACT-04-01`](#p01-act-04-01) | CONCLUÍDA              | E01–E10 permanecem materializados; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                             |
+| [`P01-ACT-04-02`](#p01-act-04-02) | PARCIALMENTE CONCLUÍDA | A [auditoria das fontes](./P1-problemas-necessidades-oportunidades.md#p1-auditoria-fontes) conferiu integralmente as nove fontes, delimitou alegações e registrou os [subsídios de retorno](./P1-problemas-necessidades-oportunidades.md#p1-auditoria-acao-42). A revisão independente por segunda pessoa permanece NÃO VERIFICADA. |
+| [`P01-ACT-05-01`](#p01-act-05-01) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                                                 |
+| [`P01-ACT-05-02`](#p01-act-05-02) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                                                 |
+| [`P01-ACT-06-01`](#p01-act-06-01) | CONCLUÍDA              | O P1 canônico incorpora a auditoria e preserva IDs e pendências.                                                                                                                                                                                                                                                                    |
+| [`P01-ACT-07-01`](#p01-act-07-01) | PENDENTE               | P2 continua sem registro de execução; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                          |
+| [`P01-ACT-07-02`](#p01-act-07-02) | PENDENTE               | P3 continua sem registro de execução; herda `P01-VAL-002`.                                                                                                                                                                                                                                                                          |
+
+**Resultado de `P01-VAL-003`:** 10 ações CONCLUÍDAS, 1 ação PARCIALMENTE
+CONCLUÍDA e 2 ações PENDENTES. A conferência documental das nove fontes está
+CONCLUÍDA; a AÇÃO 4.2 permanece parcial porque a correspondência fonte →
+localização → afirmação ainda não possui revisão independente. Essa pendência é
+BLOQUEANTE somente para declarar validação externa integral.
+
 ```mermaid
 graph TD
     A[P0: Contrato de consultoria] --> B[P1: Diagnóstico]
