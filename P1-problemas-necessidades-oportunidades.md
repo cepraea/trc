@@ -18,14 +18,14 @@ final, citadas como [F01], [F02] etc.
 seus riscos e sua estrutura competitiva. A dor dos usuários brasileiros é, na
 maior parte, INFERIDA ou HIPÓTESE, e está marcada como tal em cada item.
 
-| Rótulo         | Significado                                                                                  | Uso aqui                                                        |
-| -------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| VER-D          | Verificado, diretamente aplicável: fonte pública sobre handebol de praia                     | Sempre com [Fnn]                                                |
-| VER-A          | Verificado em contexto semelhante: handebol indoor, vôlei de praia, ferramentas de terceiros | Apoia plausibilidade; não prova o problema no handebol de praia |
-| INF            | Inferido: conclusão derivada de evidências identificadas                                     | Raciocínio explicitado                                          |
-| HIP            | Hipótese ainda não validada                                                                  | Depende das questões do E08                                     |
-| PROPOSTA       | Direção sugerida por mim                                                                     | Nunca é requisito aprovado                                      |
-| DECISÃO_HUMANA | Determinação expressa do responsável                                                         | Neste P1: apenas o escopo (atletas e treinadores)               |
+| Rótulo         | Significado                                                                                  | Uso aqui                                                                                                         |
+| -------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| VER-D          | Verificado, diretamente aplicável: fonte pública sobre handebol de praia                     | Sempre com [Fnn]                                                                                                 |
+| VER-A          | Verificado em contexto semelhante: handebol indoor, vôlei de praia, ferramentas de terceiros | Apoia plausibilidade; não prova o problema no handebol de praia                                                  |
+| INF            | Inferido: conclusão derivada de evidências identificadas                                     | Raciocínio explicitado                                                                                           |
+| HIP            | Hipótese ainda não validada                                                                  | Depende das questões do E08                                                                                      |
+| PROPOSTA       | Direção sugerida por mim                                                                     | Nunca é requisito aprovado                                                                                       |
+| DECISÃO_HUMANA | Determinação expressa do responsável                                                         | Escopo geral: atletas e treinadores; na Fase 1, atletas da Seleção Brasileira Feminina Adulta e comissão técnica |
 
 Limites da base de evidências:
 
@@ -48,9 +48,10 @@ Limites da base de evidências:
 
 As regras, riscos e demandas físicas do handebol de praia são descritos nas
 fontes consultadas. O responsável também documentou experiências próprias sobre
-a rotina e os problemas no Brasil, mas ainda não houve validação representativa
-com atletas e outros treinadores. Por isso a recomendação não é escolher
-funcionalidades: é fechar três lacunas curtas antes do P2.
+a rotina e os problemas no Brasil e delimitou a Fase 1, mas ainda não houve
+validação representativa com atletas e outros treinadores. Por isso a
+recomendação não é escolher funcionalidades: é consolidar as lacunas que ainda
+afetam o público escolhido antes de transformar oportunidades em solução.
 
 **Principais achados:**
 
@@ -78,28 +79,45 @@ funcionalidades: é fechar três lacunas curtas antes do P2.
    nesta investigação. Compará-las é trabalho do P2.
    [P1-EV-F12-001](#p1-ev-f12-001) [P1-EV-F13-001](#p1-ev-f13-001)
    [P1-EV-F14-001](#p1-ev-f14-001).
+7. Q-01 a Q-08 receberam respostas do responsável. Elas delimitam a Fase 1 às
+   atletas da Seleção Brasileira Feminina Adulta e à comissão técnica,
+   distinguem essa estrutura da realidade dos clubes e registram limites de
+   conectividade, dispositivos, dupla modalidade, composição da comissão,
+   inscrição e privacidade. Os registros [`P01-EV-P1-007`](#p01-ev-p1-007) a
+   [`P01-EV-P1-014`](#p01-ev-p1-014) preservam a classe e os limites de cada
+   resposta. Q-07 permanece NÃO VERIFICADA documentalmente e não fortalece
+   PRB-10, NEC-08 ou OPP-05.
 
 Recomendação (PROPOSTA, não decisão):
 
-1. Responder Q-01, Q-02 e Q-09 do E08, em poucas linhas cada. Isso define o
-   público inicial e transforma hipóteses em observação documentada.
-2. Seguir ao P2 com foco nos três problemas de prioridade Alta (PRB-04, PRB-03,
-   PRB-01), mantendo os demais como hipóteses abertas.
-3. Planejar, para uma etapa posterior, a validação com usuários reais, incluindo
-   atletas, que são a maior lacuna desta investigação.
+1. Confirmar os aparelhos disponíveis nos locais (Q-03), medir a parcela que
+   concilia modalidades (Q-05), obter os regulamentos oficiais citados em Q-07 e
+   confirmar nominalmente o elenco adulto e a base jurídica aplicável (Q-08).
+2. Seguir ao P2 usando a priorização específica da Fase 1 em E07, sem transferir
+   automaticamente à seleção problemas observados em clubes, categorias de base
+   ou contextos amadores.
+3. Planejar validação com atletas e outros integrantes da comissão técnica, pois
+   o relato de uma pessoa documenta experiência, mas não representa todo o
+   público escolhido.
 4. Não fixar funcionalidades nem tecnologias antes dessa validação mínima.
 
 <a id="p01-e01"></a>
 
 ## E01 — Perfil e segmentação dos públicos
 
-Os dois públicos confirmados são atletas e treinadores (DECISÃO_HUMANA). A
-segmentação abaixo é uma PROPOSTA de trabalho para organizar diferenças de
-objetivo, experiência, categoria e contexto competitivo, e precisa ser validada
-pelo responsável (Q-01, no E08). As reportagens de 2025 distinguem as categorias
-infantil, cadete, júnior e adulto na etapa final do Circuito Brasileiro, e
-juvenil e adulto na Copa Brasil; não demonstram que todas estiveram em cada
-evento [F11].
+Os dois públicos confirmados no escopo geral são atletas e treinadores
+(DECISÃO_HUMANA). Q-01 refinou a Fase 1 para as atletas da Seleção Brasileira
+Feminina Adulta, com a comissão técnica incluída no contexto operacional. Essa
+decisão não elimina os demais segmentos nem demonstra que todo integrante da
+comissão será usuário direto; ATL-2 a ATL-5 e TRE-2 a TRE-5 permanecem como
+segmentos futuros ou fora da Fase 1. A segmentação abaixo continua sendo uma
+PROPOSTA de trabalho para organizar diferenças de objetivo, experiência,
+categoria e contexto competitivo. As reportagens de 2025 distinguem as
+categorias infantil, cadete, júnior e adulto na etapa final do Circuito
+Brasileiro, e juvenil e adulto na Copa Brasil; não demonstram que todas
+estiveram em cada evento [F11]. Evidências e limites:
+[`P01-EV-P1-007`](#p01-ev-p1-007), [`P01-EV-P1-012`](#p01-ev-p1-012) e
+[`P01-EV-P1-014`](#p01-ev-p1-014).
 
 **Atletas:**
 
@@ -732,10 +750,27 @@ Observações:
   ser analisado por quem tem competência na área, em etapa posterior.
 - O peso relativo das necessidades provavelmente muda por segmento: para TRE-1,
   NEC-03, NEC-04 e NEC-07 tendem a pesar mais; para TRE-5 e TRE-2, NEC-08 e
-  NEC-12. INF, a validar com o responsável (Q-01).
+  NEC-12. A decisão de Q-01 seleciona TRE-1 e ATL-1 para a Fase 1, mas não
+  valida esses pesos nem transfere à seleção as dificuldades dos clubes.
 - Estudo com 651 atletas descreve que a maioria provavelmente joga também indoor
   [F06]. Se o público brasileiro for assim, NEC-03 e NEC-04 tornam-se mais
-  comuns a atletas e treinadores de ambas as modalidades (Q-05).
+  comuns a atletas e treinadores de ambas as modalidades. Q-05 relata atuação
+  simultânea apenas pontual entre atletas de alto rendimento e não documenta a
+  parcela, portanto essa hipótese não foi fortalecida.
+
+**Leitura específica da Fase 1:** NEC-01, NEC-02, NEC-07 e NEC-11 são
+necessidades plausíveis do treinador e do analista, mas seus fluxos atuais ainda
+precisam de observação no contexto da seleção. NEC-03, NEC-04 e NEC-05 envolvem
+também preparador físico e fisioterapeuta, cuja presença foi relatada em Q-06;
+isso identifica responsáveis potenciais, mas não prova que os problemas estejam
+resolvidos ou que esses profissionais sejam usuários diretos. NEC-08 não pode
+ser fortalecida por Q-07 sem fonte oficial identificada e conferida. NEC-09 e
+NEC-12 se vinculam principalmente a base, clubes e grupos amadores e ficam fora
+da Fase 1, sem serem descartadas. A voz das atletas continua pendente.
+Evidências e limites: [`P01-EV-P1-007`](#p01-ev-p1-007),
+[`P01-EV-P1-008`](#p01-ev-p1-008), [`P01-EV-P1-011`](#p01-ev-p1-011),
+[`P01-EV-P1-012`](#p01-ev-p1-012), [`P01-EV-P1-013`](#p01-ev-p1-013) e
+[`P01-EV-P1-014`](#p01-ev-p1-014).
 
 <a id="p01-e07"></a>
 
@@ -765,10 +800,23 @@ investigar primeiro, não o que construir primeiro, e não é decisão de escopo
 | PRB-13 | Decisão em jogo                       | Ajustes tardios                    | Todo jogo                    | HIP                                                | A validar        | A janela de decisão é o gargalo (HIP)                               |
 | PRB-14 | Organização de treinos                | Falta de continuidade              | Semanal                      | HIP                                                | A validar        | Grupos pequenos perdem treinos por falta de coordenação (HIP)       |
 
-Dentro de "Média" não há ordem. O que mais pode mudar este quadro: o público
-inicial escolhido (Q-01), como o registro é feito hoje (Q-02), quantos atletas
-alternam modalidades (Q-05) e quais problemas o responsável já observou
-diretamente (Q-09).
+Dentro de "Média" não há ordem. Essa tabela permanece como linha de base geral
+dos segmentos, sem ser automaticamente aplicável à seleção. Q-01, Q-02, Q-05 e
+Q-09 foram respondidas; suas respostas exigem a seguinte recalibração para o
+público da Fase 1.
+
+| Faixa de investigação na Fase 1 | Problemas                                       | Justificativa e limite                                                                                                                                                                                        |
+| ------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Alta para investigar            | PRB-02, PRB-03, PRB-04, PRB-07, PRB-09 e PRB-13 | Há relação com desempenho, saúde ou decisão da seleção, sustentada por regras, literatura ou observação humana. A ocorrência e a intensidade no público escolhido ainda precisam de validação representativa. |
+| A validar no público            | PRB-01, PRB-05, PRB-08 e PRB-12                 | Q-02 e Q-06 mostram estrutura dedicada na seleção, o que impede transferir automaticamente problemas de clubes; não há voz direta das atletas.                                                                |
+| Baixa até nova evidência        | PRB-06                                          | Q-05 relata simultaneidade pontual no alto rendimento e não informa amostra ou proporção.                                                                                                                     |
+| FORA_DO_ESCOPO_DA_FASE_1        | PRB-10, PRB-11 e PRB-14                         | As evidências disponíveis se referem principalmente a clubes, base ou contextos amadores. Q-07 não possui fonte oficial conferida. Os problemas são preservados para fases futuras.                           |
+
+Esta recalibração ordena investigação, não construção, requisito ou aceitação de
+produto. Sua sustentação está nos registros [`P01-EV-P1-007`](#p01-ev-p1-007),
+[`P01-EV-P1-008`](#p01-ev-p1-008), [`P01-EV-P1-011`](#p01-ev-p1-011),
+[`P01-EV-P1-012`](#p01-ev-p1-012), [`P01-EV-P1-013`](#p01-ev-p1-013),
+[`P01-EV-P1-014`](#p01-ev-p1-014) e [`P01-EV-P1-006`](#p01-ev-p1-006).
 
 <a id="p01-e08"></a>
 
@@ -789,87 +837,189 @@ inicial, e o trabalho segue sem elas, com a fragilidade já assinalada.
 | Q-06 | Quem cuida da saúde e da preparação física nas equipes (profissional, o próprio treinador, ninguém)?                                  | PRB-04, PRB-05, PRB-07 e o público adicional de `staff`            | Experiência do responsável                                               |
 | Q-07 | O que a CBHb e as federações exigem em inscrição e súmula, e em que formato?                                                          | PRB-10, NEC-08, OPP-05                                             | Regulamentos da CBHb; consulta à confederação                            |
 | Q-08 | Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso de seus dados?                                         | ATL-3, PRB-11, privacidade das fases seguintes                     | Responsável; análise jurídica especializada em etapa posterior           |
-| Q-09 | Quais problemas do E03 o responsável já observou diretamente, em que situação e com que frequência?                                   | Eleva itens de HIP ou INF para evidência observada; reordena o E07 | Registro das observações do responsável, com contexto |
+| Q-09 | Quais problemas do E03 o responsável já observou diretamente, em que situação e com que frequência?                                   | Eleva itens de HIP ou INF para evidência observada; reordena o E07 | Registro das observações do responsável, com contexto                    |
 
 ---
+
+<a id="p01-q-01"></a>
 
 ## Q-01
 
-Qual é o público inicial prioritário: seleção e alto rendimento, clubes do circuito, base ou amadores?
+Qual é o público inicial prioritário: seleção e alto rendimento, clubes do
+circuito, base ou amadores?
 
-Público-alvo prioritário inicial delimitado por **DECISÃO_HUMANA** para as atletas da Seleção Brasileira Feminina Adulta de Handebol de Praia. O escopo abrange a comissão técnica e exclui na Fase 1 equipes amadoras e categorias de base.
+Público-alvo prioritário inicial delimitado por **DECISÃO_HUMANA** para as
+atletas da Seleção Brasileira Feminina Adulta de Handebol de Praia. O escopo
+abrange a comissão técnica e exclui na Fase 1 equipes amadoras e categorias de
+base.
+
+**Rastreabilidade:** [`P01-EV-P1-007`](#p01-ev-p1-007) registra a decisão, seu
+limite e o retorno para [E01](#p01-e01), [E06](#p01-e06), [E07](#p01-e07),
+[E09](#p01-e09) e [E10](#p01-e10).
 
 ---
+
+<a id="p01-q-02"></a>
 
 ## Q-02
 
-Como treinadores brasileiros registram hoje dados de jogo e de treino (papel, planilha, vídeo, nada) e o que não conseguem registrar?
+Como treinadores brasileiros registram hoje dados de jogo e de treino (papel,
+planilha, vídeo, nada) e o que não conseguem registrar?
 
-Relatos qualitativos do responsável indicam que o registro de dados de jogo e treino ocorre majoritariamente de forma informal (papel ou planilhas locais) por acúmulo de funções em clubes. Lacunas operacionais apontadas no contexto observado: estatísticas detalhadas de desempenho individual/coletivo, métricas de eficiência por tipo de jogada, mapa de arremessos e padrões táticos em tempo real. A Seleção Brasileira Adulta conta com analista de desempenho dedicado, separando sua estrutura operacional da realidade dos clubes.
+Relatos qualitativos do responsável indicam que o registro de dados de jogo e
+treino ocorre majoritariamente de forma informal (papel ou planilhas locais) por
+acúmulo de funções em clubes. Lacunas operacionais apontadas no contexto
+observado: estatísticas detalhadas de desempenho individual/coletivo, métricas
+de eficiência por tipo de jogada, mapa de arremessos e padrões táticos em tempo
+real. A Seleção Brasileira Adulta conta com analista de desempenho dedicado,
+separando sua estrutura operacional da realidade dos clubes.
+
+**Rastreabilidade:** [`P01-EV-P1-008`](#p01-ev-p1-008) classifica o conteúdo
+como relato do responsável, sem amostra representativa, e retorna a PRB-01,
+PRB-02, OPP-01, OPP-12, [E07](#p01-e07) e [E10](#p01-e10).
 
 ---
+
+<a id="p01-q-03"></a>
 
 ## Q-03
 
-**Pergunta:** Que conexão e que aparelhos existem nos locais de jogo e de treino?
+**Pergunta:** Que conexão e que aparelhos existem nos locais de jogo e de
+treino?
 
-**Resposta:** Com base no relato de vivência prática do responsável, a internet móvel nos locais de evento observados é estável e não sofre quedas de sinal. As informações relativas aos tipos e especificações dos aparelhos nos locais de jogo e treino permanecem não documentadas.
+**Resposta:** Com base no relato de vivência prática do responsável, a internet
+móvel nos locais de evento observados é estável e não sofre quedas de sinal. As
+informações relativas aos tipos e especificações dos aparelhos nos locais de
+jogo e treino permanecem não documentadas.
+
+**Rastreabilidade:** [`P01-EV-P1-009`](#p01-ev-p1-009) limita a observação aos
+eventos vivenciados e retorna a OPP-12 e [E10](#p01-e10); aparelhos permanecem
+NÃO DOCUMENTADOS.
 
 ---
+
+<a id="p01-q-04"></a>
 
 ## Q-04
 
-**Pergunta:** Que decisões o treinador toma entre sets e em tempo técnico, e que informação gostaria de ter nesse momento?
+**Pergunta:** Que decisões o treinador toma entre sets e em tempo técnico, e que
+informação gostaria de ter nesse momento?
 
-**Resposta:** Entre sets e em tempos técnicos, o treinador toma decisões como ajustes de marcação, substituições por desgaste e variação de sistemas ofensivos. Necessidades informacionais de interesse relatadas: taxa de conversão de arremessos de 2 pontos por atleta, eficiência de defesa contra shoot-outs e mapeamento de direção preferencial de arremesso do adversário (mantidas estritamente como necessidades informacionais, sem converter em requisitos ou funcionalidades aprovadas).
+**Resposta:** Entre sets e em tempos técnicos, o treinador toma decisões como
+ajustes de marcação, substituições por desgaste e variação de sistemas
+ofensivos. Necessidades informacionais de interesse relatadas: taxa de conversão
+de arremessos de 2 pontos por atleta, eficiência de defesa contra shoot-outs e
+mapeamento de direção preferencial de arremesso do adversário (mantidas
+estritamente como necessidades informacionais, sem converter em requisitos ou
+funcionalidades aprovadas).
+
+**Rastreabilidade:** [`P01-EV-P1-010`](#p01-ev-p1-010) retorna a PRB-13, NEC-11
+e OPP-07 e preserva a separação entre necessidade informacional e funcionalidade
+aprovada.
 
 ---
+
+<a id="p01-q-05"></a>
 
 ## Q-05
 
-**Pergunta:** Que parcela dos atletas e treinadores atua também no indoor na mesma temporada?  
-**Resposta:** Hipótese qualitativa baseada em observação prática: a atuação simultânea no handebol indoor na mesma temporada é considerada pontual entre atletas e rara entre treinadores no alto rendimento, observando-se maior conciliação no cenário universitário e amador. A parcela exata e a amostra estatística permanecem não documentadas.
+**Pergunta:** Que parcela dos atletas e treinadores atua também no indoor na
+mesma temporada? **Resposta:** Hipótese qualitativa baseada em observação
+prática: a atuação simultânea no handebol indoor na mesma temporada é
+considerada pontual entre atletas e rara entre treinadores no alto rendimento,
+observando-se maior conciliação no cenário universitário e amador. A parcela
+exata e a amostra estatística permanecem não documentadas.
+
+**Rastreabilidade:** [`P01-EV-P1-011`](#p01-ev-p1-011) mantém a resposta como
+HIP e retorna a PRB-06, NEC-03, NEC-04, [E06](#p01-e06) e [E07](#p01-e07), sem
+elevar a sustentação desses itens.
 
 ---
+
+<a id="p01-q-06"></a>
 
 ## Q-06
 
-Quem cuida da saúde e da preparação física nas equipes (profissional, o próprio treinador, ninguém)?
+Quem cuida da saúde e da preparação física nas equipes (profissional, o próprio
+treinador, ninguém)?
 
 Estrutura observada das comissões técnicas:
 
-- **Seleção Brasileira:** conta com uma comissão completa, composta por treinador principal, auxiliar técnico, preparador físico, analista de desempenho e fisioterapeuta.  
-- **Clubes e Equipes Regionais:** Hipótese baseada em relatos de estrutura enxuta (frequentemente apenas treinador principal e auxiliar); a preparação física e a gestão de saúde costumam ser assumidas diretamente pelo próprio treinador ou por prestadores autônomos pontuais.
+- **Seleção Brasileira:** conta com uma comissão completa, composta por
+  treinador principal, auxiliar técnico, preparador físico, analista de
+  desempenho e fisioterapeuta.
+- **Clubes e Equipes Regionais:** Hipótese baseada em relatos de estrutura
+  enxuta (frequentemente apenas treinador principal e auxiliar); a preparação
+  física e a gestão de saúde costumam ser assumidas diretamente pelo próprio
+  treinador ou por prestadores autônomos pontuais.
+
+**Rastreabilidade:** [`P01-EV-P1-012`](#p01-ev-p1-012) distingue a estrutura
+observada da seleção da hipótese sobre clubes e retorna a PRB-04, PRB-05,
+PRB-07, [E01](#p01-e01), [E06](#p01-e06) e [E07](#p01-e07).
 
 ---
+
+<a id="p01-q-07"></a>
 
 ## Q-07
 
-O que a CBHb e as federações exigem em inscrição e súmula, e em que formato?  
+O que a CBHb e as federações exigem em inscrição e súmula, e em que formato?
 
 Inscrição no Circuito Carioca 2026 (FHERJ):
 
-- Taxa de inscrição/renovação individual por atleta: R$ 25,00;  
-- Taxa de inscrição da equipe: R$ 2.000,00;  
-- Envio do comprovante de pagamento junto às fichas de inscrição preenchidas (atletas e equipes) para o e-mail da FHERJ.
+- Taxa de inscrição/renovação individual por atleta: R$ 25,00;
+- Taxa de inscrição da equipe: R$ 2.000,00;
+- Envio do comprovante de pagamento junto às fichas de inscrição preenchidas
+  (atletas e equipes) para o e-mail da FHERJ.
 
 Inscrição no Circuito Brasileiro 2026 (CBHb):
 
-- Taxa de inscrição/renovação individual por atleta: R$ 50,00;  
-- Taxa de inscrição da equipe por etapa classificatória: R$ 1.000,00;  
-- Envio das fichas de inscrição preenchidas (atletas e equipes) com comprovante de pagamento em anexo para o e-mail da FHERJ;  
+- Taxa de inscrição/renovação individual por atleta: R$ 50,00;
+- Taxa de inscrição da equipe por etapa classificatória: R$ 1.000,00;
+- Envio das fichas de inscrição preenchidas (atletas e equipes) com comprovante
+  de pagamento em anexo para o e-mail da FHERJ;
 - Realização de pagamentos e inscrições diretamente por intermédio da federação.
 
 Exigências de Súmula e Procedimentos dos Jogos:  
-As equipes devem encaminhar por e-mail a relação oficial dos atletas (contendo nome completo e número da camisa) com antecedência prévia ao evento — até 4 dias antes para a FHERJ e 15 dias antes no caso da CBHb. As súmulas são impressas em formato físico para cada partida, cabendo à mesa de arbitragem e aos anotadores o registro manual das pontuações (1 ou 2 pontos), punições/exclusões, pedidos de tempo técnico e relatórios disciplinares ao longo dos jogos.
+As equipes devem encaminhar por e-mail a relação oficial dos atletas (contendo
+nome completo e número da camisa) com antecedência prévia ao evento — até 4 dias
+antes para a FHERJ e 15 dias antes no caso da CBHb. As súmulas são impressas em
+formato físico para cada partida, cabendo à mesa de arbitragem e aos anotadores
+o registro manual das pontuações (1 ou 2 pontos), punições/exclusões, pedidos de
+tempo técnico e relatórios disciplinares ao longo dos jogos.
+
+**Conferência documental em 19/11/2026:** os arquivos locais e as páginas
+oficiais consultadas, incluindo o
+[índice de portarias da CBHb](https://cbhb.org.br/governanca/156/portarias) e
+uma
+[página oficial de evento do Circuito Brasileiro](https://cbhb.org.br/evento/2870/circuito-brasileiro-de-handebol-de-praia-adulto-masculino-etapa-norte),
+não apresentaram regulamento de 2026 que confirmasse os valores, prazos, e-mails
+e formatos descritos. Também não foi localizada fonte oficial da FHERJ que
+sustentasse os dados relatados. O resultado não prova que o regulamento não
+exista; registra apenas que ele não foi identificado no escopo consultado. Até
+que a fonte oficial seja obtida e integralmente conferida, o conteúdo de Q-07 é
+relato humano NÃO VERIFICADO e não fortalece PRB-10, NEC-08 ou OPP-05.
+
+**Rastreabilidade:** [`P01-EV-P1-013`](#p01-ev-p1-013) registra a busca, o
+resultado, o limite e o retorno para PRB-10, NEC-08, OPP-05, [E06](#p01-e06),
+[E07](#p01-e07), [E09](#p01-e09) e [E10](#p01-e10).
 
 ---
 
+<a id="p01-q-08"></a>
+
 ## Q-08
 
-Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso de seus dados?  
+Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso
+de seus dados?
 
-No escopo prioritário inicial (Seleção Brasileira Adulta), o público é delimitado como adulto por decisao humana, pendente de confirmação nominal do elenco.
+No escopo prioritário inicial (Seleção Brasileira Adulta), o público é
+delimitado como adulto por decisao humana, pendente de confirmação nominal do
+elenco.
+
+**Rastreabilidade:** [`P01-EV-P1-014`](#p01-ev-p1-014) registra a decisão de
+trabalhar com adultas, a confirmação nominal pendente e o retorno para ATL-3,
+PRB-11, [E01](#p01-e01), [E06](#p01-e06), [E07](#p01-e07) e [E10](#p01-e10).
 
 ---
 
@@ -905,6 +1055,19 @@ especificação e critério de aceitação ainda não existem para nenhum item.
 | PRB-13   | TRE                          | NEC-11         | OPP-07                        | HIP; [F01] [F03] [P1-EV-F01-001](#p1-ev-f01-001)                                                                       |
 | PRB-14   | TRE-2, TRE-5, ATL            | NEC-12         | OPP-09, OPP-12                | HIP                                                                                                                    |
 
+### Reciprocidade das respostas Q-01 a Q-08
+
+| Resposta          | Itens afetados                            | Registro de evidência             | Efeito controlado                                                                  |
+| ----------------- | ----------------------------------------- | --------------------------------- | ---------------------------------------------------------------------------------- |
+| [Q-01](#p01-q-01) | E01, E06, E07, E09 e E10                  | [`P01-EV-P1-007`](#p01-ev-p1-007) | Delimita a Fase 1 sem apagar o escopo geral nem validar dores.                     |
+| [Q-02](#p01-q-02) | PRB-01, PRB-02, OPP-01, OPP-12, E07 e E10 | [`P01-EV-P1-008`](#p01-ev-p1-008) | Distingue clubes da seleção; não comprova prevalência.                             |
+| [Q-03](#p01-q-03) | OPP-12 e E10                              | [`P01-EV-P1-009`](#p01-ev-p1-009) | Registra conectividade observada; aparelhos continuam não documentados.            |
+| [Q-04](#p01-q-04) | PRB-13, NEC-11 e OPP-07                   | [`P01-EV-P1-010`](#p01-ev-p1-010) | Registra decisões e informação desejada, sem aprovar funcionalidade.               |
+| [Q-05](#p01-q-05) | PRB-06, NEC-03, NEC-04, E06 e E07         | [`P01-EV-P1-011`](#p01-ev-p1-011) | Mantém a resposta como HIP por ausência de amostra e proporção.                    |
+| [Q-06](#p01-q-06) | PRB-04, PRB-05, PRB-07, E01, E06 e E07    | [`P01-EV-P1-012`](#p01-ev-p1-012) | Confirma a estrutura relatada da seleção; clubes permanecem HIP.                   |
+| [Q-07](#p01-q-07) | PRB-10, NEC-08, OPP-05, E06, E07 e E10    | [`P01-EV-P1-013`](#p01-ev-p1-013) | NÃO VERIFICADO; não eleva a sustentação dos itens afetados.                        |
+| [Q-08](#p01-q-08) | ATL-3, PRB-11, E01, E06, E07 e E10        | [`P01-EV-P1-014`](#p01-ev-p1-014) | Fase 1 adulta por decisão; elenco nominal e análise jurídica permanecem pendentes. |
+
 Cobertura: 14 problemas, 12 necessidades e 13 oportunidades, todos com
 identificador estável e sem órfãos. IDs não são reaproveitados: se um item for
 descartado, seu ID fica registrado como descartado.
@@ -913,8 +1076,9 @@ descartado, seu ID fica registrado como descartado.
 
 Os registros abaixo identificam as evidências usadas em
 [P01-VAL-001](./P0-P1-tutorial.md#registro-de-validacao-das-acoes-p0p1) e
-[P01-VAL-002](./P0-P1-tutorial.md#p01-val-002), materializando o retorno para
-cada ação classificada.
+[P01-VAL-002](./P0-P1-tutorial.md#p01-val-002), bem como as evidências
+integradas em [P01-VAL-004](./P0-P1-tutorial.md#p01-val-004), materializando o
+retorno para cada ação classificada.
 
 ### P01-EV-P1-001
 
@@ -977,6 +1141,103 @@ para todo o público sem validação adicional com atletas e outros treinadores.
 **Retorno:** sustenta [`P01-ACT-05-01`](./P0-P1-tutorial.md#p01-act-05-01) e
 [`P01-ACT-05-02`](./P0-P1-tutorial.md#p01-act-05-02) em
 [`P01-VAL-002`](./P0-P1-tutorial.md#p01-val-002).
+
+<a id="p1-integracao-q01-q08"></a>
+
+### P01-EV-P1-007
+
+A resposta [Q-01](#p01-q-01) é DECISÃO_HUMANA que delimita a Fase 1 às atletas
+da Seleção Brasileira Feminina Adulta e inclui a comissão técnica no contexto
+operacional. Ela não representa validação de dores, não define quais integrantes
+da comissão serão usuários diretos e não elimina clubes, base ou amadores do
+escopo geral futuro.
+
+**Retorno:** sustenta a delimitação aplicada em [E01](#p01-e01),
+[E06](#p01-e06), [E07](#p01-e07), [E09](#p01-e09) e [E10](#p01-e10), e a
+revalidação [`P01-VAL-004`](./P0-P1-tutorial.md#p01-val-004).
+
+### P01-EV-P1-008
+
+A resposta [Q-02](#p01-q-02) registra o relato do responsável sobre papel e
+planilhas em clubes, lacunas de análise e existência de analista dedicado na
+Seleção Brasileira Adulta. É evidência humana da experiência declarada, sem
+amostra que sustente a expressão como prevalência de todos os clubes ou a
+transferência das mesmas dificuldades à seleção.
+
+**Retorno:** delimita PRB-01, PRB-02, OPP-01 e OPP-12 e sustenta a recalibração
+em [E07](#p01-e07), a reciprocidade em [E09](#p01-e09), a síntese em
+[E10](#p01-e10) e [`P01-VAL-004`](./P0-P1-tutorial.md#p01-val-004).
+
+### P01-EV-P1-009
+
+A resposta [Q-03](#p01-q-03) é observação humana de internet móvel estável nos
+eventos vivenciados. Não documenta quais eventos foram observados, não permite
+generalizar a todos os locais e não identifica tipos ou especificações dos
+aparelhos.
+
+**Retorno:** delimita OPP-12 e sustenta a lacuna preservada em [E10](#p01-e10),
+a reciprocidade em [E09](#p01-e09) e
+[`P01-VAL-004`](./P0-P1-tutorial.md#p01-val-004).
+
+### P01-EV-P1-010
+
+A resposta [Q-04](#p01-q-04) registra decisões e informações desejadas entre
+sets e em tempos técnicos segundo a experiência do responsável. É evidência
+humana qualitativa e não aprovação de requisito, funcionalidade, métrica ou
+tecnologia.
+
+**Retorno:** delimita PRB-13, NEC-11 e OPP-07, materializa a reciprocidade em
+[E09](#p01-e09) e sustenta [`P01-VAL-004`](./P0-P1-tutorial.md#p01-val-004).
+
+### P01-EV-P1-011
+
+A resposta [Q-05](#p01-q-05) é HIP qualitativa: relata simultaneidade pontual
+entre atletas e rara entre treinadores no alto rendimento, sem população,
+amostra, contagem ou proporção. Por isso não eleva PRB-06, NEC-03 ou NEC-04 a
+evidência observada representativa.
+
+**Retorno:** limita a leitura de PRB-06, NEC-03 e NEC-04 em [E06](#p01-e06),
+recalibra [E07](#p01-e07), materializa [E09](#p01-e09) e sustenta
+[`P01-VAL-004`](./P0-P1-tutorial.md#p01-val-004).
+
+### P01-EV-P1-012
+
+A resposta [Q-06](#p01-q-06) registra como observada a comissão completa da
+Seleção Brasileira, com treinador, auxiliar, preparador físico, analista de
+desempenho e fisioterapeuta. A descrição de clubes e equipes regionais permanece
+HIP baseada em relatos, e a presença dos profissionais não prova que PRB-04,
+PRB-05 ou PRB-07 estejam ausentes ou resolvidos.
+
+**Retorno:** delimita PRB-04, PRB-05 e PRB-07 e sustenta [E01](#p01-e01),
+[E06](#p01-e06), [E07](#p01-e07), [E09](#p01-e09) e
+[`P01-VAL-004`](./P0-P1-tutorial.md#p01-val-004).
+
+### P01-EV-P1-013
+
+A resposta [Q-07](#p01-q-07) relata taxas, prazos, e-mails e procedimentos
+atribuídos à FHERJ e à CBHb. Na conferência de 19/11/2026, os arquivos locais, o
+[índice de portarias da CBHb](https://cbhb.org.br/governanca/156/portarias) e a
+[página oficial de evento consultada](https://cbhb.org.br/evento/2870/circuito-brasileiro-de-handebol-de-praia-adulto-masculino-etapa-norte)
+não forneceram regulamento de 2026 que sustentasse essas afirmações, e não foi
+localizada fonte oficial da FHERJ correspondente. A busca não prova inexistência
+do documento; o resultado é NÃO VERIFICADO até obtenção e conferência integral
+da fonte oficial.
+
+**Retorno:** impede que Q-07 fortaleça PRB-10, NEC-08 e OPP-05, delimita
+[E06](#p01-e06), [E07](#p01-e07), [E09](#p01-e09) e [E10](#p01-e10), e sustenta
+a pendência de [`P01-VAL-004`](./P0-P1-tutorial.md#p01-val-004).
+
+### P01-EV-P1-014
+
+A resposta [Q-08](#p01-q-08) registra DECISÃO_HUMANA de trabalhar com público
+adulto na Fase 1. A composição nominal do elenco não foi confirmada, e a
+resposta não substitui análise jurídica especializada nem estabelece base legal,
+consentimento ou governança de dados. ATL-3 e PRB-11 permanecem preservados fora
+da Fase 1.
+
+**Retorno:** delimita ATL-3 e PRB-11 e sustenta [E01](#p01-e01),
+[E06](#p01-e06), [E07](#p01-e07), [E09](#p01-e09), [E10](#p01-e10) e
+[`P01-VAL-004`](./P0-P1-tutorial.md#p01-val-004).
 
 ---
 

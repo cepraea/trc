@@ -118,6 +118,39 @@ CONCLUÍDA; a AÇÃO 4.2 permanece parcial porque a correspondência fonte →
 localização → afirmação ainda não possui revisão independente. Essa pendência é
 BLOQUEANTE somente para declarar validação externa integral.
 
+<a id="p01-val-004"></a>
+
+## Revalidação após a integração de Q-01 a Q-08
+
+**ID da validação:** `P01-VAL-004` **Data da validação:** 2026-11-19 **Escopo:**
+efeito das respostas Q-01 a Q-08 sobre E01, E06, E07, E09 e E10, com registros
+individuais de evidência e conferência das fontes mencionadas em Q-07. Esta
+validação é não substitutiva: preserva `P01-VAL-001`, `P01-VAL-002` e
+`P01-VAL-003` como linhas de base históricas.
+
+| ID da ação                        | Classificação          | Evidência e resultado da revalidação                                                                                                                                                                                                                                                                                        |
+| --------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`P01-ACT-01-01`](#p01-act-01-01) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-003`.                                                                                                                                                                                                                                                                                         |
+| [`P01-ACT-01-02`](#p01-act-01-02) | CONCLUÍDA              | O escopo geral e a decisão específica da Fase 1 estão separados em [`P01-EV-P1-007`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-007).                                                                                                                                                                           |
+| [`P01-ACT-02-01`](#p01-act-02-01) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-003`.                                                                                                                                                                                                                                                                                         |
+| [`P01-ACT-02-02`](#p01-act-02-02) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-003`.                                                                                                                                                                                                                                                                                         |
+| [`P01-ACT-03-01`](#p01-act-03-01) | CONCLUÍDA              | Sem alteração; herda `P01-VAL-003`.                                                                                                                                                                                                                                                                                         |
+| [`P01-ACT-03-02`](#p01-act-03-02) | CONCLUÍDA              | As respostas e seus limites foram integrados sem converter hipóteses em fatos; ver [`P01-EV-P1-007`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-007) a [`P01-EV-P1-014`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-014).                                                                           |
+| [`P01-ACT-04-01`](#p01-act-04-01) | CONCLUÍDA              | E01–E10 permanecem materializados, com reciprocidade das respostas registrada na [matriz E09](./P1-problemas-necessidades-oportunidades.md#reciprocidade-das-respostas-q-01-a-q-08).                                                                                                                                        |
+| [`P01-ACT-04-02`](#p01-act-04-02) | PARCIALMENTE CONCLUÍDA | Q-01 a Q-08 foram incorporadas com classificação e limites. Q-07 permanece NÃO VERIFICADA por ausência de fonte oficial localizada e conferida, conforme [`P01-EV-P1-013`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-013); a revisão independente registrada em `P01-VAL-003` também permanece NÃO VERIFICADA. |
+| [`P01-ACT-05-01`](#p01-act-05-01) | CONCLUÍDA              | O responsável respondeu Q-01 a Q-08, além de Q-09 já registrada; cada resposta possui retorno rastreável em [`P01-EV-P1-007`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-007) a [`P01-EV-P1-014`](./P1-problemas-necessidades-oportunidades.md#p01-ev-p1-014).                                                  |
+| [`P01-ACT-05-02`](#p01-act-05-02) | CONCLUÍDA              | E01, E06, E07, E09 e E10 foram atualizados reciprocamente; o ponto de retorno consolidado é a [integração Q-01 a Q-08](./P1-problemas-necessidades-oportunidades.md#p1-integracao-q01-q08).                                                                                                                                 |
+| [`P01-ACT-06-01`](#p01-act-06-01) | CONCLUÍDA              | O P1 canônico preserva IDs, respostas, registros de evidência, limitações e linhas de base anteriores.                                                                                                                                                                                                                      |
+| [`P01-ACT-07-01`](#p01-act-07-01) | PENDENTE               | P2 continua sem registro de execução; a priorização revisada orienta investigação e não constitui P2 executado.                                                                                                                                                                                                             |
+| [`P01-ACT-07-02`](#p01-act-07-02) | PENDENTE               | P3 continua sem registro de execução e depende das decisões posteriores ao P2.                                                                                                                                                                                                                                              |
+
+**Resultado de `P01-VAL-004`:** 10 ações CONCLUÍDAS, 1 ação PARCIALMENTE
+CONCLUÍDA e 2 ações PENDENTES. As respostas Q-01 a Q-08 estão integradas e
+rastreáveis, mas não constituem validação representativa do público. A fonte
+oficial de Q-07 e a revisão independente permanecem BLOQUEANTES apenas para
+declarar sustentação externa integral, não para preservar e usar o diagnóstico
+com seus limites explícitos.
+
 ```mermaid
 graph TD
     A[P0: Contrato de consultoria] --> B[P1: Diagnóstico]
