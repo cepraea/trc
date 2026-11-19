@@ -441,7 +441,7 @@ Davi Sermenho é o de responsável pelo produto e treinador/gestor técnico
 2. Situação (X): Em quais outras etapas ou locais o calor extremo prejudicou a
    saúde/desempenho?
 
-   - Além do evento de Niterói-RJ (temperatura \> 40°C e paralisação), em etapas
+   - Além do evento de Niterói-RJ (temperatura > 40°C e paralisação), em etapas
      do Circuito Brasileiro realizadas em regiões de clima tropical úmido, a
      falta de irrigação periódica da areia causou bolhas nos pés dos atletas e
      tonturas em partidas disputadas entre 11h e 14h.
@@ -789,7 +789,89 @@ inicial, e o trabalho segue sem elas, com a fragilidade já assinalada.
 | Q-06 | Quem cuida da saúde e da preparação física nas equipes (profissional, o próprio treinador, ninguém)?                                  | PRB-04, PRB-05, PRB-07 e o público adicional de `staff`            | Experiência do responsável                                               |
 | Q-07 | O que a CBHb e as federações exigem em inscrição e súmula, e em que formato?                                                          | PRB-10, NEC-08, OPP-05                                             | Regulamentos da CBHb; consulta à confederação                            |
 | Q-08 | Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso de seus dados?                                         | ATL-3, PRB-11, privacidade das fases seguintes                     | Responsável; análise jurídica especializada em etapa posterior           |
-| Q-09 | Quais problemas do E03 o responsável já observou diretamente, em que situação e com que frequência?                                   | Eleva itens de HIP ou INF para evidência observada; reordena o E07 | Registro das observações do responsável, com contexto                    |
+| Q-09 | Quais problemas do E03 o responsável já observou diretamente, em que situação e com que frequência?                                   | Eleva itens de HIP ou INF para evidência observada; reordena o E07 | Registro das observações do responsável, com contexto |
+
+---
+
+## Q-01
+
+Qual é o público inicial prioritário: seleção e alto rendimento, clubes do circuito, base ou amadores?
+
+Público-alvo prioritário inicial delimitado por **DECISÃO_HUMANA** para as atletas da Seleção Brasileira Feminina Adulta de Handebol de Praia. O escopo abrange a comissão técnica e exclui na Fase 1 equipes amadoras e categorias de base.
+
+---
+
+## Q-02
+
+Como treinadores brasileiros registram hoje dados de jogo e de treino (papel, planilha, vídeo, nada) e o que não conseguem registrar?
+
+Relatos qualitativos do responsável indicam que o registro de dados de jogo e treino ocorre majoritariamente de forma informal (papel ou planilhas locais) por acúmulo de funções em clubes. Lacunas operacionais apontadas no contexto observado: estatísticas detalhadas de desempenho individual/coletivo, métricas de eficiência por tipo de jogada, mapa de arremessos e padrões táticos em tempo real. A Seleção Brasileira Adulta conta com analista de desempenho dedicado, separando sua estrutura operacional da realidade dos clubes.
+
+---
+
+## Q-03
+
+**Pergunta:** Que conexão e que aparelhos existem nos locais de jogo e de treino?
+
+**Resposta:** Com base no relato de vivência prática do responsável, a internet móvel nos locais de evento observados é estável e não sofre quedas de sinal. As informações relativas aos tipos e especificações dos aparelhos nos locais de jogo e treino permanecem não documentadas.
+
+---
+
+## Q-04
+
+**Pergunta:** Que decisões o treinador toma entre sets e em tempo técnico, e que informação gostaria de ter nesse momento?
+
+**Resposta:** Entre sets e em tempos técnicos, o treinador toma decisões como ajustes de marcação, substituições por desgaste e variação de sistemas ofensivos. Necessidades informacionais de interesse relatadas: taxa de conversão de arremessos de 2 pontos por atleta, eficiência de defesa contra shoot-outs e mapeamento de direção preferencial de arremesso do adversário (mantidas estritamente como necessidades informacionais, sem converter em requisitos ou funcionalidades aprovadas).
+
+---
+
+## Q-05
+
+**Pergunta:** Que parcela dos atletas e treinadores atua também no indoor na mesma temporada?  
+**Resposta:** Hipótese qualitativa baseada em observação prática: a atuação simultânea no handebol indoor na mesma temporada é considerada pontual entre atletas e rara entre treinadores no alto rendimento, observando-se maior conciliação no cenário universitário e amador. A parcela exata e a amostra estatística permanecem não documentadas.
+
+---
+
+## Q-06
+
+Quem cuida da saúde e da preparação física nas equipes (profissional, o próprio treinador, ninguém)?
+
+Estrutura observada das comissões técnicas:
+
+- **Seleção Brasileira:** conta com uma comissão completa, composta por treinador principal, auxiliar técnico, preparador físico, analista de desempenho e fisioterapeuta.  
+- **Clubes e Equipes Regionais:** Hipótese baseada em relatos de estrutura enxuta (frequentemente apenas treinador principal e auxiliar); a preparação física e a gestão de saúde costumam ser assumidas diretamente pelo próprio treinador ou por prestadores autônomos pontuais.
+
+---
+
+## Q-07
+
+O que a CBHb e as federações exigem em inscrição e súmula, e em que formato?  
+
+Inscrição no Circuito Carioca 2026 (FHERJ):
+
+- Taxa de inscrição/renovação individual por atleta: R$ 25,00;  
+- Taxa de inscrição da equipe: R$ 2.000,00;  
+- Envio do comprovante de pagamento junto às fichas de inscrição preenchidas (atletas e equipes) para o e-mail da FHERJ.
+
+Inscrição no Circuito Brasileiro 2026 (CBHb):
+
+- Taxa de inscrição/renovação individual por atleta: R$ 50,00;  
+- Taxa de inscrição da equipe por etapa classificatória: R$ 1.000,00;  
+- Envio das fichas de inscrição preenchidas (atletas e equipes) com comprovante de pagamento em anexo para o e-mail da FHERJ;  
+- Realização de pagamentos e inscrições diretamente por intermédio da federação.
+
+Exigências de Súmula e Procedimentos dos Jogos:  
+As equipes devem encaminhar por e-mail a relação oficial dos atletas (contendo nome completo e número da camisa) com antecedência prévia ao evento — até 4 dias antes para a FHERJ e 15 dias antes no caso da CBHb. As súmulas são impressas em formato físico para cada partida, cabendo à mesa de arbitragem e aos anotadores o registro manual das pontuações (1 ou 2 pontos), punições/exclusões, pedidos de tempo técnico e relatórios disciplinares ao longo dos jogos.
+
+---
+
+## Q-08
+
+Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso de seus dados?  
+
+No escopo prioritário inicial (Seleção Brasileira Adulta), o público é delimitado como adulto por decisao humana, pendente de confirmação nominal do elenco.
+
+---
 
 Q-09 foi respondida pelo responsável em
 [RESPOSTAS DAVI SERMENHO](#p01-respostas-davi), com observação, situação e

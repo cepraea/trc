@@ -16,6 +16,12 @@ const RETRY_STATE_FILE = path.resolve(
   'agent-lint-retries.json'
 );
 
+const FRONTMATTER_SCHEMA_PATH = path.resolve(
+  process.cwd(),
+  '.vscode',
+  'frontmatter-schema.json'
+);
+
 const args = process.argv.slice(2);
 
 const JSON_MODE =
@@ -40,7 +46,15 @@ const SUGGESTION_MAP = {
   MD036: 'Substituir texto em negrito por heading Markdown (## Título)',
   MD040: 'Adicionar a linguagem ao bloco de código',
   MD047: 'Adicionar uma linha em branco ao final do arquivo',
-  MD056: 'Corrigir a quantidade de colunas da tabela para coincidir com o cabeçalho'
+  MD051:
+    'Corrigir o fragmento (#anchor) para apontar para um heading ou <a id="..."> existente no documento',
+  MD056: 'Corrigir a quantidade de colunas da tabela para coincidir com o cabeçalho',
+  'missing-anchor':
+    'Criar a âncora de destino (<a id="..."></a> ou heading) ou atualizar o link para uma âncora existente',
+  'missing-file':
+    'Corrigir o caminho relativo do link para apontar para um arquivo existente no repositório',
+  'frontmatter-schema':
+    'Ajustar os campos do YAML Front Matter para cumprir o contrato .vscode/frontmatter-schema.json'
 };
 
 const RULE_SEVERITY = {
@@ -48,7 +62,11 @@ const RULE_SEVERITY = {
   MD056: 'error',
   MD022: 'error',
   MD012: 'warning',
-  MD025: 'error'
+  MD025: 'error',
+  MD051: 'error',
+  'missing-anchor': 'error',
+  'missing-file': 'error',
+  'frontmatter-schema': 'error'
 };
 
 class MaxRetriesExceededError extends Error {
@@ -223,13 +241,24 @@ function createContext(file, lineNumber) {
 }
 
 function ruleCode(rule) {
-  const match = String(rule).match(/^MD\d+/);
-  return match ? match[0] : String(rule);
+  const text = String(rule);
+  const mdMatch = text.match(/^MD\d+/);
+  if (mdMatch) {
+    return mdMatch[0];
+  }
+
+  if (text.startsWith('ADOCMD/')) {
+    return text.slice('ADOCMD/'.length);
+  }
+
+  return text;
 }
 
 function suggestionFor(rule) {
+  const code = ruleCode(rule);
   return (
-    SUGGESTION_MAP[ruleCode(rule)] ||
+    SUGGESTION_MAP[rule] ||
+    SUGGESTION_MAP[code] ||
     'Revisão manual necessária'
   );
 }
@@ -670,6 +699,570 @@ async function runMarkdownlintCli2Pass({
   return capturedResults;
 }
 
+function githubHeadingSlug(rawHeadingText) {
+  const stripped = String(rawHeadingText)
+    .replace(/\s+#+\s*$/, '')
+    .replace(/\{#[A-Za-z0-9_.:-]+\}\s*$/, '')
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/`([^`]*)`/g, '$1')
+    .replace(/<[^>]+>/g, '')
+    .trim()
+    .toLowerCase();
+
+  return stripped
+    .replace(/[^\p{L}\p{M}\p{N}\s_-]/gu, '')
+    .replace(/\s+/g, '-');
+}
+
+function collectDefinedAnchors(lines) {
+  const anchors = new Set();
+  const slugCounts = new Map();
+  let inFence = false;
+  let fenceMarker = null;
+
+  for (let index = 0; index < lines.length; index++) {
+    const line = lines[index];
+    const trimmed = line.trim();
+
+    const fenceMatch = trimmed.match(/^(`{3,}|~{3,})/);
+    if (fenceMatch) {
+      const markerChar = fenceMatch[1][0];
+      const markerLen = fenceMatch[1].length;
+
+      if (!inFence) {
+        inFence = true;
+        fenceMarker = { char: markerChar, len: markerLen };
+      } else if (
+        fenceMarker &&
+        markerChar === fenceMarker.char &&
+        markerLen >= fenceMarker.len
+      ) {
+        inFence = false;
+        fenceMarker = null;
+      }
+      continue;
+    }
+
+    if (inFence) {
+      continue;
+    }
+
+    // 1. HTML attributes id="..." or name="..." (ex: <a id="p01-e01"></a>)
+    const htmlIdRegex =
+      /\b(?:id|name)\s*=\s*["']([^"'#\s]+)["']/gi;
+    let htmlMatch;
+    while ((htmlMatch = htmlIdRegex.exec(line)) !== null) {
+      anchors.add(htmlMatch[1]);
+      anchors.add(htmlMatch[1].toLowerCase());
+    }
+
+    // 2. AsciiDoc / Markdown explicit anchors: [[anchor-id]], [#anchor-id], {#anchor-id}
+    const adocDoubleBracketRegex =
+      /\[\[([A-Za-z0-9_.:-]+)(?:,[^\]]*)?\]\]/g;
+    let adocMatch;
+    while (
+      (adocMatch = adocDoubleBracketRegex.exec(line)) !==
+      null
+    ) {
+      anchors.add(adocMatch[1]);
+      anchors.add(adocMatch[1].toLowerCase());
+    }
+
+    const shorthandAnchorRegex =
+      /(?:\[#|\{#)([A-Za-z0-9_.:-]+)[\]}]/g;
+    let shortMatch;
+    while (
+      (shortMatch = shorthandAnchorRegex.exec(line)) !==
+      null
+    ) {
+      anchors.add(shortMatch[1]);
+      anchors.add(shortMatch[1].toLowerCase());
+    }
+
+    // 3. ATX Headings (# Heading)
+    const headingMatch = line.match(/^\s{0,3}(#{1,6})\s+(.+)$/);
+    if (headingMatch) {
+      const baseSlug = githubHeadingSlug(headingMatch[2]);
+      if (baseSlug) {
+        const seen = slugCounts.get(baseSlug) || 0;
+        slugCounts.set(baseSlug, seen + 1);
+        const finalSlug =
+          seen === 0 ? baseSlug : `${baseSlug}-${seen}`;
+        anchors.add(finalSlug);
+        anchors.add(baseSlug);
+      }
+    }
+  }
+
+  return anchors;
+}
+
+function maskInlineCodeSpans(line) {
+  return String(line).replace(/(`+)([^`]*?)\1/g, match =>
+    ' '.repeat(match.length)
+  );
+}
+
+function collectAdocMdForgeAnchorErrorsForFile(
+  file,
+  lines,
+  definedAnchors
+) {
+  const errors = [];
+  let inFence = false;
+  let fenceMarker = null;
+
+  for (let index = 0; index < lines.length; index++) {
+    const rawLine = lines[index];
+    const trimmed = rawLine.trim();
+
+    const fenceMatch = trimmed.match(/^(`{3,}|~{3,})/);
+    if (fenceMatch) {
+      const markerChar = fenceMatch[1][0];
+      const markerLen = fenceMatch[1].length;
+
+      if (!inFence) {
+        inFence = true;
+        fenceMarker = { char: markerChar, len: markerLen };
+      } else if (
+        fenceMarker &&
+        markerChar === fenceMarker.char &&
+        markerLen >= fenceMarker.len
+      ) {
+        inFence = false;
+        fenceMarker = null;
+      }
+      continue;
+    }
+
+    if (inFence) {
+      continue;
+    }
+
+    const scanLine = maskInlineCodeSpans(rawLine);
+
+    // 1. Links Markdown para âncoras internas: [texto](#anchor)
+    const mdLinkRegex =
+      /\[[^\]]*\]\(\s*(#[A-Za-z0-9_.:-]+)(?:\s+"[^"]*")?\s*\)/g;
+    let match;
+
+    while ((match = mdLinkRegex.exec(scanLine)) !== null) {
+      const fullTarget = match[1];
+      const anchorName = fullTarget.slice(1);
+      const exists =
+        definedAnchors.has(anchorName) ||
+        definedAnchors.has(anchorName.toLowerCase());
+
+      if (!exists) {
+        const targetOffset = match[0].indexOf(fullTarget);
+        const startColumn = match.index + targetOffset + 1;
+        const lineNumber = index + 1;
+        const rule = 'ADOCMD/missing-anchor';
+        const description = `Âncora interna não encontrada no documento: ${fullTarget} (找不到文件內 anchor：${fullTarget})`;
+
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: startColumn,
+          rule,
+          description,
+          reason: 'missing-anchor',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+      }
+    }
+
+    // 2. Links HTML <a href="#anchor">
+    const htmlHrefRegex =
+      /\bhref\s*=\s*["'](#[A-Za-z0-9_.:-]+)["']/gi;
+    let hrefMatch;
+
+    while (
+      (hrefMatch = htmlHrefRegex.exec(scanLine)) !== null
+    ) {
+      const fullTarget = hrefMatch[1];
+      const anchorName = fullTarget.slice(1);
+      const exists =
+        definedAnchors.has(anchorName) ||
+        definedAnchors.has(anchorName.toLowerCase());
+
+      if (!exists) {
+        const targetOffset =
+          hrefMatch[0].indexOf(fullTarget);
+        const startColumn =
+          hrefMatch.index + targetOffset + 1;
+        const lineNumber = index + 1;
+        const rule = 'ADOCMD/missing-anchor';
+        const description = `Âncora interna não encontrada no documento: ${fullTarget} (找不到文件內 anchor：${fullTarget})`;
+
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: startColumn,
+          rule,
+          description,
+          reason: 'missing-anchor',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+      }
+    }
+
+    // 3. Referências cruzadas AsciiDoc <<anchor-id>> ou <<anchor-id,label>>
+    const adocXrefRegex =
+      /<<#?([A-Za-z0-9_.:-]+)(?:,[^>]*)?>>/g;
+    let xrefMatch;
+
+    while (
+      (xrefMatch = adocXrefRegex.exec(scanLine)) !== null
+    ) {
+      const anchorName = xrefMatch[1];
+      const fullTarget = `#${anchorName}`;
+      const exists =
+        definedAnchors.has(anchorName) ||
+        definedAnchors.has(anchorName.toLowerCase());
+
+      if (!exists) {
+        const startColumn = xrefMatch.index + 1;
+        const lineNumber = index + 1;
+        const rule = 'ADOCMD/missing-anchor';
+        const description = `Âncora interna não encontrada no documento: ${fullTarget} (找不到文件內 anchor：${fullTarget})`;
+
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: startColumn,
+          rule,
+          description,
+          reason: 'missing-anchor',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+      }
+    }
+  }
+
+  return errors;
+}
+
+function validateFrontmatterAgainstSchema(file, lines) {
+  if (!fileExists(FRONTMATTER_SCHEMA_PATH)) {
+    return [];
+  }
+
+  if (lines.length === 0 || lines[0].trim() !== '---') {
+    return [];
+  }
+
+  let closingLineIndex = -1;
+  for (let index = 1; index < lines.length; index++) {
+    if (
+      lines[index].trim() === '---' ||
+      lines[index].trim() === '...'
+    ) {
+      closingLineIndex = index;
+      break;
+    }
+  }
+
+  if (closingLineIndex === -1) {
+    return [];
+  }
+
+  let schema;
+  try {
+    schema = JSON.parse(
+      fs.readFileSync(FRONTMATTER_SCHEMA_PATH, 'utf8')
+    );
+  } catch {
+    return [];
+  }
+
+  const yamlLines = lines.slice(1, closingLineIndex);
+  const yamlText = yamlLines.join('\n');
+
+  let parsedFrontmatter;
+  try {
+    const jsYaml = require('js-yaml');
+    const IncludeScalarType = new jsYaml.Type('!include', {
+      kind: 'scalar',
+      construct: data => (data !== null ? String(data) : '')
+    });
+    const customSchema = jsYaml.DEFAULT_SCHEMA.extend([
+      IncludeScalarType
+    ]);
+    parsedFrontmatter = jsYaml.load(yamlText, {
+      schema: customSchema
+    });
+  } catch (yamlError) {
+    const lineNumber =
+      (yamlError &&
+        yamlError.mark &&
+        typeof yamlError.mark.line === 'number'
+        ? yamlError.mark.line + 2
+        : 1);
+    const rule = 'ADOCMD/frontmatter-schema';
+    return [
+      {
+        tool: 'adocmd-forge',
+        severity: severityFor(rule),
+        file,
+        absoluteFile: path.resolve(file),
+        line: lineNumber,
+        column: 1,
+        rule,
+        description: `Erro de sintaxe no Front Matter YAML: ${yamlError.message}`,
+        reason: 'frontmatter-schema',
+        suggestion: suggestionFor(rule),
+        concreteFix: null,
+        context: createContext(file, lineNumber)
+      }
+    ];
+  }
+
+  if (
+    !parsedFrontmatter ||
+    typeof parsedFrontmatter !== 'object' ||
+    Array.isArray(parsedFrontmatter)
+  ) {
+    return [];
+  }
+
+  const errors = [];
+  const properties = schema.properties || {};
+  const requiredFields = Array.isArray(schema.required)
+    ? schema.required
+    : [];
+
+  const findKeyLine = keyName => {
+    const keyRegex = new RegExp(
+      `^\\s*${keyName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*:`
+    );
+    for (let idx = 1; idx < closingLineIndex; idx++) {
+      if (keyRegex.test(lines[idx])) {
+        return idx + 1;
+      }
+    }
+    return 1;
+  };
+
+  for (const reqKey of requiredFields) {
+    if (
+      !Object.hasOwn(parsedFrontmatter, reqKey) ||
+      parsedFrontmatter[reqKey] === undefined ||
+      parsedFrontmatter[reqKey] === null
+    ) {
+      const rule = 'ADOCMD/frontmatter-schema';
+      errors.push({
+        tool: 'adocmd-forge',
+        severity: severityFor(rule),
+        file,
+        absoluteFile: path.resolve(file),
+        line: 1,
+        column: 1,
+        rule,
+        description: `Campo obrigatório ausente no Front Matter: "${reqKey}"`,
+        reason: 'frontmatter-schema',
+        suggestion: suggestionFor(rule),
+        concreteFix: null,
+        context: createContext(file, 1)
+      });
+    }
+  }
+
+  if (schema.additionalProperties === false) {
+    for (const key of Object.keys(parsedFrontmatter)) {
+      if (!Object.hasOwn(properties, key)) {
+        const lineNumber = findKeyLine(key);
+        const rule = 'ADOCMD/frontmatter-schema';
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: 1,
+          rule,
+          description: `Propriedade não permitida no Front Matter (additionalProperties: false): "${key}"`,
+          reason: 'frontmatter-schema',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+      }
+    }
+  }
+
+  for (const [key, propSchema] of Object.entries(
+    properties
+  )) {
+    if (!Object.hasOwn(parsedFrontmatter, key)) {
+      continue;
+    }
+
+    const rawValue = parsedFrontmatter[key];
+    const lineNumber = findKeyLine(key);
+    const rule = 'ADOCMD/frontmatter-schema';
+
+    const value =
+      rawValue instanceof Date
+        ? rawValue.toISOString().slice(0, 10)
+        : rawValue;
+
+    if (propSchema.type === 'string') {
+      if (typeof value !== 'string') {
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: 1,
+          rule,
+          description: `Campo "${key}" deve ser do tipo string`,
+          reason: 'frontmatter-schema',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+        continue;
+      }
+
+      if (
+        propSchema.pattern &&
+        !new RegExp(propSchema.pattern).test(value)
+      ) {
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: 1,
+          rule,
+          description: `Campo "${key}" ("${value}") não atende ao padrão exigido: ${propSchema.pattern}`,
+          reason: 'frontmatter-schema',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+      }
+
+      if (
+        propSchema.format === 'date' &&
+        !/^\d{4}-\d{2}-\d{2}$/.test(value)
+      ) {
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: 1,
+          rule,
+          description: `Campo "${key}" ("${value}") deve estar no formato de data YYYY-MM-DD`,
+          reason: 'frontmatter-schema',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+      }
+
+      if (
+        Array.isArray(propSchema.enum) &&
+        !propSchema.enum.includes(value)
+      ) {
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: 1,
+          rule,
+          description: `Valor inválido em "${key}" ("${value}"). Valores permitidos: ${propSchema.enum.join(', ')}`,
+          reason: 'frontmatter-schema',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+      }
+    } else if (propSchema.type === 'array') {
+      if (!Array.isArray(value)) {
+        errors.push({
+          tool: 'adocmd-forge',
+          severity: severityFor(rule),
+          file,
+          absoluteFile: path.resolve(file),
+          line: lineNumber,
+          column: 1,
+          rule,
+          description: `Campo "${key}" deve ser uma lista (array)`,
+          reason: 'frontmatter-schema',
+          suggestion: suggestionFor(rule),
+          concreteFix: null,
+          context: createContext(file, lineNumber)
+        });
+      }
+    }
+  }
+
+  return errors;
+}
+
+function collectAdocMdForgeErrors(targetFiles, existingErrors = []) {
+  const errors = [];
+
+  // Evita duplicar exatamente o mesmo arquivo:linha:coluna já reportado por MD051
+  const existingAnchorLocations = new Set(
+    existingErrors
+      .filter(err => ruleCode(err.rule) === 'MD051')
+      .map(err => `${err.file}:${err.line}:${err.column || 0}`)
+  );
+
+  for (const file of targetFiles) {
+    if (!fileExists(file)) {
+      continue;
+    }
+
+    const lines = readLines(file);
+    const definedAnchors = collectDefinedAnchors(lines);
+    const anchorErrors =
+      collectAdocMdForgeAnchorErrorsForFile(
+        file,
+        lines,
+        definedAnchors
+      );
+
+    for (const anchorErr of anchorErrors) {
+      const locationKey = `${anchorErr.file}:${anchorErr.line}:${anchorErr.column || 0}`;
+      if (!existingAnchorLocations.has(locationKey)) {
+        errors.push(anchorErr);
+      }
+    }
+
+    const frontmatterErrors =
+      validateFrontmatterAgainstSchema(file, lines);
+    errors.push(...frontmatterErrors);
+  }
+
+  return errors;
+}
+
 function transformResultsToErrors(results) {
   const errors = [];
 
@@ -724,24 +1317,32 @@ async function executeTwoPassPipeline(
   const targetFiles =
     await resolveTargetMarkdownFiles(targetGlobs);
 
-  // 1a. Formata primeiro com Prettier (.prettierrc)
+  // 1ª Passagem (Auto-fix silencioso): Prettier -> markdownlint-cli2 --fix
   await runPrettierSilently(targetFiles);
 
-  // 1b. Aplica auto-fix do markdownlint-cli2 por último na 1ª passagem
-  // para que o Prettier não reintroduza 2 espaços após "1.  " (MD030)
   await runMarkdownlintCli2Pass({
     fix: true,
     targetGlobs
   });
 
-  // 2. Segunda passagem: coleta apenas os erros estruturais restantes
+  // 2ª Passagem (Validação): markdownlint-cli2 + AdocMD Forge
   const secondPassResults = await runMarkdownlintCli2Pass({
     fix: false,
     targetGlobs
   });
 
-  const errors =
+  const markdownlintErrors =
     transformResultsToErrors(secondPassResults);
+
+  const adocMdForgeErrors = collectAdocMdForgeErrors(
+    targetFiles,
+    markdownlintErrors
+  );
+
+  const errors = [
+    ...markdownlintErrors,
+    ...adocMdForgeErrors
+  ];
 
   return {
     targetFiles,
@@ -828,6 +1429,7 @@ function buildStructuredFiles(errors, targetFiles = []) {
       ruleGroup.occurrences.push({
         line: error.line,
         column: error.column,
+        description: error.description,
         context: error.context,
         concreteFix: error.concreteFix
       });
@@ -898,8 +1500,13 @@ function formatAgentFriendlyReport(files) {
           const column = occurrence.column
             ? `, coluna ${occurrence.column}`
             : '';
+          const detailSuffix =
+            occurrence.description &&
+            occurrence.description !== ruleGroup.description
+              ? ` (${occurrence.description})`
+              : '';
           lines.push(
-            `  - linha ${occurrence.line}${column}`
+            `  - linha ${occurrence.line}${column}${detailSuffix}`
           );
         } else {
           lines.push('  - arquivo completo');
@@ -999,5 +1606,6 @@ module.exports = {
   MaxRetriesExceededError,
   runGate,
   executeTwoPassPipeline,
+  collectAdocMdForgeErrors,
   formatAgentFriendlyReport
 };

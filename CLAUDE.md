@@ -1,26 +1,22 @@
 # Criar app de handebol
 
-## GATE DE QUALIDADE OBRIGATÓRIO (MARKDOWN)
+## GATE DE QUALIDADE OBRIGATÓRIO
 
-Você NUNCA deve dar uma tarefa envolvendo arquivos `.md` como concluída sem
-antes validar o código.
+Você NUNCA deve dar uma tarefa envolvendo arquivos de código ou documentação
+como concluída sem antes validar via terminal.
 
-Ao finalizar a edição/criação de qualquer arquivo `.md`:
+Ao finalizar a edição/criação, rode o comando correspondente à extensão do
+arquivo:
 
-1. Execute no terminal: `npm run agent:lint`
-2. Analise o resultado:
-   - Se retornar vazio/sucesso: A tarefa está 100% concluída.
-   - Se retornar logs com a tag `<erros>`: Você DEVE corrigir as falhas antes de
-     prosseguir.
+- Para arquivos `.md`: `npm run agent:lint`
+- Para arquivos `.py`: `npm run agent:lint-py`
 
 REGRAS DE CORREÇÃO (STRICT MODE):
 
-- Altere APENAS as linhas exatas indicadas nos blocos de erro.
-- NUNCA reescreva o restante do documento.
-- Não resuma seções nem remova conteúdo válido apenas para se livrar do erro.
+- Altere APENAS as linhas exatas indicadas nos blocos de erro (`<erros>`).
+- Se o script falhar, você DEVE corrigir as falhas lendo o log retornado.
 - Se receber o aviso de "ÚLTIMA TENTATIVA", seja estritamente conservador. Se o
-  limite for ultrapassado, pare de tentar e marque a tarefa como
-  FAILED_MANUAL_REVIEW.
+  limite for ultrapassado, marque a tarefa como FAILED_MANUAL_REVIEW.
 
 <orientacao_de_produto>
 

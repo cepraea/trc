@@ -62,12 +62,9 @@ de base anterior à inclusão das respostas humanas.
 
 ## Revalidação após as respostas humanas
 
-**ID da validação:** `P01-VAL-002`
-
-**Data da validação:** 2026-11-16
-
-**Motivo:** inclusão, no diagnóstico P1, das observações de Davi Sermenho para
-PRB-01 a PRB-14.
+**ID da validação:** `P01-VAL-002` **Data da validação:** 2026-11-16 **Motivo:**
+inclusão, no diagnóstico P1, das observações de Davi Sermenho para PRB-01 a
+PRB-14.
 
 | ID da ação                        | Classificação          | Evidência bidirecional                                                                                                                                                                                                                                   | Justificativa e limite                                                                                                                                  |
 | --------------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -94,12 +91,9 @@ os atletas e treinadores.
 
 ## Revalidação após a conferência documental das fontes
 
-**ID da validação:** `P01-VAL-003`
-
-**Data da validação:** 2026-11-16
-
-**Escopo:** efeito da conferência integral de F01, F04 e F08–F14 sobre a AÇÃO
-4.2. As demais ações conservam a classificação e as evidências de
+**ID da validação:** `P01-VAL-003` **Data da validação:** 2026-11-16 **Escopo:**
+efeito da conferência integral de F01, F04 e F08–F14 sobre a AÇÃO 4.2. As demais
+ações conservam a classificação e as evidências de
 [`P01-VAL-002`](#p01-val-002).
 
 | ID da ação                        | Classificação          | Evidência e resultado da revalidação                                                                                                                                                                                                                                                                                                |
@@ -779,7 +773,7 @@ A IA deverá iniciar a investigação com as informações disponíveis.
 
 <a id="p01-act-03-02"></a>
 
-### **AÇÃO 3.2 — Acompanhar a investigação**
+### AÇÃO 3.2 — Acompanhar a investigação
 
 A IA deverá produzir um diagnóstico organizado, não solicitar que você invente o
 aplicativo.
@@ -975,7 +969,7 @@ problemas e necessidades relacionados, afirmações classificadas e pendências
 reais explicitadas. A pesquisa com usuários que ainda não tiver sido realizada
 deve continuar indicada como não verificada.
 
-## **ETAPA 7 — Passar da investigação à concepção do produto**
+## ETAPA 7 — Passar da investigação à concepção do produto
 
 O procedimento P0/P1 estabelece os fundamentos. A criação fundamentada de
 funcionalidades inovadoras ocorre nas etapas seguintes:
