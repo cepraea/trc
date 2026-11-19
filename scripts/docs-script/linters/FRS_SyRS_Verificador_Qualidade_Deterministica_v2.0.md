@@ -1,9 +1,13 @@
 ---
-titulo: 'FRS/SyRS — Verificador determinístico de qualidade e rastreabilidade'
+documento_id: 'FRS-SYRS-002'
 tipo: 'especificacao-funcional-e-de-sistema'
-versao: '2.0-proposta'
-data: '2026-11-14'
-status: 'PROPOSTA — COMPARACAO_DOCUMENTAL_VALIDADA — SCRIPT_NAO_IMPLEMENTADO'
+versao: '2.0.0-proposta'
+caminho_canonico: 'scripts/docs-script/linters/FRS_SyRS_Verificador_Qualidade_Deterministica_v2.0.md'
+criado_em: '2026-11-14'
+atualizado_em: '2026-11-15'
+fase_documento: 'proposta'
+status_aprovacao: 'revisao'
+status_implementacao: 'pendente'
 fonte_base: 'FRS_SyRS_Verificador_Qualidade_Deterministica_v1.0.md'
 fonte_inventario: 'lista de 50 extensoes enviada pelo usuario em 2026-11-14'
 artefato_alvo:
@@ -11,7 +15,6 @@ artefato_alvo:
 ambiente_alvo:
   'VS Code 1.146.0; WSL Ubuntu; Python 3; repo selecao-brasileira (dados
   anteriormente fornecidos)'
-path_proposto: 'FRS_SyRS_Verificador_Qualidade_Deterministica_v2.0.md'
 ---
 
 # FRS/SyRS — Verificador determinístico de qualidade e rastreabilidade

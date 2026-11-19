@@ -1,11 +1,14 @@
 ---
-titulo: 'BRD/URS — Gate de qualidade documental e rastreabilidade'
+documento_id: 'BRD-URS-001'
 tipo: 'especificacao-de-requisitos-de-negocio-e-do-usuario'
-versao: '1.0-proposta'
-data: '2026-11-14'
-status: 'PROPOSTA — NAO_HOMOLOGADO — NAO_IMPLEMENTADO'
-repositorio_referido: '~/selecao-brasileira (relato do usuario)'
-path_proposto: 'BRD_URS_Verificador_Qualidade.md'
+versao: '1.0.0-proposta'
+caminho_canonico: 'scripts/docs-script/linters/BRD_URS_Verificador_Qualidade.md'
+criado_em: '2026-11-14'
+atualizado_em: '2026-11-14'
+fase_documento: 'proposta'
+status_aprovacao: 'pendente'
+status_implementacao: 'pendente'
+repositorio_alvo: '~/selecao-brasileira (relato do usuario)'
 ---
 
 # BRD/URS — Gate de qualidade documental e rastreabilidade

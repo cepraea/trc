@@ -1,9 +1,13 @@
 ---
 documento_id: TST-CASE-005
 tipo: caso-teste
-status: bloqueado
-caminho_canonico: testes/casos/TST-CASE-005.md
 versao: 1.0.0
+caminho_canonico: testes/casos/TST-CASE-005.md
+criado_em: 2026-11-14
+atualizado_em: 2026-11-15
+fase_documento: draft
+status_aprovacao: revisao
+status_implementacao: pendente
 ---
 
 # TST-CASE-005 — Integridade do grupo

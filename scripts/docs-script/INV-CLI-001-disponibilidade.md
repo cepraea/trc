@@ -1,11 +1,13 @@
 ---
 documento_id: INV-CLI-001
 tipo: investigacao
-status: fechado
-caminho_canonico: scripts/docs-script/INV-CLI-001-disponibilidade.md
 versao: 1.0.0
-data_abertura: '2026-11-14'
-data_fechamento: '2026-11-14'
+caminho_canonico: scripts/docs-script/INV-CLI-001-disponibilidade.md
+criado_em: '2026-11-14'
+atualizado_em: '2026-11-14'
+fase_documento: final
+status_aprovacao: homologado
+status_implementacao: n/a
 ---
 
 # INV-CLI-001 — Disponibilidade de CLIs para o gate de qualidade

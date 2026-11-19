@@ -1,10 +1,13 @@
 ---
-titulo: 'Especificação Técnica Completa — Gate determinístico de qualidade'
+documento_id: 'TEC-GATE-001'
 tipo: 'especificacao-tecnica'
-versao: '1.0-proposta-derivada-da-FRS-SyRS-2.0'
-data: '2026-11-14'
-status: 'PROPOSTA — NAO_IMPLEMENTADO'
-path_proposto: 'Especificacao_Tecnica_Completa.md'
+versao: '1.0.0-proposta-derivada-da-frs-syrs-2-0'
+caminho_canonico: 'scripts/docs-script/linters/Especificacao_Tecnica_Completa.md'
+criado_em: '2026-11-14'
+atualizado_em: '2026-11-14'
+fase_documento: 'proposta'
+status_aprovacao: 'pendente'
+status_implementacao: 'pendente'
 ---
 
 # Especificação Técnica Completa — Gate determinístico de qualidade

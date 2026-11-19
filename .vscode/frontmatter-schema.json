@@ -3,7 +3,7 @@
   "title": "Schema Frontmatter de Qualidade Documental",
   "type": "object",
   "properties": {
-    "documento_id": { "type": "string", "pattern": "^[A-Z0-9]+-[A-Z0-9]+-[0-9]+$" },
+    "documento_id": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+){2,}$" },
     "tipo": { "type": "string" },
     "versao": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[\\da-z\\-]+(?:\\.[\\da-z\\-]+)*)?(?:\\+[\\da-z\\-]+(?:\\.[\\da-z\\-]+)*)?$" },
     "caminho_canonico": { "type": "string", "pattern": "\\.md$" },
@@ -14,7 +14,14 @@
     "status_implementacao": { "type": "string", "enum": ["n/a", "pendente", "em-progresso", "implementado"] },
     "autoridade": { "type": "string" },
     "documentos_relacionados": { "type": "array", "items": { "type": "string" } },
-    "repositorio_alvo": { "type": "string" }
+    "repositorio_alvo": { "type": "string" },
+    "escopo": { "type": "string" },
+    "implantado_em": { "type": "string", "format": "date-time" },
+    "fase_tdd": { "type": "string", "enum": ["red", "green", "refactor"] },
+    "fonte_base": { "type": "string" },
+    "fonte_inventario": { "type": "string" },
+    "artefato_alvo": { "type": "string" },
+    "ambiente_alvo": { "type": "string" }
   },
   "required": [
     "documento_id", "tipo", "versao", "caminho_canonico", 

@@ -1,9 +1,13 @@
 ---
 documento_id: TST-DEF-001
 tipo: defeito-teste
-status: fechado
-caminho_canonico: testes/defeitos/TST-DEF-001.md
 versao: 1.0.0
+caminho_canonico: testes/defeitos/TST-DEF-001.md
+criado_em: 2026-11-14
+atualizado_em: 2026-11-15
+fase_documento: final
+status_aprovacao: revisao
+status_implementacao: implementado
 ---
 
 # TST-DEF-001 — Falso negativo na detecção dos hashes

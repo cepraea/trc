@@ -1,11 +1,13 @@
 ---
 documento_id: 'DOC-TRACE-REF-001'
 tipo: 'referencia-tecnica'
-status: 'vigente'
-caminho_canonico: 'tecnicas-rastreabilidade.md'
 versao: '1.0.0'
+caminho_canonico: 'tecnicas-rastreabilidade.md'
 criado_em: '2026-11-12'
 atualizado_em: '2026-11-13'
+fase_documento: 'final'
+status_aprovacao: 'homologado'
+status_implementacao: 'n/a'
 ---
 
 # Técnicas estruturadas de marcação e rastreabilidade de requisitos e artefatos de engenharia

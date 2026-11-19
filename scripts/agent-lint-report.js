@@ -998,13 +998,12 @@ function validateFrontmatterAgainstSchema(file, lines) {
   let parsedFrontmatter;
   try {
     const jsYaml = require('js-yaml');
-    const IncludeScalarType = new jsYaml.Type('!include', {
-      kind: 'scalar',
-      construct: data => (data !== null ? String(data) : '')
+    const IncludeScalarType = jsYaml.defineScalarTag('!include', {
+      resolve: data => (data !== null ? String(data) : ''),
+      identify: () => false
     });
-    const customSchema = jsYaml.DEFAULT_SCHEMA.extend([
-      IncludeScalarType
-    ]);
+    const customSchema =
+      jsYaml.CORE_SCHEMA.withTags(IncludeScalarType);
     parsedFrontmatter = jsYaml.load(yamlText, {
       schema: customSchema
     });

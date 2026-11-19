@@ -1,10 +1,13 @@
 ---
 documento_id: DOC-REPO-MAP-001
 tipo: mapa-repositorio
-status: vigente
-caminho_canonico: mapa-repositorio.md
 versao: 1.0.0
+caminho_canonico: mapa-repositorio.md
+criado_em: 2026-11-13
 atualizado_em: 2026-11-13
+fase_documento: final
+status_aprovacao: homologado
+status_implementacao: n/a
 ---
 
 # Mapa canônico do repositório

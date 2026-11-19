@@ -6,7 +6,7 @@
 
 <glossario>
 
-**Substantivos e conceitos centrais**
+## Substantivos e conceitos centrais
 
 - **Product Discovery**: investigação estruturada anterior à definição do produto, destinada a compreender usuários, atividades, problemas, necessidades, evidências e oportunidades antes de decidir funcionalidades.
 - **Problema**: condição existente que dificulta um resultado relevante para o usuário; sua existência não implica que o aplicativo deva resolvê-la.
@@ -25,7 +25,7 @@
 - **Carga**: conjunto de demandas impostas ao atleta por treino e competição; pode ser estimada por variáveis externas, fisiológicas e perceptivas.
 - **Rastreabilidade**: vínculo explícito entre problema, usuário, necessidade, oportunidade e evidência.
 
-**Expressões compostas, verbos e ações**
+## Expressões compostas, verbos e ações
 
 - **Registrar o jogo**: preservar acontecimentos relevantes da partida ou treino de maneira suficientemente fiel para posterior análise.
 - **Gerir carga**: ajustar estímulo, recuperação e exposição competitiva a partir de informação sobre o atleta e a atividade.
@@ -35,7 +35,7 @@
 - **Coordenar equipe**: organizar disponibilidade, treino, competição, deslocamento e outras dependências coletivas.
 - **Validar problema**: obter evidência suficiente de ocorrência, relevância e contexto no público que se pretende atender; não é sinônimo de confirmar uma solução.
 
-**Proposição central do P1**
+## Proposição central do P1
 
 O aplicativo só deve ser concebido depois de compreender **o que atletas e treinadores de handebol de praia precisam conseguir realizar, quais obstáculos efetivamente interferem nesses resultados e quais oportunidades justificam investigação posterior**; funcionalidades, módulos e tecnologia permanecem deliberadamente fora desta etapa.
 

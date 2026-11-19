@@ -1,11 +1,13 @@
 ---
 documento_id: 'DOC-MENSAGENS-001'
 tipo: 'registro-fonte'
-status: 'preservado'
-caminho_canonico: 'mensagens-treinadores.md'
 versao: '1.0.0'
+caminho_canonico: 'mensagens-treinadores.md'
 criado_em: '2026-11-12'
 atualizado_em: '2026-11-13'
+fase_documento: 'final'
+status_aprovacao: 'homologado'
+status_implementacao: 'n/a'
 ---
 
 # Exportação de conversas do WhatsApp

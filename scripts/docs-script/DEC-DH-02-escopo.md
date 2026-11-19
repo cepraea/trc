@@ -1,10 +1,13 @@
 ---
 documento_id: DEC-DH-02
 tipo: decisao
-status: aguardando_decisao_humana
-caminho_canonico: scripts/docs-script/DEC-DH-02-escopo.md
 versao: 1.0.0
-data: '2026-11-14'
+caminho_canonico: scripts/docs-script/DEC-DH-02-escopo.md
+criado_em: '2026-11-14'
+atualizado_em: '2026-11-14'
+fase_documento: proposta
+status_aprovacao: pendente
+status_implementacao: pendente
 autoridade: usuario-davi-sermenho
 ---
 

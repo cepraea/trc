@@ -1,10 +1,13 @@
 ---
 documento_id: DOC-TEST-MATRIX-001
 tipo: matriz-testes
-status: desenvolvimento
-caminho_canonico: testes/matriz-testes.md
 versao: 1.0.0
+caminho_canonico: testes/matriz-testes.md
+criado_em: 2026-11-13
 atualizado_em: 2026-11-13
+fase_documento: draft
+status_aprovacao: revisao
+status_implementacao: em-progresso
 ---
 
 # Matriz canônica de testes

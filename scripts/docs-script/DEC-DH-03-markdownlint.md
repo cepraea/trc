@@ -1,10 +1,13 @@
 ---
 documento_id: DEC-DH-03
 tipo: decisao
-status: implantado
-caminho_canonico: scripts/docs-script/DEC-DH-03-markdownlint.md
 versao: 1.0.0
-data: '2026-11-14'
+caminho_canonico: scripts/docs-script/DEC-DH-03-markdownlint.md
+criado_em: '2026-11-14'
+atualizado_em: '2026-11-14'
+fase_documento: final
+status_aprovacao: homologado
+status_implementacao: implementado
 implantado_em: '2026-11-14T19:00:00-03:00'
 autoridade: usuario-davi-sermenho
 ---

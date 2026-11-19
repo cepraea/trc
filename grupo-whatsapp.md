@@ -1,11 +1,13 @@
 ---
 documento_id: 'DOC-GRUPO-001'
 tipo: 'registro-operacional'
-status: 'em-revisao'
-caminho_canonico: 'grupo-whatsapp.md'
 versao: '1.0.0'
+caminho_canonico: 'grupo-whatsapp.md'
 criado_em: '2026-11-12'
 atualizado_em: '2026-11-13'
+fase_documento: 'draft'
+status_aprovacao: 'revisao'
+status_implementacao: 'n/a'
 ---
 
 # Grupo de WhatsApp — Monitoramento Seleção Brasileira

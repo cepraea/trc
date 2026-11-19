@@ -1,11 +1,13 @@
 ---
 documento_id: 'DOC-TRACE-TECH-001'
 tipo: 'especificacao-tecnica'
-status: 'em-migracao'
-caminho_canonico: 'rastreabilidade-tecnica.md'
 versao: '2.0.0'
+caminho_canonico: 'rastreabilidade-tecnica.md'
 criado_em: '2026-11-12'
 atualizado_em: '2026-11-13'
+fase_documento: 'draft'
+status_aprovacao: 'revisao'
+status_implementacao: 'em-progresso'
 ---
 
 # Rastreabilidade
