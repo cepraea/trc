@@ -1,0 +1,1536 @@
+versao_do_catalogo: 1.0.1-F7
+idioma_principal: pt-BR
+data_atualizacao: '2026-11-20'
+contextos:
+- id: regulamentar
+  descricao: Regras oficiais de jogo, arbitragem, legalidade, infrações e procedimentos
+    formais da IHF.
+- id: tecnica
+  descricao: Ações motoras, fundamentos, gestos técnicos, biomecânica e controle corporal
+    dos atletas.
+- id: tatica
+  descricao: Organização ofensiva e defensiva, sistemas de jogo e papéis táticos definidos
+    pela comissão técnica.
+- id: estatistica
+  descricao: Protocolos de scout esportivo, contagem de eventos, perdas de posse e
+    súmula estatística.
+conceitos:
+- id: C001
+  contexto: regulamentar
+  classe: principio_de_arbitragem
+  tipo_ontologico: atributo_normativo
+  termos:
+    pt_BR:
+      preferido: Regra da vantagem
+      natureza: traducao_adotada
+      alternativos:
+      - Vantagem
+      - Lei da vantagem
+    en:
+      preferido: Advantage (Rule of)
+      natureza: termo_glossario_IHF
+  definicao: Critério que faculta aos árbitros permitir a continuidade do jogo após
+    uma infração quando a interrupção imediata prejudicaria a equipe que sofreu a
+    falta.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 13:2, p. 26
+  limites: Não equivale a ignorar a falta para fins de punição disciplinar pessoal
+    subsequente nem assegura pontuação automática.
+  criterios_delimitacao:
+    inclusao:
+    - Infração cometida contra equipe que mantém continuidade vantajosa de ataque
+    exclusao:
+    - Impunidade disciplinar pessoal posterior para faltas graves
+    - Conversão automática em gol
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R012
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C018
+    justificativa: A vantagem pode viabilizar a conclusão de um gol válido.
+  - tipo: regulado_por
+    destino_id: R012
+    justificativa: Regra 13:2 disciplina a faculdade da vantagem em situações de falta.
+  exemplos:
+  - tipo: REAL
+    descricao: Atacante sofre contato faltoso mas consegue arremessar e marcar; árbitros
+      validam o gol sem interromper.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Árbitro apita imediatamente falta para a equipe atacante no momento
+      em que um atleta livre arremessava em direção ao gol desprotegido.
+- id: C002
+  contexto: tatica
+  classe: fase_ofensiva
+  tipo_ontologico: evento_composto
+  termos:
+    pt_BR:
+      preferido: Contra-ataque
+      natureza: traducao_adotada
+      alternativos:
+      - Transição ofensiva rápida
+    en:
+      preferido: Counter-attack
+      natureza: termo_glossario_IHF
+  definicao: Ação ofensiva dinâmica iniciada imediatamente como resposta ao encerramento
+    do ataque adversário.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65
+  limites: Não pressupõe obrigatoriamente superioridade numérica imediata; distinguir
+    de ataque rápido (C011).
+  criterios_delimitacao:
+    inclusao:
+    - Transição ofensiva imediata iniciada logo após a recuperação da posse de bola
+    exclusao:
+    - Ataque posicional com a defesa adversária já postada e estruturada
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras: []
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C011
+    justificativa: Contra-ataque é a fase geral de transição; ataque rápido (C011)
+      é uma especialização desta fase.
+  - tipo: relacionado_a
+    destino_id: C010
+    justificativa: O contra-ataque é tipicamente desencadeado por um turnover adversário.
+  exemplos:
+  - tipo: REAL
+    descricao: Goleiro defende arremesso e lança diretamente para o ponta em corrida
+      livre para a meta contrária.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Equipe recupera a posse e aguarda 15 segundos na própria quadra trocando
+      passes até organizar o sistema posicional.
+- id: C003
+  contexto: tecnica
+  classe: qualificador_tecnico
+  tipo_ontologico: atributo_tecnico
+  termos:
+    pt_BR:
+      preferido: Ação criativa
+      natureza: traducao_adotada
+      alternativos:
+      - Arremesso criativo
+      - Jogada criativa
+    en:
+      preferido: Creative (shot, action)
+      natureza: termo_glossario_IHF
+  definicao: Qualidade atribuída a uma ação técnica ou finalização que apresenta originalidade,
+    expressividade e elevado padrão de imaginação na execução.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Clarificação 1, p. 47
+  limites: A criatividade motora não atribui 2 pontos por si só; depende de conformidade
+    com a Regra 9:2 e julgamento dos árbitros.
+  criterios_delimitacao:
+    inclusao:
+    - Gesto técnico que combina originalidade, imprevisibilidade motora e elevado
+      padrão plástico
+    exclusao:
+    - Arremesso frontal estático simples sem nenhuma rotação, salto ou elemento artístico
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R002
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C013
+    justificativa: A ação criativa é requisito e fundamento técnico para o reconhecimento
+      de gol espetacular (Regra 9:2 e Clarif. 1).
+  - tipo: relacionado_a
+    destino_id: C014
+    justificativa: O spin shot é o principal arquétipo de ação criativa no handebol
+      de praia.
+  - tipo: regulado_por
+    destino_id: R002
+    justificativa: Regra 9:2 e Clarificação 1 disciplinam a pontuação de 2 pontos
+      para gols criativos/espetaculares (in-flight e spin shot).
+  exemplos:
+  - tipo: REAL
+    descricao: Arremesso com giro de 360 graus completado com perfeição técnica e
+      controle corporal no ar.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta arremessa de pé no solo, sem salto ou rotação, com mecânica
+      básica tradicional.
+- id: C004
+  contexto: regulamentar
+  classe: principio_etico_normativo
+  tipo_ontologico: atributo_normativo
+  termos:
+    pt_BR:
+      preferido: Jogo limpo
+      natureza: traducao_adotada
+      alternativos:
+      - Fair Play
+    en:
+      preferido: Fair Play
+      natureza: termo_glossario_IHF
+  definicao: Conduta esportiva pautada pelo respeito às regras, integridade física
+    dos adversários e espírito da modalidade, vedando atitudes que ridicularizem o
+    oponente.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Foreword, p. 3; Glossary of Terms, p. 65
+  limites: Princípio orientador da arbitragem; não substitui o enquadramento disciplinar
+    específico das Regras 8 e 16.
+  criterios_delimitacao:
+    inclusao:
+    - Respeito integral à integridade do oponente, arbitragem e espírito do jogo na
+      areia
+    exclusao:
+    - Provocações deliberadas, agressões, simulações ou condutas antidesportivas
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras: []
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C028
+    justificativa: Violações severas ao Fair Play ensejam desqualificação imediata
+      da partida.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta ajuda o adversário a se levantar da areia e entrega a bola voluntariamente
+      após interrupção.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta celebra gol ridicularizando o goleiro caído com gestos ofensivos
+      (vedado expressamente pelo Foreword da IHF).
+- id: C005
+  contexto: regulamentar
+  classe: metodo_decisorio
+  tipo_ontologico: procedimento_normativo
+  termos:
+    pt_BR:
+      preferido: Gol de ouro
+      natureza: traducao_adotada
+      alternativos:
+      - Morte súbita de período
+    en:
+      preferido: Golden Goal
+      natureza: termo_glossario_IHF
+  definicao: Método de desempate utilizado quando um período termina empatado, no
+    qual a primeira equipe a marcar qualquer gol regular é declarada vencedora do
+    período.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regras 2:6, 9:7, pp. 8, 22
+  limites: Aplica-se exclusivamente ao desempate de um período regular; não se confunde
+    com o Shoot-out (C008).
+  criterios_delimitacao:
+    inclusao:
+    - Prorrogação de período terminada imediatamente após a primeira pontuação válida
+    exclusao:
+    - Desempate da partida em sets por meio de shoot-out
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R006
+  relacoes:
+  - tipo: parte_de
+    destino_id: C018
+    justificativa: O gol válido é o evento resolutivo que encerra o Golden Goal.
+  - tipo: regulado_por
+    destino_id: R006
+    justificativa: Regras 2:6 e 9:7 disciplinam a decisão de períodos por Gol de Ouro.
+  exemplos:
+  - tipo: REAL
+    descricao: Período empata em 18x18; após tiro de árbitro, equipe marca 1 ou 2
+      pontos e é declarada vencedora do set.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Equipes disputam 5 minutos contínuos com placar cumulativo após o término
+      dos 10 minutos regulares.
+- id: C006
+  contexto: tecnica
+  classe: acao_tecnica
+  tipo_ontologico: evento_tecnico
+  termos:
+    pt_BR:
+      preferido: Em voo
+      natureza: traducao_adotada
+      alternativos:
+      - Gol de aérea
+      - In-flight
+    en:
+      preferido: In-flight
+      natureza: termo_glossario_IHF
+  definicao: Ação técnica na qual o atleta recebe a bola no ar, domina-a e finaliza
+    em direção à meta antes de qualquer contato corporal com a areia.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Clarificação 1, p. 47
+  limites: Para conceder 2 pontos, exige controle prévio da bola no ar e arremesso;
+    desvio momentâneo, tapa ('slap') ou empurrão vale 1 ponto.
+  criterios_delimitacao:
+    inclusao:
+    - Atleta salta, domina a bola no ar e arremessa antes de qualquer contato corporal
+      com a areia
+    exclusao:
+    - Tapa ou empurrão momentâneo na bola no ar (slap/push - Clarificação 1)
+    - Arremesso após queda no solo
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R002
+  relacoes:
+  - tipo: subtipo_de
+    destino_id: C003
+    justificativa: O in-flight com controle corporal no ar é uma forma de ação criativa.
+  - tipo: relacionado_a
+    destino_id: C019
+    justificativa: Gera 2 pontos se cumprir o predicado de controle da bola e for
+      validado pela arbitragem (Regra 9:2).
+  - tipo: relacionado_a
+    destino_id: C021
+    justificativa: Exige estritamente o estado de controle da bola no ar.
+  - tipo: regulado_por
+    destino_id: R002
+    justificativa: Regra 9:2 e Clarificação 1 disciplinam a pontuação de 2 pontos
+      para gols criativos/espetaculares (in-flight e spin shot).
+  exemplos:
+  - tipo: REAL
+    descricao: Passe aéreo recebido com ambas as mãos no ar, seguido de arremesso
+      completado antes do toque na areia (vale 2 pontos).
+  - tipo: CONTRAEXEMPLO_REAL
+    descricao: Atleta salta e dá um leve tapa com a ponta dos dedos na bola no ar
+      sem dominá-la; gol vale apenas 1 ponto conforme a Clarificação 1.
+- id: C007
+  contexto: regulamentar
+  classe: evento_resultado
+  tipo_ontologico: evento_resultado
+  termos:
+    pt_BR:
+      preferido: Gol contra
+      natureza: traducao_adotada
+      alternativos:
+      - Auto-gol
+    en:
+      preferido: Own goal
+      natureza: termo_glossario_IHF
+  definicao: Evento no qual um atleta introduz a bola na própria meta em conformidade
+    com as regras de jogo, concedendo 1 ponto à equipe adversária.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 9:1, p. 21
+  limites: Vale sempre 1 ponto, independentemente da função do autor. Não se aplica
+    ao tiro de meta que entra direto na própria meta sem ultrapassar a linha de 6m.
+  criterios_delimitacao:
+    inclusao:
+    - Bola colocada inteiramente dentro da própria baliza por ação do defensor ou
+      goleiro
+    exclusao:
+    - Tiro de meta cobrado pelo goleiro que entra na própria meta sem ultrapassar
+      a linha de 6 metros (Regra 12)
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R004
+  relacoes:
+  - tipo: subtipo_de
+    destino_id: C018
+    justificativa: O gol contra é formalmente computado como um gol válido em favor
+      da equipe adversária.
+  - tipo: regulado_por
+    destino_id: R004
+    justificativa: Regra 9:1 disciplina a validação de gol e a concessão de 1 ponto
+      para gol contra.
+  exemplos:
+  - tipo: REAL
+    descricao: Defensor tenta desviar passe e empurra a bola para dentro da própria
+      meta desprotegida (1 ponto para o adversário).
+  - tipo: CONTRAEXEMPLO_REAL
+    descricao: Goleiro executa tiro de meta mas a bola escapa de sua mão e rola para
+      trás entrando no gol sem sair da área (tiro de meta é apenas repetido).
+- id: C008
+  contexto: regulamentar
+  classe: procedimento_de_desempate
+  tipo_ontologico: procedimento_normativo
+  termos:
+    pt_BR:
+      preferido: Shoot-out
+      natureza: traducao_adotada
+      alternativos:
+      - Tiros de um contra o goleiro
+    en:
+      preferido: Shoot-out
+      natureza: termo_glossario_IHF
+  definicao: Procedimento regulamentar para decidir partida empatada em sets (1–1),
+    constituído por tentativas alternadas de 1 contra o goleiro com passe de volta.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 9:8–10, pp. 22–24
+  limites: A bola não pode tocar a areia nos passes. Pontuação de cada tentativa segue
+    os critérios ordinários de 1 ou 2 pontos.
+  criterios_delimitacao:
+    inclusao:
+    - Série de 5 tentativas individuais alternadas com passe ao goleiro na linha de
+      gol após empate em sets (1–1)
+    exclusao:
+    - Tiro de 6 metros cobrado em decorrência de falta pessoal durante o tempo regular
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R007
+  relacoes:
+  - tipo: executado_por
+    destino_id: C017
+    justificativa: O goleiro defende e participa obrigatoriamente do passe inicial
+      da tentativa.
+  - tipo: regulado_por
+    destino_id: R007
+    justificativa: Regras 9:8-10 disciplinam o procedimento decisório de Shoot-out.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta parte da linha de 6m, passa a bola ao seu goleiro na meta oposta,
+      recebe em corrida e finaliza sem dar mais de 3 passos ou tocar a areia na área.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta posiciona a bola na marca de 6 metros e arremessa parado diretamente
+      contra a meta adversária.
+- id: C009
+  contexto: regulamentar
+  classe: infracao_tecnica
+  tipo_ontologico: evento_infracao
+  termos:
+    pt_BR:
+      preferido: Violação de passos
+      natureza: traducao_adotada
+      alternativos:
+      - Passos
+      - Andar com a bola
+    en:
+      preferido: Travelling
+      natureza: termo_glossario_IHF
+  definicao: Infração cometida pelo atleta em posse da bola ao realizar mais de 3
+    passos na areia sem quicá-la ou rolá-la.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 7:3, pp. 17–18
+  limites: Arrastar um pé em direção ao outro após deslocamento conta como um único
+    passo.
+  criterios_delimitacao:
+    inclusao:
+    - Dar 4 ou mais passos segurando a bola sem quicar, ou deslocar-se sem respeito
+      aos limites de apoio na areia
+    exclusao:
+    - Deslocamento com rolamento legal da bola na areia ou até 3 passos regulamentares
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R008
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C010
+    justificativa: A infração de passos ocasiona turnover imediato da posse de bola.
+  - tipo: regulado_por
+    destino_id: R008
+    justificativa: Regra 7:3 disciplina o limite de 3 passos na areia.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta recebe a bola parado, dá 4 passos sobre a areia sem passar ou
+      arremessar; árbitro apita passos e assinala tiro livre.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta recebe a bola no ar, aterrissa com os dois pés (passo 0), dá
+      3 passos e arremessa à meta (lance legal).
+- id: C010
+  contexto: estatistica
+  classe: evento_de_jogo
+  tipo_ontologico: evento_estatistico
+  termos:
+    pt_BR:
+      preferido: Perda de posse
+      natureza: traducao_adotada
+      alternativos:
+      - Turnover
+    en:
+      preferido: Turnover
+      natureza: termo_glossario_IHF
+  definicao: Evento estatístico e de jogo no qual a equipe detentora da posse de bola
+    a transfere para a equipe adversária por arremesso, interceptação ou infração.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 16 Comentário 2, p. 32
+  limites: No contexto regulamentar, a ocorrência de um turnover determina o encerramento
+    da penalidade de suspensão de um atleta.
+  criterios_delimitacao:
+    inclusao:
+    - Toda perda da posse de bola decorrente de passe errado, falta técnica, interceptação
+      sofrida ou arremesso perdido
+    exclusao:
+    - Manutenção da posse de bola após falta sofrida em que é concedida a regra da
+      vantagem ou tiro livre favorável
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R010
+  - R011
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C027
+    justificativa: O turnover é a condição regulamentar obrigatória para autorizar
+      o retorno de atleta suspenso (Regra 16).
+  - tipo: relacionado_a
+    destino_id: C015
+    justificativa: O roubo de bola bem-sucedido gera um turnover para a equipe que
+      a perdeu.
+  - tipo: regulado_por
+    destino_id: R010
+    justificativa: Regra 16:1-5 disciplina a suspensão e término por turnover da equipe.
+  - tipo: regulado_por
+    destino_id: R011
+    justificativa: Regra 16:6-10 disciplina a desqualificação direta com cartão vermelho.
+  exemplos:
+  - tipo: REAL
+    descricao: Atacante comete passe impreciso que sai pela linha lateral; posse se
+      inverte e atleta suspenso da equipe é liberado para retornar.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Equipe sofre falta do adversário e reinicia o jogo com tiro livre (não
+      há turnover, a posse permanece com a mesma equipe).
+- id: C011
+  contexto: tatica
+  classe: padrao_tatico_ofensivo
+  tipo_ontologico: evento_composto
+  termos:
+    pt_BR:
+      preferido: Ataque rápido
+      natureza: traducao_adotada
+      alternativos:
+      - Fast break
+    en:
+      preferido: Fast break
+      natureza: termo_glossario_IHF
+  definicao: Tentativa coletiva de avançar a quadra na maior velocidade possível para
+    atingir posição de arremesso antes que a defesa adversária se organize.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Clarificação 9, p. 56
+  limites: Requer ritmo acelerado e exploração de desorganização/inferioridade defensiva;
+    difere do contra-ataque geral (C002).
+  criterios_delimitacao:
+    inclusao:
+    - Transição ofensiva em velocidade máxima contra defesa adversária desorganizada
+      ou em inferioridade numérica
+    exclusao:
+    - Transição em ritmo cadenciado em que a defesa já se recompôs em suas linhas
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras: []
+  relacoes:
+  - tipo: subtipo_de
+    destino_id: C002
+    justificativa: Todo ataque rápido é uma espécie de contra-ataque executado em
+      aceleração extrema.
+  - tipo: relacionado_a
+    destino_id: C020
+    justificativa: Faltas cometidas contra atleta em ataque rápido para a meta desprotegida
+      geram tiro de 6 metros.
+  exemplos:
+  - tipo: REAL
+    descricao: Após roubo de bola, atacante arranca em velocidade e finaliza contra
+      a meta vazia antes do retorno dos defensores.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Goleiro retém a bola por 2 segundos e passa lentamente para a quadra
+      de defesa enquanto os quatro defensores retornam à sua área.
+- id: C012
+  contexto: tecnica
+  classe: evento_tecnico_motor
+  tipo_ontologico: evento_tecnico
+  termos:
+    pt_BR:
+      preferido: Falha de manejo da bola
+      natureza: traducao_adotada
+      alternativos:
+      - Fumbling
+      - Manejo inadequado
+    en:
+      preferido: Fumbling
+      natureza: termo_glossario_IHF
+  definicao: Perda momentânea ou imperfeição de controle da bola durante tentativa
+    de recepção ou contenção em jogo ativo.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 7:7, p. 18
+  limites: Não é penalizada como infração de dois toques (Regra 7:7) e não implica
+    perda definitiva de posse (turnover).
+  criterios_delimitacao:
+    inclusao:
+    - Toque involuntário e imperfeito na bola durante tentativa de recepção ou bloqueio,
+      sem domínio estável
+    exclusao:
+    - Manejo voluntário com dois toques consecutivos proibidos no solo após controle
+      prévio
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras: []
+  relacoes:
+  - tipo: diferente_de
+    destino_id: C021
+    justificativa: Fumbling é precisamente a ausência momentânea de controle da bola.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta tenta agarrar passe alto, a bola escorrega em suas mãos e toca
+      a areia; ele a recolhe em seguida sem cometer infração.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta segura a bola com ambas as mãos de forma estável, deixa-a cair
+      intencionalmente e a pega de novo (dois toques).
+- id: C013
+  contexto: regulamentar
+  classe: classificacao_de_pontuacao
+  tipo_ontologico: classificacao_normativa
+  termos:
+    pt_BR:
+      preferido: Gol espetacular
+      natureza: traducao_adotada
+      alternativos:
+      - Gol de dois pontos por plasticidade
+    en:
+      preferido: Spectacular (goal)
+      natureza: termo_glossario_IHF
+  definicao: Categoria regulamentar que bonifica com 2 pontos os gols marcados por
+    execuções técnicas dramáticas, marcantes e de elevado padrão técnico.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 9:2; Clarificação 1, p. 47
+  limites: A bonificação depende estritamente do julgamento dos árbitros; ações que
+    ridicularizem o adversário não recebem 2 pontos.
+  criterios_delimitacao:
+    inclusao:
+    - Gol formalmente reconhecido pelos árbitros com bonificação de 2 pontos em razão
+      de sua execução espetacular (giro ou aérea)
+    exclusao:
+    - Gol regular de 1 ponto ou gol bonificado de 2 pontos proveniente exclusivamente
+      da função de goleiro ou tiro de 6 metros
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R002
+  relacoes:
+  - tipo: subtipo_de
+    destino_id: C019
+    justificativa: O gol espetacular é uma das três hipóteses normativas de gol de
+      dois pontos.
+  - tipo: relacionado_a
+    destino_id: C014
+    justificativa: O spin shot é o fundamento técnico clássico avaliado para a atribuição
+      de gol espetacular.
+  - tipo: regulado_por
+    destino_id: R002
+    justificativa: Regra 9:2 e Clarificação 1 disciplinam a pontuação de 2 pontos
+      para gols criativos/espetaculares (in-flight e spin shot).
+  exemplos:
+  - tipo: REAL
+    descricao: Árbitro de quadra assinala gol de dois pontos (Sinal 11.2) após atleta
+      converter arremesso em giro de 360 graus com plasticidade técnica.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta converte gol em arremesso de giro irregular após cometer invasão
+      de área antes de soltar a bola (gol é anulado).
+- id: C014
+  contexto: tecnica
+  classe: acao_tecnica
+  tipo_ontologico: acao_motora
+  termos:
+    pt_BR:
+      preferido: Arremesso de giro
+      natureza: traducao_adotada
+      alternativos:
+      - Spin shot
+      - Giro 360
+      - Arremesso com rotação
+    en:
+      preferido: Spin shot
+      natureza: termo_glossario_IHF
+  definicao: Ação técnica de finalização executada com rotação completa do corpo no
+    ar (360 graus) antes da soltura da bola em direção à meta.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 9:2; Clarificação 1
+  limites: A técnica isolada não concede 2 pontos; depende de a bola entrar regularmente
+    e ser classificada como gol espetacular pelos árbitros.
+  criterios_delimitacao:
+    inclusao:
+    - Arremesso executado com rotação completa do corpo no ar (360 graus) antes da
+      soltura da bola e sem apoio prévio no solo
+    exclusao:
+    - Giro parcial ou rotação incompleta (inferior a 360 graus)
+    - Giro executado com apoio prévio ou simultâneo de pé na areia
+    - Mera rotação parcial de 180 graus sem volta completa
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R002
+  relacoes:
+  - tipo: subtipo_de
+    destino_id: C003
+    justificativa: O spin shot constitui formalmente uma ação criativa do handebol
+      de praia.
+  - tipo: relacionado_a
+    destino_id: C013
+    justificativa: Ação técnica que habilita a validação de gol espetacular se o gol
+      for regular e aprovado pelos árbitros.
+  - tipo: diferente_de
+    destino_id: C019
+    justificativa: A ação técnica mecânica não equivale ontologicamente ao evento
+      de pontuação regulamentar.
+  - tipo: regulado_por
+    destino_id: R002
+    justificativa: Regra 9:2 e Clarificação 1 disciplinam a pontuação de 2 pontos
+      para gols criativos/espetaculares (in-flight e spin shot).
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta decola do solo, executa rotação completa de 360 graus com o
+      tronco e membros no ar e dispara a bola para a baliza.
+  - tipo: CONTRAEXEMPLO_REAL
+    descricao: Atleta salta, gira apenas 180 graus de costas para o gol e arremessa;
+      os árbitros assinalam gol simples de 1 ponto por ausência de giro completo.
+- id: C015
+  contexto: tecnica
+  classe: acao_defensiva
+  tipo_ontologico: acao_motora
+  termos:
+    pt_BR:
+      preferido: Roubo de bola
+      natureza: traducao_adotada
+      alternativos:
+      - Desarme com a mão aberta
+      - Stealing
+    en:
+      preferido: Stealing
+      natureza: termo_glossario_IHF
+  definicao: Ação técnica defensiva permitida de retirar a bola em disputa do controle
+    adversário utilizando a mão aberta e sem contato físico faltoso.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 8:1b, p. 19
+  limites: Arrancar ou golpear a bola com o punho fechado ou das mãos do oponente
+    é expressamente proibido (Regra 8:2a).
+  criterios_delimitacao:
+    inclusao:
+    - Ato defensivo de desarmar o oponente retirando a bola em disputa aberta com
+      a mão aberta
+    exclusao:
+    - Arrancar a bola com as duas mãos, bater no braço do adversário ou fechar a mão
+      em soco
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras: []
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C010
+    justificativa: O roubo de bola resulta na perda de posse (turnover) pela equipe
+      atacante.
+  - tipo: diferente_de
+    destino_id: C016
+    justificativa: Roubo se dá sobre a bola controlada ou disputada com o atleta;
+      interceptação atua na linha de passe aéreo.
+  exemplos:
+  - tipo: REAL
+    descricao: Defensor aproxima-se lateralmente e com a palma da mão aberta desvia
+      a bola que o atacante quicava ou segurava na areia.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Defensor atinge o punho do atacante para forçar a bola a cair; árbitro
+      apita falta e aplica tiro livre.
+- id: C016
+  contexto: tecnica
+  classe: acao_defensiva
+  tipo_ontologico: acao_motora
+  termos:
+    pt_BR:
+      preferido: Interceptação
+      natureza: traducao_adotada
+      alternativos:
+      - Corte de passe
+      - Interception
+    en:
+      preferido: Interception
+      natureza: termo_glossario_IHF
+  definicao: Ação técnica defensiva de interromper ou capturar a trajetória aérea
+    da bola durante um passe realizado entre adversários.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Glossary of Terms, p. 65; Regra 8:1a, p. 19
+  limites: Desdobramento analítico do verbete conjunto 'Stealing, Interception' da
+    IHF, focado na leitura antecipada da linha de passe.
+  criterios_delimitacao:
+    inclusao:
+    - Ato defensivo de antecipar e capturar ou desviar a trajetória de passe entre
+      adversários
+    exclusao:
+    - Contato corporal com o passador ou receptor antes da trajetória da bola
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras: []
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C010
+    justificativa: A interceptação bem-sucedida encerra a posse adversária e configura
+      turnover.
+  - tipo: diferente_de
+    destino_id: C015
+    justificativa: Distinta do roubo por ocorrer no espaço aéreo da linha de passe.
+  exemplos:
+  - tipo: REAL
+    descricao: Defensor lê o passe aéreo entre lateral e ponta, salta na linha de
+      passe e domina a bola no ar.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Defensor empurra o atacante receptor pelas costas para impedir que
+      este alcance o passe (falta e suspensão).
+- id: C017
+  contexto: regulamentar
+  classe: funcao_regulamentar
+  tipo_ontologico: papel_funcional
+  termos:
+    pt_BR:
+      preferido: Goleiro
+      natureza: traducao_adotada
+      alternativos:
+      - Guarda-redes
+      - Goalkeeper
+    en:
+      preferido: Goalkeeper
+      natureza: termo_normativo_IHF
+  definicao: Função de atleta formalmente designado em quadra investido de prerrogativas
+    exclusivas na área de gol e cujo gol marcado vale 2 pontos.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regras 4:5, 4:8, 5:1–12, 9:6, pp. 12, 15, 22
+  limites: Não se confunde com o papel tático de especialista (C024). Requer uniforme
+    em cores distintas das dos jogadores de linha.
+  criterios_delimitacao:
+    inclusao:
+    - Atleta formalmente inscrito na súmula e investido de uniforme diferenciado exercendo
+      atribuições na área de gol
+    exclusao:
+    - Jogador de linha em trajes comuns atuando na área de jogo sem alternância regulamentar
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R001
+  - R014
+  - R016
+  relacoes:
+  - tipo: ocorre_em
+    destino_id: C022
+    justificativa: O goleiro detém privilégios e deveres territoriais exclusivos na
+      área de gol (Regra 5).
+  - tipo: diferente_de
+    destino_id: C024
+    justificativa: Goleiro é função formal da IHF; Especialista é papel tático da
+      comissão técnica.
+  - tipo: regulado_por
+    destino_id: R001
+    justificativa: Regra 9:6 disciplina a pontuação de 2 pontos para gols de goleiro
+      e a alternância de funções.
+  - tipo: regulado_por
+    destino_id: R014
+    justificativa: Regra 6 disciplinam os direitos exclusivos e invasões na área de
+      gol.
+  - tipo: regulado_por
+    destino_id: R016
+    justificativa: Regra 12 disciplina a execução do tiro de meta de dentro da área.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta de camisa cinza diferenciada defende a meta de sua equipe e,
+      em seguida, dispara arremesso que entra na meta adversária (2 pontos).
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Jogador de linha com uniforme regular de linha arremessa da sua quadra
+      defensiva e marca gol (vale apenas 1 ponto).
+- id: C018
+  contexto: regulamentar
+  classe: resultado_regulamentar
+  tipo_ontologico: evento_resultado
+  termos:
+    pt_BR:
+      preferido: Gol válido
+      natureza: traducao_adotada
+      alternativos:
+      - Gol regular
+      - Goal
+    en:
+      preferido: Goal
+      natureza: termo_normativo_IHF
+  definicao: Resultado oficial reconhecido quando a bola ultrapassa integralmente
+    a largura da linha de gol sem infração prévia ou simultânea do arremessador.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regra 9:1, p. 21
+  limites: A trajetória da bola isoladamente não valida o lance; requer ausência de
+    apito prévio e confirmação arbitral.
+  criterios_delimitacao:
+    inclusao:
+    - Transposição integral da largura da linha de meta pela bola, sem infração prévia
+      de ataque e confirmada pelos árbitros
+    exclusao:
+    - Bola que toca a linha sem cruzar integralmente
+    - 'Infração prévia ou simultânea cometida pelo arremessador ou companheiro (ex.:
+      invasão, passos ou falta)'
+    - Arremesso efetuado após apito de interrupção dos árbitros ou sinal da mesa
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R001
+  - R002
+  - R003
+  - R004
+  relacoes:
+  - tipo: ocorre_em
+    destino_id: C022
+    justificativa: O gol se materializa na baliza situada nos limites da área de gol.
+  - tipo: regulado_por
+    destino_id: R001
+    justificativa: Regra 9:6 disciplina a pontuação de 2 pontos para gols de goleiro
+      e a alternância de funções.
+  - tipo: regulado_por
+    destino_id: R002
+    justificativa: Regra 9:2 e Clarificação 1 disciplinam a pontuação de 2 pontos
+      para gols criativos/espetaculares (in-flight e spin shot).
+  - tipo: regulado_por
+    destino_id: R003
+    justificativa: Regras 9:3 e 14:4 disciplinam a pontuação de 2 pontos para arremessos
+      de 6 metros.
+  - tipo: regulado_por
+    destino_id: R004
+    justificativa: Regra 9:1 disciplina a validação de gol e a concessão de 1 ponto
+      para gol contra.
+  exemplos:
+  - tipo: REAL
+    descricao: Bola cruza inteiramente o plano vertical entre as traves e o travessão
+      sem infrações; árbitros confirmam o centro com o Sinal 11.
+  - tipo: CONTRAEXEMPLO_REAL
+    descricao: Bola bate no travessão, quica sobre a linha de gol e sai para a areia
+      sem cruzar totalmente a linha (lance segue, não é gol).
+- id: C019
+  contexto: regulamentar
+  classe: classificacao_de_pontuacao
+  tipo_ontologico: classificacao_normativa
+  termos:
+    pt_BR:
+      preferido: Gol de dois pontos
+      natureza: traducao_adotada
+      alternativos:
+      - Gol duplo
+      - Two-point goal
+    en:
+      preferido: Two-point goal
+      natureza: termo_normativo_IHF
+  definicao: 'Atribuição de valor 2 a um gol regular que satisfaça uma das três condições
+    normativas: gol do goleiro (9:6), tiro de 6m (9:3) ou criativo/espetacular (9:2).'
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regras 9:2, 9:3, 9:6; Clarificação 1; Sinal 11.2
+  limites: 'Taxatividade normativa: não existem outras hipóteses regulamentares para
+    concessão de 2 pontos fora das três categorias expressas.'
+  criterios_delimitacao:
+    inclusao:
+    - 'Gol válido que preenche taxativamente uma das três hipóteses regulamentares:
+      (1) criativo/espetacular, (2) tiro de 6 metros, ou (3) marcado pelo goleiro'
+    exclusao:
+    - Gol regular simples de 1 ponto marcado por jogador de linha em arremesso convencional
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R001
+  - R002
+  - R003
+  relacoes:
+  - tipo: subtipo_de
+    destino_id: C018
+    justificativa: O gol de dois pontos é uma espécie qualificada de gol válido.
+  - tipo: regulado_por
+    destino_id: R001
+    justificativa: Regra 9:6 disciplina a pontuação de 2 pontos para gols de goleiro
+      e a alternância de funções.
+  - tipo: regulado_por
+    destino_id: R002
+    justificativa: Regra 9:2 e Clarificação 1 disciplinam a pontuação de 2 pontos
+      para gols criativos/espetaculares (in-flight e spin shot).
+  - tipo: regulado_por
+    destino_id: R003
+    justificativa: Regras 9:3 e 14:4 disciplinam a pontuação de 2 pontos para arremessos
+      de 6 metros.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta converte arremesso de 6 metros assinalado após falta desqualificante
+      (2 pontos computados na súmula).
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Jogador de linha salta e marca gol em arremesso de apoio simples sem
+      giro; súmula anota 1 ponto.
+- id: C020
+  contexto: regulamentar
+  classe: execucao_formal
+  tipo_ontologico: procedimento_normativo
+  termos:
+    pt_BR:
+      preferido: Arremesso de seis metros
+      natureza: traducao_adotada
+      alternativos:
+      - Tiro de 6 metros
+      - Pênalti de praia
+      - 6-metre throw
+    en:
+      preferido: 6-metre throw
+      natureza: termo_normativo_IHF
+  definicao: Execução formal concedida após destruição de clara chance de gol ou faltas
+    intencionais nos últimos 15 segundos; gol marcado vale 2 pontos.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regras 9:3, 14:1–10, pp. 22, 27–28
+  limites: Executado em até 3 segundos após apito; arremessador não pode tocar ou
+    ultrapassar a linha de 6 metros antes da soltura da bola.
+  criterios_delimitacao:
+    inclusao:
+    - Arremesso direto executado da marca de 6 metros em até 3 segundos após o apito
+      do árbitro, sem oposição de barreira
+    exclusao:
+    - Cobrança de tiro livre convencional concedido fora da área de gol
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R003
+  - R005
+  relacoes:
+  - tipo: ocorre_em
+    destino_id: C022
+    justificativa: Cobrado na linha divisória de 6 metros voltado para a baliza adversária.
+  - tipo: regulado_por
+    destino_id: R003
+    justificativa: Regras 9:3 e 14:4 disciplinam a pontuação de 2 pontos para arremessos
+      de 6 metros.
+  - tipo: regulado_por
+    destino_id: R005
+    justificativa: Regra 8:11 e Clarificação 10 disciplinam as sanções e tiros nos
+      últimos 15 segundos ou Golden Goal.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta isolado é empurrado pelas costas no momento do arremesso; árbitro
+      apita tiro de 6 metros e suspende o infrator.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta cobra tiro de 6 metros saltando e pisando dentro da área de
+      gol antes de soltar a bola (infração, tiro de meta para o oponente).
+- id: C021
+  contexto: tecnica
+  classe: estado_de_posse
+  tipo_ontologico: estado_fisico
+  termos:
+    pt_BR:
+      preferido: Controle da bola
+      natureza: traducao_adotada
+      alternativos:
+      - Domínio da bola
+      - Posse de bola
+    en:
+      preferido: Ball control
+      natureza: termo_conceitual_IHF
+  definicao: Estado no qual um atleta retém a bola sob seu domínio mecânico com uma
+    ou ambas as mãos, ou a conduz conforme os limites regulamentares.
+  origem:
+    tipo: terminologia_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regras 5:6, 7:2, 7:7, 14:2; Clarificação 1
+  limites: Condição determinante para validar gol em voo (C006) e caracterizar infrações
+    do goleiro ao sair da área.
+  criterios_delimitacao:
+    inclusao:
+    - Manter a bola firmemente segura em uma ou ambas as mãos, ou sob domínio estrito
+      do atleta
+    exclusao:
+    - Bola em voo livre descontrolada
+    - Toques casuais de raspão sem domínio (fumbling)
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R002
+  - R008
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C006
+    justificativa: O controle da bola no ar é o predicado mandatório para a bonificação
+      do in-flight (Clarificação 1).
+  - tipo: relacionado_a
+    destino_id: C017
+    justificativa: Goleiro com controle da bola na área não pode ultrapassar a linha
+      de 6 metros com ela dominada (Regra 5:6).
+  - tipo: regulado_por
+    destino_id: R002
+    justificativa: Regra 9:2 e Clarificação 1 disciplinam a pontuação de 2 pontos
+      para gols criativos/espetaculares (in-flight e spin shot).
+  - tipo: regulado_por
+    destino_id: R008
+    justificativa: Regra 7:3 disciplina o limite de 3 passos na areia.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta amortece a bola no peito e fecha as duas mãos sobre ela com
+      estabilidade na areia.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: A bola bate no ombro do atleta em disputa aérea e sobe desgovernada
+      sem que ele a toque com as mãos.
+- id: C022
+  contexto: regulamentar
+  classe: espaco_delimitado
+  tipo_ontologico: espaco_fisico
+  termos:
+    pt_BR:
+      preferido: Área de gol
+      natureza: traducao_adotada
+      alternativos:
+      - Área do goleiro
+      - Goal area
+    en:
+      preferido: Goal area
+      natureza: termo_normativo_IHF
+  definicao: Superfície da quadra delimitada pela linha de fundo e pela linha de área
+    de 6 metros, na qual apenas o goleiro tem permissão de entrar e atuar.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regras 1:1, 6:1–9, pp. 4, 16–17
+  limites: Inclui a própria fita delimitadora de 6 metros. O espaço aéreo acima da
+    área não é exclusivo e pode ser disputado (6:5).
+  criterios_delimitacao:
+    inclusao:
+    - Superfície retangular delimitada pela linha de fundo e pela linha de 6 metros,
+      incluindo as balizas
+    exclusao:
+    - Área de jogo central de 15x12 metros onde atuam os jogadores de linha
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R014
+  - R016
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C017
+    justificativa: Espaço exclusivo onde o goleiro pode defender sem restrições de
+      passos (Regra 5).
+  - tipo: regulado_por
+    destino_id: R014
+    justificativa: Regra 6 disciplinam os direitos exclusivos e invasões na área de
+      gol.
+  - tipo: regulado_por
+    destino_id: R016
+    justificativa: Regra 12 disciplina a execução do tiro de meta de dentro da área.
+  exemplos:
+  - tipo: REAL
+    descricao: Superfície de areia de 6x12 metros na qual apenas o goleiro da equipe
+      defensora pode permanecer com apoio no solo.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Jogador de linha defensor pisa voluntariamente na areia dentro dos
+      6 metros para bloquear atacante (falta, tiro de 6m).
+- id: C023
+  contexto: regulamentar
+  classe: espaco_operacional
+  tipo_ontologico: espaco_fisico
+  termos:
+    pt_BR:
+      preferido: Área de substituição
+      natureza: traducao_adotada
+      alternativos:
+      - Zona de substituição
+      - Substitution area
+    en:
+      preferido: Substitution area
+      natureza: termo_normativo_IHF
+  definicao: Área de 15x3 metros situada ao longo das linhas laterais do campo de
+    jogo destinada aos atletas reservas e oficiais devidamente inscritos.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regras 1:6, 4:13–14, pp. 4, 14; Anexo p. 58
+  limites: As entradas de jogadores de linha e do goleiro devem ser efetuadas obrigatoriamente
+    sobre o respectivo segmento da linha lateral da equipe.
+  criterios_delimitacao:
+    inclusao:
+    - Faixa lateral de 15x3 metros contígua à linha lateral em frente ao respectivo
+      banco de reservas da equipe
+    exclusao:
+    - Área técnica restrita de dirigentes ou zona de substituição da equipe adversária
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R013
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C024
+    justificativa: Área por onde o especialista e o goleiro realizam as substituições
+      rápidas de transição.
+  - tipo: regulado_por
+    destino_id: R013
+    justificativa: Regras 4:13-14 e Anexo disciplinam as substituições na área designada.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta sai da quadra cruzando a linha lateral de sua área e somente
+      após sua saída o companheiro entra na areia.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta reserva entra na quadra pulando pela linha de fundo atrás do
+      gol (substituição irregular, suspensão individual).
+- id: C024
+  contexto: tatica
+  classe: papel_tatico
+  tipo_ontologico: papel_funcional
+  termos:
+    pt_BR:
+      preferido: Especialista
+      natureza: convencao_interna
+      alternativos:
+      - Atleta especialista
+      - Coringa ofensivo
+    en:
+      preferido: Specialist
+      natureza: termo_tecnico_adotado
+  definicao: Papel tático de ataque atribuído discricionariamente pelo técnico a qualquer
+    atleta de linha para atuar livre em qualquer posto (central, lateral ou pivô)
+    vestindo a camisa de goleiro.
+  origem:
+    tipo: definicao_especialista
+    referencias:
+    - fonte_id: SRC-007
+      localizador: Decisão da comissão técnica / autoridade do treinador
+  limites: Não é verbete oficial da IHF. Gol marcado pelo especialista só vale 2 pontos
+    se o atleta estiver formalmente no exercício da função regulamentar de goleiro.
+  criterios_delimitacao:
+    inclusao:
+    - Atleta de linha escolhido pelo técnico para atuar com a camisa de goleiro em
+      qualquer posição de ataque
+    exclusao:
+    - Goleiro defensivo fixo
+    - Jogador de linha em trajes comuns atuando no ataque
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R001
+  relacoes:
+  - tipo: executado_por
+    destino_id: C017
+    justificativa: O especialista assume formalmente e operacionaliza a função de
+      goleiro no momento em que atua no ataque.
+  - tipo: diferente_de
+    destino_id: C017
+    justificativa: Papel tático de comissão técnica não se confunde ontologicamente
+      com a função regulamentar internacional.
+  - tipo: relacionado_a
+    destino_id: C019
+    justificativa: Se marcar gol investido regularmente da camisa de goleiro, aciona
+      a pontuação de 2 pontos da Regra 9:6.
+  - tipo: regulado_por
+    destino_id: R001
+    justificativa: Regra 9:6 disciplina a pontuação de 2 pontos para gols de goleiro
+      e a alternância de funções.
+  exemplos:
+  - tipo: REAL
+    descricao: Treinador determina que a ponta-esquerda vista a camisa de goleiro
+      para jogar como quarta atacante e criar superioridade numérica.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta entra no ataque vestindo o colete comum de linha e a equipe
+      clama por 2 pontos ao marcar gol regular de apoio.
+- id: C025
+  contexto: regulamentar
+  classe: infracao_tatico_normativa
+  tipo_ontologico: evento_infracao
+  termos:
+    pt_BR:
+      preferido: Jogo passivo
+      natureza: traducao_adotada
+      alternativos:
+      - Ataque passivo
+      - Passive Play
+    en:
+      preferido: Passive Play
+      natureza: termo_normativo_IHF
+  definicao: Infração cometida ao manter a posse de bola sem tentativa reconhecível
+    de progressão ou arremesso à meta, penalizada com tiro livre contra a equipe.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regra 7:10–11, p. 18; Clarificação 4, pp. 48–54; Sinal 16
+  limites: Após o gesto de pré-aviso (Sinal 16), a equipe tem o limite taxativo de
+    4 passes para finalizar a gol.
+  criterios_delimitacao:
+    inclusao:
+    - Manter a posse de bola deliberadamente sem demonstrar iniciativa evidente de
+      progresso ou arremesso à meta
+    exclusao:
+    - Troca de passes sob pressão defensiva ativa buscando brechas reais na linha
+      de marcação
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R009
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C010
+    justificativa: A infração consumada de jogo passivo acarreta tiro livre para a
+      defesa e consequente turnover.
+  - tipo: regulado_por
+    destino_id: R009
+    justificativa: Regra 7:10-11 e Clarificação 4 disciplinam o jogo passivo com teto
+      de 4 passes.
+  exemplos:
+  - tipo: REAL
+    descricao: Árbitros erguem o braço de pré-aviso; a equipe executa 4 passes sem
+      arremessar; no 5º passe os árbitros apitam jogo passivo.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Equipe troca 2 passes após o sinal de pré-aviso e executa arremesso
+      direto ao gol (lance regular).
+- id: C026
+  contexto: regulamentar
+  classe: procedimento_disciplinar_especial
+  tipo_ontologico: procedimento_normativo
+  termos:
+    pt_BR:
+      preferido: Regra dos últimos 15 segundos
+      natureza: traducao_adotada
+      alternativos:
+      - Últimos 15 segundos
+      - Last 15 seconds
+    en:
+      preferido: Last 15 seconds rule
+      natureza: termo_normativo_IHF
+  definicao: Dispositivo sancionador que pune infrações intencionais cometidas nos
+    últimos 15 segundos de um período ou durante o Gol de Ouro com desqualificação
+    direta e tiro de 6 metros.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regra 8:11, p. 21; Clarificação 10, pp. 56–57
+  limites: Aplica-se especificamente a condutas de atraso, desrespeito de distância
+    ou impedimento de execução de tiros para frustrar clara chance de gol.
+  criterios_delimitacao:
+    inclusao:
+    - Ato antidesportivo de impedir ou atrasar a cobrança de um tiro adversário nos
+      últimos 15 segundos do período ou no Golden Goal
+    exclusao:
+    - Falta comum de jogo com tempo regular superior a 15 segundos decorrido
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R005
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C028
+    justificativa: Aciona desqualificação imediata do infrator.
+  - tipo: regulado_por
+    destino_id: R005
+    justificativa: Regra 8:11 e Clarificação 10 disciplinam as sanções e tiros nos
+      últimos 15 segundos ou Golden Goal.
+  exemplos:
+  - tipo: REAL
+    descricao: A 8 segundos do fim, defensor bloqueia a bola antes da distância de
+      1 metro no tiro livre; árbitros mostram cartão vermelho direto e dão tiro de
+      6m.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Falta similar ocorrida no 5º minuto do primeiro período (apenas tiro
+      livre e suspensão progressiva comum).
+- id: C027
+  contexto: regulamentar
+  classe: sancao_disciplinar
+  tipo_ontologico: sancao_disciplinar
+  termos:
+    pt_BR:
+      preferido: Suspensão
+      natureza: traducao_adotada
+      alternativos:
+      - Exclusão temporária
+      - Suspension
+    en:
+      preferido: Suspension
+      natureza: termo_normativo_IHF
+  definicao: Sanção disciplinar individual aplicada por faltas repetidas ou antidesportivas,
+    obrigando o atleta a deixar a quadra até que ocorra um turnover de posse.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regra 16:1–5, pp. 29–31; Sinal 12, p. 43
+  limites: A segunda suspensão aplicada ao mesmo atleta acarreta automaticamente sua
+    desqualificação da partida (16:5).
+  criterios_delimitacao:
+    inclusao:
+    - Penalidade disciplinar individual aplicada por infração grave; jogador sai de
+      quadra e equipe atua em desvantagem até turnover
+    exclusao:
+    - Advertência verbal sem exclusão temporária
+    - Desqualificação definitiva da partida
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R010
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C010
+    justificativa: O turnover de posse de bola é a condição mandatória de liberação
+      para recomposição da equipe.
+  - tipo: regulado_por
+    destino_id: R010
+    justificativa: Regra 16:1-5 disciplina a suspensão e término por turnover da equipe.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta comete falta por segurar adversário pela camisa; árbitro assinala
+      Sinal 12; atleta aguarda fora até o turnover da equipe.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta comete falta comum leve de bloqueio frontal com as mãos abertas
+      (apenas tiro livre ordinário).
+- id: C028
+  contexto: regulamentar
+  classe: sancao_disciplinar
+  tipo_ontologico: sancao_disciplinar
+  termos:
+    pt_BR:
+      preferido: Desqualificação
+      natureza: traducao_adotada
+      alternativos:
+      - Cartão vermelho
+      - Disqualification
+    en:
+      preferido: Disqualification
+      natureza: termo_normativo_IHF
+  definicao: Sanção disciplinar máxima assinalada por cartão vermelho que exclui definitivamente
+    o atleta ou oficial da partida por conduta antidesportiva grave ou agressão.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regra 16:6–10, pp. 31–32; Sinal 13, p. 44
+  limites: A equipe joga com um atleta a menos até a ocorrência do próximo turnover,
+    quando pode recompor seu efetivo em quadra.
+  criterios_delimitacao:
+    inclusao:
+    - Exclusão definitiva da partida formalizada por cartão vermelho por falta violenta,
+      2ª suspensão ou agressão
+    exclusao:
+    - Suspensão temporária por 1 turnover de jogo
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R005
+  - R011
+  relacoes:
+  - tipo: relacionado_a
+    destino_id: C027
+    justificativa: A segunda suspensão do mesmo jogador acarreta desqualificação compulsória.
+  - tipo: regulado_por
+    destino_id: R005
+    justificativa: Regra 8:11 e Clarificação 10 disciplinam as sanções e tiros nos
+      últimos 15 segundos ou Golden Goal.
+  - tipo: regulado_por
+    destino_id: R011
+    justificativa: Regra 16:6-10 disciplina a desqualificação direta com cartão vermelho.
+  exemplos:
+  - tipo: REAL
+    descricao: Atleta atinge intencionalmente o rosto do arremessador no ar; árbitros
+      exibem cartão vermelho direto.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta recebe a 1ª suspensão da partida e é orientado a aguardar no
+      banco (segue elegível para o restante do jogo).
+- id: C029
+  contexto: regulamentar
+  classe: reinicio_formal
+  tipo_ontologico: procedimento_normativo
+  termos:
+    pt_BR:
+      preferido: Tiro de árbitro
+      natureza: traducao_adotada
+      alternativos:
+      - Bola ao alto
+      - Referee throw
+    en:
+      preferido: Referee throw
+      natureza: termo_normativo_IHF
+  definicao: Arremesso vertical da bola executado pelo árbitro no centro da quadra
+    para início dos períodos e do Gol de Ouro, disputado no ar por dois atletas.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regras 2:2, 10:1–5, pp. 8, 24
+  limites: A bola só pode ser tocada após atingir seu ponto mais alto. É proibido
+    agarrar a bola diretamente no salto.
+  criterios_delimitacao:
+    inclusao:
+    - Lançamento vertical da bola pelo árbitro no ponto central para início de cada
+      período e do Golden Goal
+    exclusao:
+    - Tiro lateral ou tiro de meta de reinício ordinário de jogo
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R006
+  - R015
+  relacoes:
+  - tipo: ocorre_em
+    destino_id: C022
+    justificativa: Ocorre na linha imaginária central que divide a quadra entre as
+      áreas de gol.
+  - tipo: regulado_por
+    destino_id: R006
+    justificativa: Regras 2:6 e 9:7 disciplinam a decisão de períodos por Gol de Ouro.
+  - tipo: regulado_por
+    destino_id: R015
+    justificativa: Regra 10 disciplina o tiro de árbitro no centro da quadra.
+  exemplos:
+  - tipo: REAL
+    descricao: Árbitro apita e lança a bola para cima no centro da quadra; dois saltadores
+      disputam a bola no ápice com um tapa para os companheiros.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Atleta agarra a bola com ambas as mãos ainda no salto do tiro de árbitro
+      (infração, tiro livre para o adversário).
+- id: C030
+  contexto: regulamentar
+  classe: execucao_formal
+  tipo_ontologico: procedimento_normativo
+  termos:
+    pt_BR:
+      preferido: Tiro de meta
+      natureza: traducao_adotada
+      alternativos:
+      - Tiro de goleiro
+      - Goalkeeper throw
+    en:
+      preferido: Goalkeeper throw
+      natureza: termo_normativo_IHF
+  definicao: Lançamento executado pelo goleiro de dentro de sua área para além da
+    linha de 6m após gol sofrido, bola na linha de fundo ou controle da bola na área.
+  origem:
+    tipo: regra_oficial
+    referencias:
+    - fonte_id: SRC-001
+      localizador: Regra 12:1–3, p. 25; Sinal 8, p. 41
+  limites: Executado sem apito do árbitro. Considera-se concluído quando a bola cruza
+    a linha de área de gol.
+  criterios_delimitacao:
+    inclusao:
+    - Lançamento executado pelo goleiro de dentro de sua área para além da linha de
+      6 metros sem apito de autorização
+    exclusao:
+    - Tiro livre executado pelo goleiro fora de sua área
+  estado_de_verificacao: SUSTENTADO_INTEGRALMENTE
+  regras:
+  - R016
+  relacoes:
+  - tipo: executado_por
+    destino_id: C017
+    justificativa: Tiro de execução restrita e privativa do goleiro da equipe.
+  - tipo: regulado_por
+    destino_id: R016
+    justificativa: Regra 12 disciplina a execução do tiro de meta de dentro da área.
+  exemplos:
+  - tipo: REAL
+    descricao: Atacante arremessa para fora sobre a linha de fundo; goleiro pega a
+      bola e a arremessa para seu armador fora da área sem esperar apito.
+  - tipo: CONTRAEXEMPLO_SIMULADO
+    descricao: Jogador de linha entra na área de gol para pegar a bola e cobrar o
+      tiro de meta (infração de invasão).

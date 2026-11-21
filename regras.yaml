@@ -1,0 +1,516 @@
+versao_das_regras: 1.0.1-F7
+idioma: pt-BR
+data_atualizacao: '2026-11-20'
+fontes_normativas:
+- id: SRC-001
+  autoridade: IHF
+  titulo: Rules of the Game for Beach Handball
+  edicao: '2026-04-01'
+  arquivo: regras_ihf_beach_handball_2026_en.pdf.pdf
+- id: SRC-007
+  autoridade: Comissão Técnica
+  titulo: Convenções Táticas Internas
+  edicao: '2026-11-20'
+valores_ternarios_fatos:
+- SIM
+- NAO
+- INDETERMINADO
+valores_ternarios_aplicacao:
+- APLICAVEL
+- NAO_APLICAVEL
+- INCONCLUSIVA
+regras:
+- id: R001
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 9:6
+  localizador: p. 22
+  vigencia: '2026-04-01'
+  titulo: Pontuação de dois pontos para gol marcado pelo goleiro
+  descricao: Concede 2 pontos quando um gol válido é marcado pelo atleta que está
+    formalmente vestido e exercendo a função regulamentar de goleiro no momento
+    do arremesso.
+  conceitos_relacionados:
+  - C017
+  - C018
+  - C019
+  condicoes_fato:
+    gol_valido: SIM
+    funcao_regulamentar_goleiro_em_exercicio: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    pontos_atribuidos: 2
+    sinal_arbitral_obrigatorio: Sinal 11.2 (dois pontos)
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    acao: Requer comprovação de que o arremessador exercia formalmente a função regulamentar
+      de goleiro (camisa/registro).
+    pontos_atribuidos: null
+  excecoes:
+  - Se o gol for marcado por jogador de linha sem função comprovada de goleiro, atribui-se
+    apenas 1 ponto (a menos que seja gol espetacular/6m).
+  - A simples designação tática de "especialista" (C024) não aciona R001 sem a comprovação
+    da função de goleiro em exercício.
+  nota_arbitragem: A decisão dos árbitros em quadra sobre a validade do gol e a pontuação
+    é final (Regra 17:13).
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R001 não foram satisfeitas.
+- id: R002
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 9:2 e Clarificação 1
+  localizador: pp. 21, 46-47
+  vigencia: '2026-04-01'
+  titulo: Pontuação de dois pontos para gol espetacular ou criativo
+  descricao: Gols espetaculares ou criativos são bonificados com 2 pontos. A apreciação
+    do caráter espetacular é competência exclusiva dos árbitros em quadra.
+  conceitos_relacionados:
+  - C003
+  - C006
+  - C013
+  - C014
+  - C018
+  - C019
+  - C021
+  sub_regras:
+  - modalidade: in_flight
+    condicoes:
+      gol_valido: SIM
+      arremessador_suspenso_no_ar: SIM
+      controle_da_bola_no_ar: SIM
+      arremesso_executado_antes_da_queda: SIM
+    pontos: 2
+    excecao: Dar um tapa (slap) ou empurrão momentâneo na bola sem controle prévio
+      resulta em gol simples de 1 ponto (Clarificação 1).
+  - modalidade: spin_shot
+    condicoes:
+      gol_valido: SIM
+      rotacao_corporal_completa_no_ar_360: SIM
+      apreciacao_arbitral_alto_padrao_tecnico: SIM
+    pontos: 2
+    excecao: Giro incompleto, aterrissagem antes da soltura da bola ou ausência de
+      reconhecimento arbitral de plasticidade concede apenas 1 ponto.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: A avaliação de plasticidade e regularidade técnica depende da observação
+      visual completa e da decisão dos árbitros.
+  condicoes_fato:
+    gol_valido: SIM
+    carater_criativo_ou_espetacular_reconhecido: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    pontos_atribuidos: 2
+    sinal_arbitral_obrigatorio: Sinal 11.2 (dois pontos com balanço vertical de braço)
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: 1
+    motivo: Se o gol for regular mas não atender aos requisitos de plasticidade/controle
+      da Clarificação 1, vale 1 ponto.
+- id: R003
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 9:3 e Regra 14:4
+  localizador: pp. 22, 27-28
+  vigencia: '2026-04-01'
+  titulo: Pontuação de dois pontos para gol em tiro de 6 metros
+  descricao: Um gol convertido a partir de uma cobrança formal de tiro de 6 metros
+    concede 2 pontos à equipe arremessadora.
+  conceitos_relacionados:
+  - C018
+  - C019
+  - C020
+  condicoes_fato:
+    gol_valido: SIM
+    origem_lance: tiro_de_6_metros
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    pontos_atribuidos: 2
+  excecoes:
+  - Se houver invasão antecipada da linha de 6 metros pelo arremessador antes da soltura
+    da bola, o gol é anulado e assinala-se tiro livre para a defesa (Regra 14:5).
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R003 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R003 estão indeterminados.
+- id: R004
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 9:1
+  localizador: p. 21; Glossary p. 65
+  vigencia: '2026-04-01'
+  titulo: Pontuação de gol contra
+  descricao: Quando um jogador coloca a bola diretamente dentro de sua própria meta,
+    o gol é validado e concede invariavelmente 1 ponto à equipe oponente.
+  conceitos_relacionados:
+  - C007
+  - C018
+  condicoes_fato:
+    bola_cruza_linha_de_gol: SIM
+    ultimo_toque_jogador_propria_equipe: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    pontos_atribuidos: 1
+    beneficiario: equipe_adversaria
+  excecoes:
+  - Tiro de meta executado pelo goleiro que entra na própria meta sem antes ultrapassar
+    a linha de 6 metros não é gol; o tiro de meta é simplesmente repetido (Regra 12:2).
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R004 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R004 estão indeterminados.
+- id: R005
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 8:11 e Clarificação 10
+  localizador: pp. 21, 56-57
+  vigencia: '2026-04-01'
+  titulo: Sanções nos últimos 15 segundos de jogo ou no Golden Goal
+  descricao: Impedir ativamente ou atrasar a execução de um tiro adversário nos últimos
+    15 segundos de um período ou durante o Gol de Ouro acarreta desqualificação direta
+    e tiro de 6 metros.
+  conceitos_relacionados:
+  - C005
+  - C020
+  - C026
+  - C028
+  condicoes_fato:
+    tempo_de_jogo_ultimos_15_segundos_ou_golden_goal: SIM
+    infracao_impede_execucao_tiro_adversario: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    sancoes:
+    - Desqualificação direta do infrator (cartão vermelho - C028)
+    - Tiro de 6 metros concedido à equipe prejudicada (C020)
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R005 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R005 estão indeterminados.
+- id: R006
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 2:6 e Regra 9:7
+  localizador: pp. 8, 22
+  vigencia: '2026-04-01'
+  titulo: Decisão de período empatado por Gol de Ouro
+  descricao: Se o placar de um período estiver empatado ao soar do sinal final, o
+    jogo é reiniciado com tiro de árbitro e a primeira equipe a marcar um gol é declarada
+    vencedora do período.
+  conceitos_relacionados:
+  - C005
+  - C018
+  - C029
+  condicoes_fato:
+    fim_do_tempo_regulamentar_periodo: SIM
+    placar_empatado: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    procedimento: Reinicio com tiro de arbitro (C029); encerramento imediato no primeiro
+      gol valido (C005).
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R006 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R006 estão indeterminados.
+- id: R007
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 9:8-10
+  localizador: pp. 22-24
+  vigencia: '2026-04-01'
+  titulo: Procedimento de desempate por Shoot-out
+  descricao: Se cada equipe vencer um período (1-1), a partida é decidida em disputa
+    de Shoot-out com 5 tentativas alternadas por equipe.
+  conceitos_relacionados:
+  - C008
+  - C017
+  - C018
+  - C019
+  condicoes_fato:
+    sets_empatados_em_1_a_1: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    regras_especificas:
+    - Goleiros iniciam na linha de gol.
+    - Jogador passa a bola de volta ao seu goleiro e corre em direção a meta adversária.
+    - A bola nao pode tocar a areia apos o passe de saida do goleiro.
+    - Gols simples concedem 1 ponto; gols criativos/goleiro concedem 2 pontos no placar
+      do shoot-out.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R007 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R007 estão indeterminados.
+- id: R008
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 7:3
+  localizador: pp. 17-18
+  vigencia: '2026-04-01'
+  titulo: Limite de passos na condução da bola
+  descricao: É permitido dar no máximo 3 passos segurando a bola. Exceder esse limite
+    constitui infração de passos.
+  conceitos_relacionados:
+  - C009
+  - C021
+  condicoes_fato:
+    posse_da_bola: SIM
+    passos_executados_maior_que_3: SIM
+    quicar_ou_rolar_bola_na_areia: NAO
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: Tiro livre para a equipe adversária.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R008 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R008 estão indeterminados.
+- id: R009
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 7:10-11 e Clarificação 4
+  localizador: pp. 18, 48-54
+  vigencia: '2026-04-01'
+  titulo: Critério de Jogo Passivo
+  descricao: Manter a bola na posse da equipe sem intenção reconhecível de atacar
+    ou finalizar à meta é proibido. Após o sinal de pré-aviso (Sinal 16), a equipe
+    dispõe de no máximo 4 passes.
+  conceitos_relacionados:
+  - C025
+  condicoes_fato:
+    sinal_pre_aviso_passivo_exibido: SIM
+    passes_executados_excedem_4: SIM
+    arremesso_a_meta_executado: NAO
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: Tiro livre imediato para a equipe defensora no local da bola.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R009 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R009 estão indeterminados.
+- id: R010
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 16:1-5
+  localizador: pp. 29-31
+  vigencia: '2026-04-01'
+  titulo: Aplicação e término de suspensão disciplinar
+  descricao: O atleta suspenso deve deixar a quadra. A equipe joga em inferioridade
+    numérica até que ocorra um turnover (perda de posse) de jogo.
+  conceitos_relacionados:
+  - C010
+  - C027
+  condicoes_fato:
+    atleta_suspenso_fora_da_quadra: SIM
+    ocorrencia_de_turnover: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: A equipe pode retornar a ter 4 atletas em quadra; o atleta suspenso
+      (ou seu substituto) pode reingressar.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R010 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R010 estão indeterminados.
+- id: R011
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 16:6-10
+  localizador: pp. 31-32
+  vigencia: '2026-04-01'
+  titulo: Desqualificação de atleta
+  descricao: Uma desqualificação (cartão vermelho) exclui o atleta pelo restante da
+    partida. A equipe joga em inferioridade até a ocorrência de turnover.
+  conceitos_relacionados:
+  - C010
+  - C028
+  condicoes_fato:
+    infracao_grave_ou_segunda_suspensao: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: Atleta desqualificado expulso do banco; equipe é recomposta com
+      outro atleta após turnover.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R011 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R011 estão indeterminados.
+- id: R012
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 13:2
+  localizador: p. 26; Glossary p. 65
+  vigencia: '2026-04-01'
+  titulo: Aplicação da Regra da Vantagem
+  descricao: Os árbitros devem abster-se de interromper prematuramente o jogo se a
+    equipe que sofreu a falta mantiver a posse de bola com clara vantagem ofensiva.
+  conceitos_relacionados:
+  - C001
+  condicoes_fato:
+    falta_cometida: SIM
+    equipe_atacante_mantem_posse_e_vantagem: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: Jogo continua sem apito; sanções disciplinares pessoais podem ser
+      aplicadas na paralisação subsequente.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R012 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R012 estão indeterminados.
+- id: R013
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 4:13-14 e Anexo p. 58
+  localizador: pp. 14, 58
+  vigencia: '2026-04-01'
+  titulo: Procedimento regular de substituição
+  descricao: Substituições podem ser feitas a qualquer momento, desde que os atletas
+    entrem e saiam exclusivamente através da linha de substituição de sua equipe.
+  conceitos_relacionados:
+  - C023
+  condicoes_fato:
+    substituicao_pela_area_correta: SIM
+    atleta_sai_completamente_antes_da_entrada: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: Substituição regular.
+  excecoes:
+  - Substituição incorreta (entrada antecipada ou fora da área) resulta em suspensão
+    do infrator e tiro livre para o adversário.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R013 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R013 estão indeterminados.
+- id: R014
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 6:1-9
+  localizador: pp. 16-17
+  vigencia: '2026-04-01'
+  titulo: Invasão e direitos na Área de Gol
+  descricao: Somente o goleiro tem permissão para entrar na área de gol. Invasão de
+    jogador de linha é julgada conforme vantagem obtida.
+  conceitos_relacionados:
+  - C017
+  - C022
+  condicoes_fato:
+    invasao_de_atacante_na_area: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: Tiro de meta para o goleiro defensor (Regra 6:2a).
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R014 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R014 estão indeterminados.
+- id: R015
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 10:1-5
+  localizador: p. 24
+  vigencia: '2026-04-01'
+  titulo: Execução do Tiro de Árbitro
+  descricao: O árbitro lança a bola verticalmente na linha central após apito. Dois
+    atletas saltam para disputá-la após ela atingir o ponto máximo.
+  conceitos_relacionados:
+  - C029
+  condicoes_fato:
+    inicio_de_periodo_ou_golden_goal: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: Jogo iniciado regularmente.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R015 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R015 estão indeterminados.
+- id: R016
+  contexto: regulamentar
+  autoridade: IHF
+  fonte_id: SRC-001
+  referencia_normativa: Regra 12:1-3
+  localizador: p. 25
+  vigencia: '2026-04-01'
+  titulo: Execução do Tiro de Meta
+  descricao: Cobrado pelo goleiro de dentro de sua área para além da linha de 6 metros,
+    sem necessidade de apito.
+  conceitos_relacionados:
+  - C017
+  - C022
+  - C030
+  condicoes_fato:
+    bola_ultrapassa_linha_de_fundo_tocada_por_atacante: SIM
+  resultado_se_condicoes_atendidas:
+    aplicacao: APLICAVEL
+    consequencia: Tiro de meta executado sem apito; bola considerada em jogo quando
+      ultrapassar a linha de 6 metros.
+  resultado_se_condicoes_rejeitadas:
+    aplicacao: NAO_APLICAVEL
+    pontos_atribuidos: null
+    motivo: Condições da regra R016 não foram satisfeitas.
+  resultado_se_fato_indeterminado:
+    aplicacao: INCONCLUSIVA
+    pontos_atribuidos: null
+    motivo: Fatos necessários para a regra R016 estão indeterminados.

@@ -2,27 +2,6 @@
 
 > **AGENTES NÃO DEVEM EDITAR ESSE ARQUIVO**
 
-## GATE DE QUALIDADE OBRIGATÓRIO
-
-Você NUNCA deve dar uma tarefa envolvendo arquivos de código ou documentação
-como concluída sem antes validar via terminal.
-
-Ao finalizar a edição/criação, rode o comando correspondente à extensão do
-arquivo:
-
-- Para arquivos `.md`: `npm run agent:lint`
-- Para arquivos `.py`: `npm run agent:lint-py`
-
-REGRAS DE CORREÇÃO (STRICT MODE):
-
-- Altere APENAS as linhas exatas indicadas nos blocos de erro (`<erros>`).
-- Se o script falhar, você DEVE corrigir as falhas lendo o log retornado.
-- Se receber o aviso de "ÚLTIMA TENTATIVA", seja estritamente conservador. Se o
-  limite for ultrapassado, marque a tarefa como FAILED_MANUAL_REVIEW.
-
-- Ao obter PASS, verificar o estado atual da branch, e os diffs e faça a conferência do status da branch atual e se tudo estiver
-  em conformidade, faça o commit e o push.
-
 **Papel:** instruções operacionais para agentes de desenvolvimento.
 **Objetivo:** executar apenas mudanças autorizadas, rastreáveis e verificáveis.
 **Escopo:** repositório em que este arquivo for instalado e suas subpastas,
@@ -211,3 +190,12 @@ Documentação e sustentação
 - Mudanças neste instrumento requerem decisão humana, atualização sincronizada
   da sustentação e revisão dos vínculos; o agente não pode alterar este
   AGENTS.md por conta própria.
+
+### 1. Uso Obrigatório de Identificadores Estáveis
+
+- Toda menção a termos do domínio deve resolver para os C-IDs oficiais (`C001` a
+  `C030`) presentes no `glossario.yaml`.
+- Toda consequência jurídica esportiva ou sanção deve citar seu respectivo R-ID
+  (`R001` a `R016`) presente no `regras.yaml`.
+- NUNCA crie novos conceitos, sinônimos não autorizados ou regras fictícias fora
+  desta baseline.
