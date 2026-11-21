@@ -1,10 +1,341 @@
-# P1 — Investigação de Problemas, Necessidades e Oportunidades (Handebol de Praia)
+# P1 — Investigação Consolidada de Problemas, Necessidades e Oportunidades
 
 15 de nov. de 2026 · @Davi
 
 **Revisão de sustentação em 16/11/2026:** fontes F01, F04 e F08–F14 conferidas e
 rastreadas em [Registro de auditoria documental](#p1-auditoria-fontes). Esta
 revisão não substitui os relatos do responsável nem altera os IDs existentes.
+
+<a id="p01-consolidacao-canonica"></a>
+
+## Consolidação canônica P0/P1 — 21/11/2026
+
+**ID da consolidação:** `P01-CONS-001`. **Papel:** diagnóstico de Product
+Discovery. **Objetivo:** reunir em uma única unidade documental os problemas,
+necessidades, oportunidades, evidências, decisões e lacunas dos sete insumos P1,
+sem antecipar P2, funcionalidades ou tecnologia. **Escopo:** Seleção Brasileira
+Feminina Adulta de Handebol de Praia, comissão técnica e de apoio e interfaces
+institucionais indispensáveis no ciclo 2026–2028. **Caminho canônico:**
+`./P1-problemas-necessidades-oportunidades.md`. **Autoridade:** o responsável
+pelo produto decide o escopo e o mérito técnico-esportivo; profissionais
+habilitados respondem por seus juízos especializados; CBHb e organizadores
+respondem pelos atos institucionais de sua competência. Este documento investiga
+e propõe, mas não cria atribuições, convocações, autorizações ou requisitos.
+
+**Estado:** esta seção é a visão P1 vigente e específica da Seleção. As seções
+históricas posteriores, preservadas integralmente, continuam válidas como linha
+de base do ecossistema e como registro dos relatos originais, mas não prevalecem
+quando transferem automaticamente problemas de clubes, base ou amadores para a
+Seleção. A conclusão global é **SUSTENTADO PARCIALMENTE**: há decisões humanas,
+relatos, registros e fontes externas delimitadas, porém não houve entrevista
+direta com atletas, auditoria da operação atual da comissão nem reabertura das
+planilhas e dos documentos primários citados pelos três relatórios derivados.
+
+### Insumos e regra de incorporação
+
+| Insumo                                       | Função na consolidação                                               | Tratamento sob P0/P1                                                                                          |
+| -------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `P1-problemas-necessidades-oportunidades.md` | Linha de base, relatos Q-01–Q-09, auditoria F01–F14 e IDs históricos | Preservado; decisões e relatos mantêm autoria, contexto e limites                                             |
+| `P1-chatgpt.md`                              | Investigação secundária do ecossistema                               | Conceitos aproveitados; citações internas não resolvíveis não são evidência independente                      |
+| `P1-gemini.md`                               | Investigação secundária ampla e proposições                          | Generalizações e módulos permanecem HIPÓTESE ou PROPOSTA; IDs recebem prefixo histórico `G:` quando citados   |
+| `P1-chatgpt2.md`                             | Síntese contextual específica da Seleção                             | Usada para contexto e limites; referências a arquivos primários ausentes não foram revalidadas nesta execução |
+| `prompt-problemas-resultado.md`              | Catálogo específico `SEL-PRB-001–016`                                | Incorporado como diagnóstico documental secundário, com a sustentação e as ressalvas declaradas na origem     |
+| `prompt-necessidades-resultado.md`           | Catálogo específico `SEL-NEC-001–023`                                | Adotado como catálogo vigente de necessidades independentes de solução                                        |
+| `prompt-oportunidades-resultado.md`          | Catálogo específico `SEL-OPP-001–019`                                | Adotado como oportunidades candidatas; nenhuma está aprovada para software                                    |
+
+Os namespaces não são intercambiáveis. `PRB-04` da linha de base e `G:PRB-04` do
+relatório Gemini descrevem conceitos diferentes; `SEL-PRB-*`, `SEL-NEC-*` e
+`SEL-OPP-*` pertencem exclusivamente ao recorte da Seleção. A coincidência de
+número não cria equivalência.
+
+### Legenda vigente de evidências e decisões
+
+| Classe         | Significado e uso permitido                                                       |
+| -------------- | --------------------------------------------------------------------------------- |
+| DECISÃO_HUMANA | Determinação expressa do responsável, com autoria e escopo delimitados            |
+| VERIFICADO     | Informação confrontada com fonte competente acessível no recorte declarado        |
+| DOCUMENTO      | Conteúdo localizável em um insumo, sem presunção de verdade material ou aprovação |
+| RELATO         | Declaração atribuída a uma pessoa; comprova o que foi relatado, não a prevalência |
+| OBSERVAÇÃO     | Condição observada no material examinado, sem generalização automática            |
+| INFERIDO       | Conclusão derivada de premissas identificadas, com limite explícito               |
+| HIPÓTESE       | Possibilidade ainda não validada                                                  |
+| PROPOSTA       | Direção sugerida e não aprovada                                                   |
+
+As classes de sustentação vigentes são **SUSTENTADO INTEGRALMENTE**,
+**SUSTENTADO PARCIALMENTE**, **SEM SUSTENTAÇÃO SUFICIENTE**, **CONTRADITO PELA
+EVIDÊNCIA**, **NÃO VERIFICADO** e **NÃO DOCUMENTADO**. Uma fonte que comprova a
+existência de um registro não comprova sua atualidade, correção, consequência ou
+valor de uma intervenção.
+
+<a id="p01-consolidado-e10"></a>
+
+### E10 consolidado — Síntese executiva e recomendação
+
+A decisão humana de Q-01 restringiu a Fase 1 às atletas adultas da Seleção
+Brasileira Feminina de Handebol de Praia e à comissão necessária ao seu
+trabalho. Clubes, categorias de base e amadores permanecem fontes, dependências
+ou contextos comparativos, não públicos prioritários. A presença relatada de
+analista dedicado torna **CONTRADITO PELA EVIDÊNCIA contextual** afirmar que o
+treinador da Seleção precisa registrar sozinho, rotineiramente, o scout durante
+os jogos; essa dificuldade foi relatada para clube com comissão reduzida.
+
+O diagnóstico específico identifica como condições mais concretas a necessidade
+de distinguir identidade, participação histórica, monitoramento, elegibilidade,
+disponibilidade e convocação; preservar posição original e função observada;
+contextualizar fontes de desempenho; proteger dados de saúde; e separar decisão
+esportiva, parecer profissional e ato institucional. Restrições de recursos e
+tempo, preparação distribuída, fluxos de supervisão, satisfação das atletas,
+falhas de feedback e eficácia de rotinas atuais permanecem total ou parcialmente
+não verificadas.
+
+**Recomendação:** investigar primeiro `SEL-OPP-001`, `002`, `008`, `009`, `014`
+e `019`, por estarem ligadas a estados, fontes, regras ou práticas já
+documentadas. Antes de qualquer P2, observar rotinas reais, escutar atletas e
+confirmar autoridades somente na medida em que isso possa mudar uma decisão.
+Alternativas não digitais — conferência humana, conversa direta, briefing, vídeo
+comentado, ata curta e checklist — continuam válidas. Nenhuma funcionalidade,
+arquitetura, automação, coleta adicional ou prioridade de construção foi
+aprovada.
+
+<a id="p01-consolidado-e01"></a>
+
+### E01 consolidado — Públicos, perfis e autoridade
+
+| ID         | Perfil no recorte vigente             | Objetivo e contexto                                                                   | Estado                                                                      |
+| ---------- | ------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| SEL-ATL-01 | Atleta adulta monitorada ou candidata | Ser observada e compreendida sem que monitoramento implique convocação                | Público prioritário; situação individual depende de confirmação             |
+| SEL-ATL-02 | Atleta adulta elegível                | Poder participar segundo o regulamento específico do evento                           | Elegibilidade atual NÃO VERIFICADA no corpus consolidado                    |
+| SEL-ATL-03 | Atleta adulta convocada               | Compreender e participar de compromisso formalmente comunicado                        | Categoria operacional; lista do novo ciclo NÃO VERIFICADA                   |
+| SEL-TRE-01 | Treinador principal                   | Dirigir, avaliar, selecionar e decidir esportivamente dentro da competência concedida | Autoridade esportiva relatada; limites institucionais não reabertos         |
+| SEL-COM-01 | Auxiliar técnico                      | Apoiar a direção e preservar memória contextual dos ciclos                            | Continuidade relatada; delegação detalhada NÃO VERIFICADA                   |
+| SEL-COM-02 | Preparação física                     | Avaliar e orientar preparação com método e contexto                                   | Papel documentado/proposto; operação atual SUSTENTADA PARCIALMENTE          |
+| SEL-COM-03 | Fisioterapia                          | Avaliar e comunicar implicações funcionais dentro da competência e do sigilo          | Proteção normativa sustentada; fluxo atual NÃO VERIFICADO                   |
+| SEL-COM-04 | Análise de desempenho                 | Produzir scout e análise contextual para decisões humanas                             | Analista dedicado segundo RELATO; entregas atuais não auditadas             |
+| SEL-INS-01 | Supervisão, coordenação e CBHb        | Viabilizar atos e condições institucionais nas competências demonstradas              | Participação pertinente; titularidade e poderes específicos NÃO VERIFICADOS |
+
+Categorias de base, clubes e treinadores de clube permanecem fora do público
+prioritário da Fase 1. Eles só entram quando fornecem contexto, evidência ou
+dependência indispensável às atividades da Seleção. Não se atribui a atleta
+obrigação permanente de fornecer dados, nem se presume autorização institucional
+para uso oficial de futuro produto.
+
+<a id="p01-consolidado-e02"></a>
+
+### E02 consolidado — Ciclo de atividades
+
+| Fase                      | Atividades relevantes                                                                | Resultado humano procurado                             | Limite de evidência                                              |
+| ------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------ | ---------------------------------------------------------------- |
+| Planejamento do ciclo     | Confirmar compromissos, prioridades, recursos e disponibilidade                      | Trabalho compatível com condições reais                | Cronograma e recursos completos NÃO VERIFICADOS                  |
+| Mapeamento                | Identificar atletas, clubes, eventos, posições e fontes                              | Universo de observação contextualizado                 | Cadastro não equivale a elegibilidade ou convocação              |
+| Avaliação                 | Confrontar observação, vídeo, scout, estatísticas e avaliações especializadas        | Decisão esportiva informada sem causalidade automática | Critérios atuais do treinador não são definidos aqui             |
+| Composição e formalização | Escolher esportivamente, confirmar disponibilidade, elegibilidade e atos competentes | Participação válida e compreendida                     | Escolha, convocação e inscrição são estados distintos            |
+| Preparação distribuída    | Articular clubes, atletas e especialidades antes de encontros coletivos              | Continuidade proporcional à capacidade                 | Frequência e execução atuais NÃO VERIFICADAS                     |
+| Treino e competição       | Ensinar princípios, executar funções, analisar adversárias e ajustar o jogo          | Atuação coletiva coerente                              | Modelo de jogo pertence ao treinador; não foi escolhido neste P1 |
+| Revisão                   | Distinguir realizado, medido, interpretado, decidido e aprendido                     | Conhecimento reutilizável entre atividades e ciclos    | Plano de revisão não comprova execução sistemática               |
+
+<a id="p01-consolidado-e03"></a>
+
+### E03 consolidado — Inventário de problemas e limitações da Seleção
+
+Cada item descreve uma condição delimitada; consequência inferida não equivale a
+dano comprovado. Os códigos históricos `PRB-*` permanecem na linha de base e não
+são renumerados.
+
+| ID                                  | Problema ou limitação                                                                          | Sustentação no recorte consolidado                                              |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| <a id="sel-prb-001"></a>SEL-PRB-001 | Identidade esportiva pode divergir entre grafias, IDs, fotos, camisas e fontes                 | DOCUMENTO/OBSERVAÇÃO; impacto em decisão NÃO VERIFICADO                         |
+| <a id="sel-prb-002"></a>SEL-PRB-002 | Posição padronizada, rótulo de inscrição e função observada podem ser confundidos              | DECISÃO_HUMANA sobre LD/LE; função efetiva depende de observação                |
+| <a id="sel-prb-003"></a>SEL-PRB-003 | Participação histórica pode ser confundida com convocabilidade atual                           | SUSTENTADO INTEGRALMENTE quanto à distinção; convocação indevida NÃO VERIFICADA |
+| <a id="sel-prb-004"></a>SEL-PRB-004 | Disponibilidade e elegibilidade para evento-alvo não têm fechamento demonstrado                | DOCUMENTO secundário; estado individual atual NÃO VERIFICADO                    |
+| <a id="sel-prb-005"></a>SEL-PRB-005 | Clube histórico, vínculo atual e empréstimo de torneio têm naturezas e datas diferentes        | SUSTENTADO PARCIALMENTE; conflito operacional NÃO VERIFICADO                    |
+| <a id="sel-prb-006"></a>SEL-PRB-006 | Fontes nacionais possuem cobertura, procedência e confiança heterogêneas                       | DOCUMENTO/OBSERVAÇÃO; superioridade esportiva não pode ser inferida             |
+| <a id="sel-prb-007"></a>SEL-PRB-007 | Relatórios derivados registram falhas técnicas localizadas em visualizações de dados           | DOCUMENTO; persistência na fonte nativa NÃO VERIFICADA                          |
+| <a id="sel-prb-008"></a>SEL-PRB-008 | Recursos, tempo coletivo e disponibilidade da comissão são limitados segundo relato            | RELATO; efeito exato sobre o ciclo NÃO VERIFICADO                               |
+| <a id="sel-prb-009"></a>SEL-PRB-009 | Divisão operacional entre profissionais depende de aceite e autoridade                         | Proposta documental; desorganização real NÃO VERIFICADA                         |
+| <a id="sel-prb-010"></a>SEL-PRB-010 | Fluxo entre treinador, supervisão, coordenação e CBHb não está demonstrado integralmente       | NÃO DOCUMENTADO como processo formal completo                                   |
+| <a id="sel-prb-011"></a>SEL-PRB-011 | Cobertura, retorno e legitimidade do monitoramento com clubes e atletas não estão demonstrados | Contatos DOCUMENTADOS; adesão e qualidade NÃO VERIFICADAS                       |
+| <a id="sel-prb-012"></a>SEL-PRB-012 | Comparabilidade de avaliações físicas e funcionais não está estabelecida                       | SUSTENTADO PARCIALMENTE; protocolos e acervo primário não reabertos             |
+| <a id="sel-prb-013"></a>SEL-PRB-013 | Informação esportiva compartilhável precisa ser separada de dado de saúde sensível             | SUSTENTADO INTEGRALMENTE como dever de proteção; incidente NÃO VERIFICADO       |
+| <a id="sel-prb-014"></a>SEL-PRB-014 | Faltam registros diretos da perspectiva das atletas adultas                                    | SUSTENTADO INTEGRALMENTE para a lacuna; insatisfação NÃO DOCUMENTADA            |
+| <a id="sel-prb-015"></a>SEL-PRB-015 | Resultado competitivo e estatística isolada não demonstram causalidade                         | SUSTENTADO INTEGRALMENTE como limite inferencial                                |
+| <a id="sel-prb-016"></a>SEL-PRB-016 | Atualização normativa objetiva não demonstra dificuldade atual da comissão                     | Regra revisada VERIFICADA na linha de base; falha atual NÃO VERIFICADA          |
+
+Não entram como problemas confirmados da Seleção: falta rotineira de scout pelo
+treinador, alta incidência universal de lesões, desidratação sistemática,
+insatisfação das atletas, caos logístico da CBHb ou ausência de feedback. Esses
+itens permanecem contraditos, não verificados ou sem sustentação suficiente no
+recorte atual.
+
+<a id="p01-consolidado-e04"></a>
+
+### E04 consolidado — Inventário de necessidades
+
+Todas as necessidades abaixo continuam compreensíveis e verificáveis sem
+software. A sustentação cobre o resultado necessário, não prova a existência ou
+frequência de um problema.
+
+| ID                                  | Ator e necessidade independente de solução                                    | Condição de satisfação observável                                          |
+| ----------------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| <a id="sel-nec-001"></a>SEL-NEC-001 | Atleta monitorada precisa compreender seu estado e as expectativas do contato | Monitoramento, convite e convocação são comunicados como estados distintos |
+| <a id="sel-nec-002"></a>SEL-NEC-002 | Atleta e comissão precisam manter identidade, posição e fonte corretas        | ID, foto, posição, evento e divergências são contextualizados              |
+| <a id="sel-nec-003"></a>SEL-NEC-003 | Atleta precisa comunicar disponibilidade real para atividade definida         | Agenda e resposta são confirmadas no contexto pertinente                   |
+| <a id="sel-nec-004"></a>SEL-NEC-004 | Atleta precisa compreender princípios esportivos efetivamente decididos       | Orientação é compreendida e observável quando aplicável                    |
+| <a id="sel-nec-005"></a>SEL-NEC-005 | Atleta precisa compreender avaliações e próximos focos de evolução            | Retorno distingue observação, método, interpretação e objetivo             |
+| <a id="sel-nec-006"></a>SEL-NEC-006 | Atleta precisa de suporte funcional legítimo sem exposição clínica indevida   | Informação mínima chega aos destinatários competentes                      |
+| <a id="sel-nec-007"></a>SEL-NEC-007 | Atleta convocada precisa conhecer condições reais de participação             | Ato, agenda e condições são confirmados antes da atividade                 |
+| <a id="sel-nec-008"></a>SEL-NEC-008 | Treinador precisa conhecer candidatas e limites da observação                 | Fonte, recorte, ausência de observação e confiança ficam explícitos        |
+| <a id="sel-nec-009"></a>SEL-NEC-009 | Treinador precisa compor elenco por critérios e complementaridade             | Decisão humana é distinguida de inscrição e estatística isolada            |
+| <a id="sel-nec-010"></a>SEL-NEC-010 | Treinador precisa construir e comunicar identidade coletiva                   | Princípios decididos são compreendidos e discutidos com coerência          |
+| <a id="sel-nec-011"></a>SEL-NEC-011 | Auxiliar precisa recuperar conhecimento anterior com contexto                 | Experiência anterior mantém objetivo, circunstância, resultado e limite    |
+| <a id="sel-nec-012"></a>SEL-NEC-012 | Auxiliar precisa atuar com delegação clara                                    | Responsabilidade e margem de decisão estão explicitadas                    |
+| <a id="sel-nec-013"></a>SEL-NEC-013 | Preparador físico precisa comparar medições com método                        | Data, protocolo, unidade, contexto e limite acompanham a medida            |
+| <a id="sel-nec-014"></a>SEL-NEC-014 | Fisioterapeuta precisa avaliar e comunicar dentro da competência              | Parecer funcional é pertinente e prontuário permanece protegido            |
+| <a id="sel-nec-015"></a>SEL-NEC-015 | Analista precisa produzir análise contextual e rastreável                     | Jogo, fonte, amostra, indicador, limite e momento são identificados        |
+| <a id="sel-nec-016"></a>SEL-NEC-016 | Comissão precisa integrar pareceres sem confundir competências                | Dado, recomendação, decisão esportiva e ato institucional são distintos    |
+| <a id="sel-nec-017"></a>SEL-NEC-017 | Treinador e auxiliar precisam aplicar normas esportivas vigentes              | Edição e implicação concreta da regra são identificadas                    |
+| <a id="sel-nec-018"></a>SEL-NEC-018 | Interface institucional precisa encaminhar pedidos à autoridade válida        | Origem, objeto, decisor e resposta podem ser reconstituídos                |
+| <a id="sel-nec-019"></a>SEL-NEC-019 | Área competente precisa distinguir escolha, convocação e inscrição            | Ato, aceite, elegibilidade, prazo e confirmação são separados              |
+| <a id="sel-nec-020"></a>SEL-NEC-020 | Operação precisa viabilizar condições materiais autorizadas                   | Recurso aprovado, executado e comunicado é distinguível de previsão        |
+| <a id="sel-nec-021"></a>SEL-NEC-021 | Coordenação precisa acompanhar providências e pendências                      | Estado, responsável, prazo, resposta e contingência são conhecidos         |
+| <a id="sel-nec-022"></a>SEL-NEC-022 | Atleta e comissão precisam fazer informação pertinente circular legitimamente | Finalidade, origem, competência, acesso e sigilo são preservados           |
+| <a id="sel-nec-023"></a>SEL-NEC-023 | Comissão precisa preservar aprendizagem entre atividades e ciclos             | Planejado, realizado, medido, interpretado e decidido são distinguíveis    |
+
+<a id="p01-consolidado-e05"></a>
+
+### E05 consolidado — Oportunidades candidatas
+
+Cada item possui estado decisório **OPORTUNIDADE CANDIDATA — NÃO APROVADA PARA O
+SOFTWARE**. A alternativa não digital deve ser comparada antes de qualquer
+especificação.
+
+| ID                                  | Direção de valor candidata                                                       | Necessidades relacionadas | Condição para manter a oportunidade                                   |
+| ----------------------------------- | -------------------------------------------------------------------------------- | ------------------------- | --------------------------------------------------------------------- |
+| <a id="sel-opp-001"></a>SEL-OPP-001 | Distinguir monitoramento, disponibilidade, elegibilidade, convocação e inscrição | 001, 003, 007, 019        | Confirmar processo e autoridade reais; lista revisada pode bastar     |
+| <a id="sel-opp-002"></a>SEL-OPP-002 | Aumentar confiabilidade de identidade, posição e função                          | 002, 008, 015             | Conferir divergências materiais e regras humanas aplicáveis           |
+| <a id="sel-opp-003"></a>SEL-OPP-003 | Preservar contexto entre clubes, observação e Seleção                            | 002, 003, 008, 023        | Identificar passagens reais e atualização legítima                    |
+| <a id="sel-opp-004"></a>SEL-OPP-004 | Tornar objetivos e devolutivas compreensíveis                                    | 004, 005                  | Escutar atletas e descrever prática existente; rejeitar se suficiente |
+| <a id="sel-opp-005"></a>SEL-OPP-005 | Permitir comunicação legítima de disponibilidade e limitações                    | 003, 006, 014, 022        | Definir fluxo, competência, finalidade e proteção de dados            |
+| <a id="sel-opp-006"></a>SEL-OPP-006 | Ampliar previsibilidade antes de concentração e viagens                          | 003, 007, 020, 021        | Confirmar agenda e responsável por comunicação operacional            |
+| <a id="sel-opp-007"></a>SEL-OPP-007 | Preservar memória esportiva de ciclos anteriores                                 | 011, 012, 023             | Confirmar que a transferência atual é insuficiente                    |
+| <a id="sel-opp-008"></a>SEL-OPP-008 | Aumentar valor da análise sem duplicar o registro existente                      | 008, 015, 023             | Verificar produtos reais e decisões que já apoiam                     |
+| <a id="sel-opp-009"></a>SEL-OPP-009 | Fortalecer leitura contextual para seleção e complementaridade                   | 008, 009, 015             | Confirmar critérios humanos decisivos e evidências válidas            |
+| <a id="sel-opp-010"></a>SEL-OPP-010 | Melhorar comunicação técnico-tática e preparação de adversárias                  | 004, 010, 015, 017        | Confirmar necessidade e processo atual de briefing                    |
+| <a id="sel-opp-011"></a>SEL-OPP-011 | Aumentar comparabilidade de avaliações físicas                                   | 005, 013, 023             | Inventariar métodos realmente utilizados antes de comparar            |
+| <a id="sel-opp-012"></a>SEL-OPP-012 | Dar continuidade proporcional à preparação distribuída                           | 003, 004, 013, 016        | Verificar participação de clubes e capacidade real                    |
+| <a id="sel-opp-013"></a>SEL-OPP-013 | Articular juízo clínico e informação funcional necessária                        | 006, 014, 022             | Conhecer fluxo e autoridade antes de tratar dados                     |
+| <a id="sel-opp-014"></a>SEL-OPP-014 | Manter interpretação prática alinhada à regra aplicável                          | 017                       | Verificar rotina atual e usar fonte normativa competente              |
+| <a id="sel-opp-015"></a>SEL-OPP-015 | Melhorar previsibilidade de condições operacionais                               | 007, 018, 020, 021        | Obter atribuições e processo vigente; rebaixar se já eficiente        |
+| <a id="sel-opp-016"></a>SEL-OPP-016 | Dar transparência a solicitações e autorizações                                  | 018, 020, 021             | Observar processo real e evitar burocracia ou autoridade fictícia     |
+| <a id="sel-opp-017"></a>SEL-OPP-017 | Reduzir perda de contexto entre decisões e interlocuções                         | 016, 018, 021, 022        | Observar coordenação real antes de criar registro paralelo            |
+| <a id="sel-opp-018"></a>SEL-OPP-018 | Aproveitar aprendizado de partidas e decisões                                    | 005, 015, 023             | Identificar revisões efetivas e utilidade do processo existente       |
+| <a id="sel-opp-019"></a>SEL-OPP-019 | Preservar integridade, contexto e revisão das evidências                         | 002, 008, 015, 023        | Aplicar a exemplos usados em decisão e evitar burocracia              |
+
+<a id="p01-consolidado-e06"></a>
+
+### E06 consolidado — Necessidades comuns e específicas
+
+- **Atletas:** clareza de estado e participação (`001`, `003`, `007`),
+  identidade correta (`002`), compreensão de orientação e retorno (`004`, `005`)
+  e suporte funcional protegido (`006`). A força dessas necessidades como
+  experiência percebida permanece limitada pela ausência de escuta direta.
+- **Treinador e auxiliar:** conhecer candidatas, compor elenco, comunicar
+  princípios, preservar memória, delegar e aplicar regras (`008`–`012`, `017`).
+- **Preparação física, fisioterapia e análise:** interpretar medidas, proteger
+  informação funcional e produzir evidência contextual (`013`–`015`).
+- **Comissão e interfaces institucionais:** integrar competências, formalizar
+  participação, viabilizar recursos, acompanhar providências e preservar
+  aprendizagem (`016`, `018`–`023`).
+
+Identidade, disponibilidade, circulação legítima da informação e aprendizagem
+são interdependentes. Isso não autoriza unificar prontuário, avaliação esportiva
+e decisão institucional em uma mesma coleta ou atribuir a um ator competência de
+outro.
+
+<a id="p01-consolidado-e07"></a>
+
+### E07 consolidado — Priorização preliminar para investigação
+
+| Faixa                                       | Itens                                          | Justificativa e limite                                                                    |
+| ------------------------------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Investigar primeiro                         | SEL-OPP-001, 002, 008, 009, 014, 019           | Há estados, fontes, regra ou prática documentada; valor de software ainda não demonstrado |
+| Candidata condicionada                      | SEL-OPP-003, 006, 007, 010, 011, 012, 017, 018 | Valor plausível, porém intensidade, processo ou capacidade atual permanecem parciais      |
+| Condicionada a competência e proteção       | SEL-OPP-005, 013                               | Envolve dados sensíveis e juízo profissional; intervenção específica NÃO VERIFICADA       |
+| Sem sustentação suficiente para falha atual | SEL-OPP-004, 015, 016                          | Faltam voz das atletas, processo institucional vigente ou evidência de falha              |
+
+Não há ranking definitivo de problemas da Seleção. A prioridade histórica de
+`PRB-04`, `PRB-03` e `PRB-01` descrevia o ecossistema anterior à decisão Q-01 e
+não pode ser transferida automaticamente ao público atual. Prioridade de
+investigação não significa prioridade de desenvolvimento.
+
+<a id="p01-consolidado-e08"></a>
+
+### E08 consolidado — Lacunas e questões que podem mudar conclusões
+
+| ID         | Questão e autoridade pertinente                                                                                      | Efeito da lacuna                                               |
+| ---------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| SEL-LAC-01 | O que as próprias atletas adultas relatam sobre acompanhamento, retorno e comunicação? Atletas legitimamente ouvidas | Bloqueia afirmar preferência ou necessidade expressa por elas  |
+| SEL-LAC-02 | Quem compõe formalmente a comissão e quais competências e disponibilidades foram aceitas? CBHb e profissionais       | Bloqueia atribuir dever ou poder institucional específico      |
+| SEL-LAC-03 | Qual é o rito vigente de escolha, convocação, elegibilidade e inscrição? Treinador, CBHb e organizador               | Bloqueia formalizar participação, não o diagnóstico            |
+| SEL-LAC-04 | Qual é o calendário operacional confirmado de Iquique 2027 e da preparação brasileira? Organizador e CBHb            | Bloqueia compromisso concreto de agenda ou viagem              |
+| SEL-LAC-05 | Qual foi o alcance efetivo dos contatos com clubes e atletas? Executor e participantes                               | Limita conclusão sobre cobertura, resposta e legitimidade      |
+| SEL-LAC-06 | Quais critérios e objetivos esportivos já foram decididos? Treinador                                                 | Bloqueia avaliar aderência ou justificar escolha específica    |
+| SEL-LAC-07 | Quais avaliações físicas podem ser comparadas, por método, data e executor? Profissionais e fontes originais         | Bloqueia conclusão individual que dependa da medida            |
+| SEL-LAC-08 | Qual cobertura funcional e clínica existe e qual informação pode circular? Profissionais e responsável institucional | Bloqueia atendimento ou compartilhamento específico            |
+| SEL-LAC-09 | Quais identidades, clubes, fotos e posições ainda exigem conferência? Curadoria, atleta e fonte competente           | Bloqueia somente decisão que dependa do dado duvidoso          |
+| SEL-LAC-10 | Quais rotinas atuais já atendem às necessidades e a que custo? Atores que as executam                                | Pode rebaixar ou eliminar qualquer oportunidade                |
+| SEL-LAC-11 | Quem define finalidade, responsabilidade e fundamento do tratamento de dados? Autoridade competente                  | Bloqueia tratamento ainda não estabelecido, não a investigação |
+
+<a id="p01-consolidado-e09"></a>
+
+### E09 consolidado — Matriz de rastreabilidade inicial
+
+| Problema                    | Necessidades            | Oportunidades candidatas | Origem consolidada                                                             |
+| --------------------------- | ----------------------- | ------------------------ | ------------------------------------------------------------------------------ |
+| [SEL-PRB-001](#sel-prb-001) | 002, 008, 015           | 002, 019                 | Relatórios específicos; identidade e impacto não revalidados na fonte primária |
+| [SEL-PRB-002](#sel-prb-002) | 002, 009, 015           | 002, 009, 019            | Decisão humana LD/LE citada nos relatórios; função exige observação            |
+| [SEL-PRB-003](#sel-prb-003) | 001, 019                | 001, 009                 | Distinção documental entre histórico, monitoramento e ato atual                |
+| [SEL-PRB-004](#sel-prb-004) | 003, 007, 019           | 001, 006, 009            | Triagem relatada; situação individual atual não reaberta                       |
+| [SEL-PRB-005](#sel-prb-005) | 002, 008, 012           | 002, 003                 | Relatos de vínculos temporais e torneio                                        |
+| [SEL-PRB-006](#sel-prb-006) | 008, 015, 023           | 008, 018, 019            | Cobertura e confiança heterogêneas documentadas nos relatórios                 |
+| [SEL-PRB-007](#sel-prb-007) | 002, 023                | 019                      | Falha localizada na cópia importada; origem nativa não determinada             |
+| [SEL-PRB-008](#sel-prb-008) | 004, 010, 016, 020      | 006, 012, 017            | Relato de recursos e tempo limitados                                           |
+| [SEL-PRB-009](#sel-prb-009) | 011, 012, 016, 018, 021 | 007, 015, 016, 017       | Matriz de responsabilidades identificada como PROPOSTA                         |
+| [SEL-PRB-010](#sel-prb-010) | 018, 019, 020, 021      | 015, 016, 017            | Fluxo formal completo NÃO DOCUMENTADO                                          |
+| [SEL-PRB-011](#sel-prb-011) | 001, 003, 004, 008      | 001, 003, 004, 012       | Contatos documentados; retorno e cobertura não apurados                        |
+| [SEL-PRB-012](#sel-prb-012) | 005, 013, 023           | 011, 012, 019            | Métodos e comparabilidade parcialmente documentados                            |
+| [SEL-PRB-013](#sel-prb-013) | 006, 014, 022           | 005, 013                 | Proteção normativa; fluxo atual não verificado                                 |
+| [SEL-PRB-014](#sel-prb-014) | 001–007, 022            | 004, 005, 006            | Ausência de escuta direta de atletas neste corpus                              |
+| [SEL-PRB-015](#sel-prb-015) | 009, 015, 023           | 008, 009, 018, 019       | Limite causal de estatística e resultado                                       |
+| [SEL-PRB-016](#sel-prb-016) | 017                     | 014                      | Regra vigente é fato; dificuldade atual não foi demonstrada                    |
+
+Os números abreviados nas colunas Necessidades e Oportunidades referem-se,
+respectivamente, a `SEL-NEC-*` e `SEL-OPP-*` desta consolidação. A cadeia
+termina em oportunidade candidata. Não existem, neste P1, decisão de incorporar
+ao produto, especificação ou critério de aceitação.
+
+### Riscos, verificações e estado de conclusão
+
+- **Risco de generalização:** mitigado pela separação entre Seleção, clube,
+  ecossistema e evidência externa; permanece a ausência de escuta direta das
+  atletas.
+- **Risco de colisão de IDs:** mitigado pelos namespaces `SEL-*`, `C:` e `G:`;
+  IDs históricos não foram renumerados ou reutilizados.
+- **Risco de falsa verificação:** referências a DOCX/XLSX ausentes no workspace
+  foram tratadas como conteúdo dos relatórios derivados, não como observação
+  independente desta consolidação.
+- **Risco de prescrição prematura:** todas as oportunidades permanecem
+  candidatas, com alternativas não digitais e condições de rejeição.
+- **DONE de P1:** **SUSTENTADO PARCIALMENTE**. Os entregáveis E01–E10 estão
+  consolidados e rastreáveis; validação representativa, autoridades atuais e
+  operação real permanecem lacunas explícitas. P2 não foi executado.
+
+---
+
+## Linha de base histórica do ecossistema — preservada
+
+As seções a seguir mantêm integralmente o P1 anterior, suas respostas humanas,
+auditoria, fontes e IDs. Elas fornecem proveniência e contexto histórico, mas
+não substituem a consolidação específica da Seleção acima.
 
 ## Escopo, método e legenda de evidências
 
@@ -789,87 +1120,131 @@ inicial, e o trabalho segue sem elas, com a fragilidade já assinalada.
 | Q-06 | Quem cuida da saúde e da preparação física nas equipes (profissional, o próprio treinador, ninguém)?                                  | PRB-04, PRB-05, PRB-07 e o público adicional de `staff`            | Experiência do responsável                                               |
 | Q-07 | O que a CBHb e as federações exigem em inscrição e súmula, e em que formato?                                                          | PRB-10, NEC-08, OPP-05                                             | Regulamentos da CBHb; consulta à confederação                            |
 | Q-08 | Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso de seus dados?                                         | ATL-3, PRB-11, privacidade das fases seguintes                     | Responsável; análise jurídica especializada em etapa posterior           |
-| Q-09 | Quais problemas do E03 o responsável já observou diretamente, em que situação e com que frequência?                                   | Eleva itens de HIP ou INF para evidência observada; reordena o E07 | Registro das observações do responsável, com contexto |
+| Q-09 | Quais problemas do E03 o responsável já observou diretamente, em que situação e com que frequência?                                   | Eleva itens de HIP ou INF para evidência observada; reordena o E07 | Registro das observações do responsável, com contexto                    |
 
 ---
 
 ## Q-01
 
-Qual é o público inicial prioritário: seleção e alto rendimento, clubes do circuito, base ou amadores?
+Qual é o público inicial prioritário: seleção e alto rendimento, clubes do
+circuito, base ou amadores?
 
-Público-alvo prioritário inicial delimitado por **DECISÃO_HUMANA** para as atletas da Seleção Brasileira Feminina Adulta de Handebol de Praia. O escopo abrange a comissão técnica e exclui na Fase 1 equipes amadoras e categorias de base.
+Público-alvo prioritário inicial delimitado por **DECISÃO_HUMANA** para as
+atletas da Seleção Brasileira Feminina Adulta de Handebol de Praia. O escopo
+abrange a comissão técnica e exclui na Fase 1 equipes amadoras e categorias de
+base.
 
 ---
 
 ## Q-02
 
-Como treinadores brasileiros registram hoje dados de jogo e de treino (papel, planilha, vídeo, nada) e o que não conseguem registrar?
+Como treinadores brasileiros registram hoje dados de jogo e de treino (papel,
+planilha, vídeo, nada) e o que não conseguem registrar?
 
-Relatos qualitativos do responsável indicam que o registro de dados de jogo e treino ocorre majoritariamente de forma informal (papel ou planilhas locais) por acúmulo de funções em clubes. Lacunas operacionais apontadas no contexto observado: estatísticas detalhadas de desempenho individual/coletivo, métricas de eficiência por tipo de jogada, mapa de arremessos e padrões táticos em tempo real. A Seleção Brasileira Adulta conta com analista de desempenho dedicado, separando sua estrutura operacional da realidade dos clubes.
+Relatos qualitativos do responsável indicam que o registro de dados de jogo e
+treino ocorre majoritariamente de forma informal (papel ou planilhas locais) por
+acúmulo de funções em clubes. Lacunas operacionais apontadas no contexto
+observado: estatísticas detalhadas de desempenho individual/coletivo, métricas
+de eficiência por tipo de jogada, mapa de arremessos e padrões táticos em tempo
+real. A Seleção Brasileira Adulta conta com analista de desempenho dedicado,
+separando sua estrutura operacional da realidade dos clubes.
 
 ---
 
 ## Q-03
 
-**Pergunta:** Que conexão e que aparelhos existem nos locais de jogo e de treino?
+**Pergunta:** Que conexão e que aparelhos existem nos locais de jogo e de
+treino?
 
-**Resposta:** Com base no relato de vivência prática do responsável, a internet móvel nos locais de evento observados é estável e não sofre quedas de sinal. As informações relativas aos tipos e especificações dos aparelhos nos locais de jogo e treino permanecem não documentadas.
+**Resposta:** Com base no relato de vivência prática do responsável, a internet
+móvel nos locais de evento observados é estável e não sofre quedas de sinal. As
+informações relativas aos tipos e especificações dos aparelhos nos locais de
+jogo e treino permanecem não documentadas.
 
 ---
 
 ## Q-04
 
-**Pergunta:** Que decisões o treinador toma entre sets e em tempo técnico, e que informação gostaria de ter nesse momento?
+**Pergunta:** Que decisões o treinador toma entre sets e em tempo técnico, e que
+informação gostaria de ter nesse momento?
 
-**Resposta:** Entre sets e em tempos técnicos, o treinador toma decisões como ajustes de marcação, substituições por desgaste e variação de sistemas ofensivos. Necessidades informacionais de interesse relatadas: taxa de conversão de arremessos de 2 pontos por atleta, eficiência de defesa contra shoot-outs e mapeamento de direção preferencial de arremesso do adversário (mantidas estritamente como necessidades informacionais, sem converter em requisitos ou funcionalidades aprovadas).
+**Resposta:** Entre sets e em tempos técnicos, o treinador toma decisões como
+ajustes de marcação, substituições por desgaste e variação de sistemas
+ofensivos. Necessidades informacionais de interesse relatadas: taxa de conversão
+de arremessos de 2 pontos por atleta, eficiência de defesa contra shoot-outs e
+mapeamento de direção preferencial de arremesso do adversário (mantidas
+estritamente como necessidades informacionais, sem converter em requisitos ou
+funcionalidades aprovadas).
 
 ---
 
 ## Q-05
 
-**Pergunta:** Que parcela dos atletas e treinadores atua também no indoor na mesma temporada?  
-**Resposta:** Hipótese qualitativa baseada em observação prática: a atuação simultânea no handebol indoor na mesma temporada é considerada pontual entre atletas e rara entre treinadores no alto rendimento, observando-se maior conciliação no cenário universitário e amador. A parcela exata e a amostra estatística permanecem não documentadas.
+**Pergunta:** Que parcela dos atletas e treinadores atua também no indoor na
+mesma temporada?
+
+**Resposta:** Hipótese qualitativa baseada em observação prática: a atuação
+simultânea no handebol indoor na mesma temporada é considerada pontual entre
+atletas e rara entre treinadores no alto rendimento, observando-se maior
+conciliação no cenário universitário e amador. A parcela exata e a amostra
+estatística permanecem não documentadas.
 
 ---
 
 ## Q-06
 
-Quem cuida da saúde e da preparação física nas equipes (profissional, o próprio treinador, ninguém)?
+Quem cuida da saúde e da preparação física nas equipes (profissional, o próprio
+treinador, ninguém)?
 
 Estrutura observada das comissões técnicas:
 
-- **Seleção Brasileira:** conta com uma comissão completa, composta por treinador principal, auxiliar técnico, preparador físico, analista de desempenho e fisioterapeuta.  
-- **Clubes e Equipes Regionais:** Hipótese baseada em relatos de estrutura enxuta (frequentemente apenas treinador principal e auxiliar); a preparação física e a gestão de saúde costumam ser assumidas diretamente pelo próprio treinador ou por prestadores autônomos pontuais.
+- **Seleção Brasileira:** conta com uma comissão completa, composta por
+  treinador principal, auxiliar técnico, preparador físico, analista de
+  desempenho e fisioterapeuta.
+- **Clubes e Equipes Regionais:** Hipótese baseada em relatos de estrutura
+  enxuta (frequentemente apenas treinador principal e auxiliar); a preparação
+  física e a gestão de saúde costumam ser assumidas diretamente pelo próprio
+  treinador ou por prestadores autônomos pontuais.
 
 ---
 
 ## Q-07
 
-O que a CBHb e as federações exigem em inscrição e súmula, e em que formato?  
+O que a CBHb e as federações exigem em inscrição e súmula, e em que formato?
 
 Inscrição no Circuito Carioca 2026 (FHERJ):
 
-- Taxa de inscrição/renovação individual por atleta: R$ 25,00;  
-- Taxa de inscrição da equipe: R$ 2.000,00;  
-- Envio do comprovante de pagamento junto às fichas de inscrição preenchidas (atletas e equipes) para o e-mail da FHERJ.
+- Taxa de inscrição/renovação individual por atleta: R$ 25,00;
+- Taxa de inscrição da equipe: R$ 2.000,00;
+- Envio do comprovante de pagamento junto às fichas de inscrição preenchidas
+  (atletas e equipes) para o e-mail da FHERJ.
 
 Inscrição no Circuito Brasileiro 2026 (CBHb):
 
-- Taxa de inscrição/renovação individual por atleta: R$ 50,00;  
-- Taxa de inscrição da equipe por etapa classificatória: R$ 1.000,00;  
-- Envio das fichas de inscrição preenchidas (atletas e equipes) com comprovante de pagamento em anexo para o e-mail da FHERJ;  
+- Taxa de inscrição/renovação individual por atleta: R$ 50,00;
+- Taxa de inscrição da equipe por etapa classificatória: R$ 1.000,00;
+- Envio das fichas de inscrição preenchidas (atletas e equipes) com comprovante
+  de pagamento em anexo para o e-mail da FHERJ;
 - Realização de pagamentos e inscrições diretamente por intermédio da federação.
 
 Exigências de Súmula e Procedimentos dos Jogos:  
-As equipes devem encaminhar por e-mail a relação oficial dos atletas (contendo nome completo e número da camisa) com antecedência prévia ao evento — até 4 dias antes para a FHERJ e 15 dias antes no caso da CBHb. As súmulas são impressas em formato físico para cada partida, cabendo à mesa de arbitragem e aos anotadores o registro manual das pontuações (1 ou 2 pontos), punições/exclusões, pedidos de tempo técnico e relatórios disciplinares ao longo dos jogos.
+As equipes devem encaminhar por e-mail a relação oficial dos atletas (contendo
+nome completo e número da camisa) com antecedência prévia ao evento — até 4 dias
+antes para a FHERJ e 15 dias antes no caso da CBHb. As súmulas são impressas em
+formato físico para cada partida, cabendo à mesa de arbitragem e aos anotadores
+o registro manual das pontuações (1 ou 2 pontos), punições/exclusões, pedidos de
+tempo técnico e relatórios disciplinares ao longo dos jogos.
 
 ---
 
 ## Q-08
 
-Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso de seus dados?  
+Quantos usuários iniciais prováveis são menores de idade e quem autoriza o uso
+de seus dados?
 
-No escopo prioritário inicial (Seleção Brasileira Adulta), o público é delimitado como adulto por decisao humana, pendente de confirmação nominal do elenco.
+No escopo prioritário inicial (Seleção Brasileira Adulta), o público é
+delimitado como adulto por decisao humana, pendente de confirmação nominal do
+elenco.
 
 ---
 
